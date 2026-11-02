@@ -5,7 +5,7 @@
 日本語：docs/ja/00_README_JA.txt
 AI引継ぎ：docs/ja/AI_HANDOFF_JA.txt
 
-源代码保持原项目相对目录；两研究分支的新增脚本合并复制到相应scripts目录，分支原提交信息见BRANCH_CODE_SNAPSHOTS.json。本目录是独立文件快照，不包含.git历史，也未建立GitHub远程。
+源代码保持原项目相对目录；两研究分支的新增脚本合并复制到相应scripts目录，分支原提交信息见BRANCH_CODE_SNAPSHOTS.json。本目录是独立共享快照，不包含原项目Git历史。GitHub私有仓库：https://github.com/anous341256/aria-pedestrian-research
 工具的README、LICENSE和依赖声明随源代码保留，它们不属于额外研究文档。未把旧人工标注方案作为共享研究文档。
 原始录像与配套数据见data_index。网盘上传完成后填写共享链接；此包不含视频。
 outputs/runs、训练窗口、近期实验权重、大型预训练权重、环境与缓存均未包含，因此不是可直接复现全部训练的完整运行环境；这里未重新训练或运行工具。原源码的旧绝对路径和对outputs依赖尚需在接手环境配置。
