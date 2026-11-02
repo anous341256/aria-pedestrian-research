@@ -1,0 +1,18 @@
+{
+  "event_id": "user_identity_20260927_cvat2623956_f300_353_id7_8",
+  "recorded_at_utc": "2026-09-27T09:44:47Z",
+  "source": "explicit user reply in this research thread",
+  "verbatim_reply": "各自始终是同一个人",
+  "question_scope": "CVAT第300–353帧的ID7、ID8是否各自始终跟随同一个人；不用补框",
+  "task_id": 2623956,
+  "job_id": 4515625,
+  "annotation_base": "annotation_v1",
+  "confirmed_property": "within-track identity continuity of actual existing detections",
+  "ranges": [
+    {"cvat_id": 7, "export_track_id": 301, "clip": "test_150809_080", "local_track_id": 1, "global_start": 300, "global_end_inclusive": 353, "local_start": 0, "local_end_inclusive": 53, "description": "黑衣人"},
+    {"cvat_id": 8, "export_track_id": 302, "clip": "test_150809_080", "local_track_id": 2, "global_start": 300, "global_end_inclusive": 353, "local_start": 0, "local_end_inclusive": 53, "description": "白衣人"}
+  ],
+  "not_confirmed": ["bounding-box boundary accuracy", "detection completeness", "frames outside300–353", "other identities", "metric 3D motion", "cross-track negative identity relations"],
+  "elapsed_review_minutes": null,
+  "gold_dataset": false
+}

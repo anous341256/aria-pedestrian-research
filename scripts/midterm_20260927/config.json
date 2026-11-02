@@ -1,0 +1,16 @@
+{
+  "version": "midterm_v1",
+  "frozen_date": "2026-09-27",
+  "selection": "Frozen before new method evaluation. Development revisits existing recordings; held-out test recordings come from the pre-existing recording split. Times selected for station/head-turn and concourse/crowd scene coverage, not measured method gains.",
+  "annotation_scope": "Attempt all identifiable people in selected clips; explicitly scoped partial tracks permitted. No automatic gold promotion.",
+  "clips": [
+    {"id": "dev_164557_005", "recording": "unknown_20260803_164557", "split": "development", "start_s": 5, "duration_s": 10, "scene": "existing difficult identity/rotation segment"},
+    {"id": "dev_165112_015", "recording": "unknown_20260803_165112", "split": "development", "start_s": 15, "duration_s": 10, "scene": "second development recording"},
+    {"id": "test_150809_040", "recording": "unknown_20260803_150809", "split": "test", "start_s": 40, "duration_s": 10, "scene": "station platform"},
+    {"id": "test_150809_080", "recording": "unknown_20260803_150809", "split": "test", "start_s": 80, "duration_s": 10, "scene": "station platform later interval"},
+    {"id": "test_155313_060", "recording": "unknown_20260803_155313", "split": "test", "start_s": 60, "duration_s": 10, "scene": "indoor concourse crowd"},
+    {"id": "test_155313_180", "recording": "unknown_20260803_155313", "split": "test", "start_s": 180, "duration_s": 10, "scene": "outdoor pedestrian scene"}
+  ],
+  "defaults": {"fps": 10, "seed": 20260927, "annotation_conf": 0.15, "detector_imgsz": 1280, "detector_nms_iou": 0.7, "history_frames": 10, "future_frames": 20, "pose_max_bracket_ms": 5, "pose_min_quality": 0.5, "gaze_max_gap_ms": 100},
+  "alignment_amendment": "Before outcome analysis, verified MPS gaze is 5Hz (200ms) vs RGB 10Hz; nearest gaze gate corrected from 25ms to half sampling interval 100ms. Original strict-gate derived references preserved. No claim for sub-200ms gaze lead/lag. Clip selection unchanged."
+}

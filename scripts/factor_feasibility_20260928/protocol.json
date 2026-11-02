@@ -1,0 +1,28 @@
+{
+  "question": "Does rotation compensation make the same short-history constant-velocity pedestrian predictor more useful?",
+  "scope": "Small offline mechanism feasibility analysis, not a learned model or RGB-only deployment result.",
+  "selection": "Reuse ALL four previously selected SAM2 long tracks and exact ranges from outputs/sam2_forecast_20260928/candidates.json; do not select on new errors.",
+  "history_frames": 6,
+  "history_span_seconds_nominal": 0.5,
+  "future_frames": 15,
+  "fps": 10,
+  "stride_frames": 5,
+  "point": "Visible SAM mask bounding-box center. Not a 3D pedestrian root or manually verified ground truth.",
+  "predictor": "Ordinary least-squares slope over all six historic native 10Hz center coordinates, anchored at the last observed point; identical formula in raw and normalized coordinates. No training or tuning.",
+  "compensation": "K R_current_world R_world_past K^-1 rotation warp into the prediction-cutoff camera orientation. Translation/depth/parallax remain.",
+  "camera_reference": "Existing offline closed-loop MPS orientation, factory RGB extrinsic, linear image intrinsics, timestamp SLERP. All MPS-assisted methods are privileged offline diagnostics, including their historical inputs.",
+  "alignment": "Bracketing gaps <= 5ms, MPS quality >=0.5, same graph for entire history+target interval, valid unit rotations. Invalid windows excluded from ALL arms with reason logged.",
+  "arms": {
+    "stationary": "Sanity baseline: hold last image center.",
+    "raw_cv": "OLS center velocity in original image coordinates.",
+    "comp_cv_predcam": "Same OLS in rotation-normalized coordinates; predict future relative camera rotation by OLS slope of historical SO(3) rotation vectors relative to cutoff. No future poses passed to predictor.",
+    "comp_cv_refcam": "IDENTICAL compensated pedestrian forecast, reprojected with actual future MPS reference rotations. FUTURE-INFORMATION DIAGNOSTIC ONLY, not a causal model or guaranteed mathematical upper bound."
+  },
+  "geometry_failure": "All denominators/depth signs logged. Nonprojectable forecasts receive fixed 10x image-diagonal error per failed step in headline summary; common fully projectable subset also reported if needed. Finite out-of-frame forecasts are never clipped for metrics.",
+  "metrics": "Original 2560x1920 image pixel center Euclidean ADE/FDE at 0.5, 1.0, 1.5s; identical windows and target labels across arms; mean, median and per-track paired comparisons.",
+  "sensitivity": "Report fixed stride 20 frames (nonoverlapping target intervals), no-edge (all history/target boxes >5px from image boundary), equal-track/equal-recording averages, camera rotation strata <5deg, 5-15deg, >=15deg over horizon. No significance claim from overlapping windows.",
+  "background_check": "Every tenth frame within each selected range, measure next-frame sparse KLT correspondence residual before/after Aria rotation and inverse-rotation negative control. Mask existing SAM person boxes, use FB/NCC filtering independent of Aria; candidates are not manually verified static background.",
+  "fixed_examples": "One window per track: cutoff start+50 frames, rounded to closest evaluation cutoff. Not chosen by errors.",
+  "verification": "Identity warp equals raw predictor; rotation sign and inverse tests; known synthetic constant reference-plane velocity plus rotating camera; future suffix perturbation changes only reference-camera diagnostic; independent metrics and source hashes.",
+  "limitations": ["4 tracks / 3 recordings", "selected surviving SAM tracks, assistant sampled identity review only", "rotation-only normalization does not recover pure pedestrian/world motion", "MPS closed-loop output is offline estimated reference, not ground truth or causal RGB estimation", "future reference camera removes one uncertainty using privileged information", "no architecture fusion or training job"]
+}

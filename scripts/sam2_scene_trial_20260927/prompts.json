@@ -1,0 +1,12 @@
+{
+  "recording": "unknown_20260803_162538",
+  "clip_source_indices": [200, 399],
+  "coordinate_domain": "2560x1920 rectified RGB",
+  "prompt_source": "assistant visually placed boxes; not user-confirmed gold masks",
+  "scope": "Three selected people only. No detector, no automatic new-person discovery, no MPS.",
+  "objects": [
+    {"id": 1, "frame": 0, "box": [280, 940, 1070, 1920], "description": "近处浅蓝短袖、浅色发圈马尾的人；首帧下身截断"},
+    {"id": 2, "frame": 0, "box": [210, 1120, 495, 1780], "description": "前方浅色衣裤、深色帽子、橙色包的人；首帧部分被S1遮挡"},
+    {"id": 3, "frame": 10, "box": [1120, 1080, 1580, 1920], "description": "长发、宽松竖条纹衬衫、浅色布袋的人；局部第10帧加提示，下身截断"}
+  ]
+}

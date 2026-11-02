@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "files": 228,
+  "video_frames": 155,
+  "report": "reports/horizon_15_15_g1_20261029/RESULTS.txt",
+  "code_commit": "5287431",
+  "git_registry": "experiment_registry/experiments/horizon_15_15_g1_20261029",
+  "preserved_original_baseline": true
+}

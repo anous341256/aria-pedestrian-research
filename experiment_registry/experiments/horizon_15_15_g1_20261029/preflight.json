@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "old_windows": 65,
+  "new_windows": 142,
+  "duplicates": 0,
+  "recordings": 14,
+  "fold_counts": [
+    {
+      "fold": 0,
+      "old": 53,
+      "expanded": 182,
+      "val": 4,
+      "test": 8
+    },
+    {
+      "fold": 1,
+      "old": 57,
+      "expanded": 199,
+      "val": 4,
+      "test": 4
+    },
+    {
+      "fold": 2,
+      "old": 16,
+      "expanded": 139,
+      "val": 45,
+      "test": 4
+    },
+    {
+      "fold": 3,
+      "old": 16,
+      "expanded": 133,
+      "val": 4,
+      "test": 45
+    },
+    {
+      "fold": 4,
+      "old": 53,
+      "expanded": 176,
+      "val": 8,
+      "test": 4
+    }
+  ],
+  "camera_windows": 26901
+}

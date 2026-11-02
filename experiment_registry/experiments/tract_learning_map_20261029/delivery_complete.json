@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "version": "tract_learning_map_20261029",
+  "person_fits": 30,
+  "camera_retrained": 0,
+  "diagnostic_checkpoints": 390,
+  "figures": 6,
+  "protected_sources_unchanged": true,
+  "artifacts": 504,
+  "report_sha": "5d4bc1e5a97bd48c163e1372e1bd47166ff758098bfc420742a8276289ca0370"
+}

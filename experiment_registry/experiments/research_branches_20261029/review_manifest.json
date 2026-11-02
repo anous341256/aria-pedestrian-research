@@ -1,0 +1,296 @@
+[
+  {
+    "recording": "unknown_20260803_150809",
+    "clip": "001",
+    "input": "outputs/sam2_g1_remaining_all_20261007/001/input",
+    "source_frame": 10,
+    "timestamp_ns": 3607381763529,
+    "candidate_masks": 6,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "001_150809.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_151153",
+    "clip": "002",
+    "input": "outputs/sam2_g1_expansion_v2_20261005/23/input",
+    "source_frame": 14,
+    "timestamp_ns": 3838835462968,
+    "candidate_masks": 4,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "002_151153.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_151841",
+    "clip": "003",
+    "input": "outputs/sam2_g1_uncovered200_20261006/013/input",
+    "source_frame": 10,
+    "timestamp_ns": 4237339954763,
+    "candidate_masks": 2,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "003_151841.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_155313",
+    "clip": "004",
+    "input": "outputs/sam2_g1_factor_supplement_20261006/58/input",
+    "source_frame": 25,
+    "timestamp_ns": 6359933776653,
+    "candidate_masks": 6,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "004_155313.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_162538",
+    "clip": "005",
+    "input": "outputs/sam2_g1_remaining_all_20261007/026/input",
+    "source_frame": 10,
+    "timestamp_ns": 8253295053816,
+    "candidate_masks": 8,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "005_162538.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_163303",
+    "clip": "006",
+    "input": "outputs/sam2_g1_remaining_all_20261007/032/input",
+    "source_frame": 10,
+    "timestamp_ns": 8695388736785,
+    "candidate_masks": 5,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "006_163303.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_163528",
+    "clip": "007",
+    "input": "outputs/sam2_g1_factor_supplement_20261006/61/input",
+    "source_frame": 18,
+    "timestamp_ns": 8865976798929,
+    "candidate_masks": 1,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "007_163528.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_164557",
+    "clip": "008",
+    "input": "outputs/sam2_g1_remaining_all_20261007/039/input",
+    "source_frame": 10,
+    "timestamp_ns": 9486274164294,
+    "candidate_masks": 4,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "008_164557.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_165112",
+    "clip": "009",
+    "input": "outputs/sam2_g1_remaining_all_20261007/045/input",
+    "source_frame": 10,
+    "timestamp_ns": 9793511353066,
+    "candidate_masks": 3,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "009_165112.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_170022",
+    "clip": "010",
+    "input": "outputs/sam2_g1_remaining_all_20261007/052/input",
+    "source_frame": 10,
+    "timestamp_ns": 10343473989940,
+    "candidate_masks": 1,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "010_170022.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_180512",
+    "clip": "011",
+    "input": "outputs/sam2_g1_matched97_20261006/49/input",
+    "source_frame": 14,
+    "timestamp_ns": 215710998422,
+    "candidate_masks": 5,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "011_180512.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_192702",
+    "clip": "012",
+    "input": "outputs/sam2_g1_remaining_all_20261007/059/input",
+    "source_frame": 10,
+    "timestamp_ns": 1598088928700,
+    "candidate_masks": 2,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "012_192702.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_193311",
+    "clip": "013",
+    "input": "outputs/sam2_g1_remaining_all_20261007/079/input",
+    "source_frame": 10,
+    "timestamp_ns": 1968936545731,
+    "candidate_masks": 2,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "013_193311.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_193524",
+    "clip": "014",
+    "input": "outputs/sam2_g1_uncovered200_20261006/081/input",
+    "source_frame": 10,
+    "timestamp_ns": 2075889665471,
+    "candidate_masks": 5,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "014_193524.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_193709",
+    "clip": "015",
+    "input": "outputs/sam2_g1_remaining_all_20261007/082/input",
+    "source_frame": 10,
+    "timestamp_ns": 2199952159273,
+    "candidate_masks": 11,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "015_193709.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_193956",
+    "clip": "016",
+    "input": "outputs/sam2_g1_uncovered200_20261006/085/input",
+    "source_frame": 10,
+    "timestamp_ns": 2352907770731,
+    "candidate_masks": 10,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "016_193956.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_194648",
+    "clip": "017",
+    "input": "outputs/sam2_g1_remaining_all_20261007/091/input",
+    "source_frame": 10,
+    "timestamp_ns": 2790943497668,
+    "candidate_masks": 3,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "017_194648.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_201129",
+    "clip": "018",
+    "input": "outputs/sam2_g1_uncovered200_20261006/096/input",
+    "source_frame": 10,
+    "timestamp_ns": 4267331830244,
+    "candidate_masks": 9,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "018_201129.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_201425",
+    "clip": "019",
+    "input": "outputs/sam2_g1_remaining_all_20261007/104/input",
+    "source_frame": 10,
+    "timestamp_ns": 4414761548641,
+    "candidate_masks": 7,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "019_201425.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_201451",
+    "clip": "020",
+    "input": "outputs/sam2_g1_factor_supplement_20261006/67/input",
+    "source_frame": 15,
+    "timestamp_ns": 4454312158723,
+    "candidate_masks": 4,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "020_201451.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  },
+  {
+    "recording": "unknown_20260803_205416",
+    "clip": "021",
+    "input": "outputs/sam2_g1_factor_supplement_20261006/68/input",
+    "source_frame": 40,
+    "timestamp_ns": 64791308610,
+    "candidate_masks": 1,
+    "source_image_size": [
+      2560,
+      1920
+    ],
+    "image": "021_205416.jpg",
+    "selection": "first bulk clip midpoint in each recording"
+  }
+]

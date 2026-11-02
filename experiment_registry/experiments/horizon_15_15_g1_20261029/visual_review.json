@@ -1,0 +1,12 @@
+{
+  "reviewed": true,
+  "fixed_test_cases": 5,
+  "new_recording_target_windows": 12,
+  "new_target_times": 36,
+  "notes": [
+    "Fixed first eligible test window per recording, seed17; all five final frames inspected.",
+    "Old08_N02 remains poor; old09_N01 expanded improves locally while aggregate worsens.",
+    "New target first/middle/last views span station, mall, street and night; some targets start relatively small or have partial views. No clean dense manual-GT claim.",
+    "No post-result target removal or retraining."
+  ]
+}

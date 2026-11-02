@@ -1,0 +1,286 @@
+from threading import Lock
+from typing import List, Optional, Set, Tuple, Union
+
+import numpy as np
+import torch
+
+from inference_models import (
+    InstanceDetections,
+    InstanceSegmentationMaskFormat,
+    InstanceSegmentationModel,
+    PreProcessingOverrides,
+)
+from inference_models.configuration import (
+    DEFAULT_DEVICE,
+    INFERENCE_MODELS_YOLOV7_DEFAULT_CLASS_AGNOSTIC_NMS,
+    INFERENCE_MODELS_YOLOV7_DEFAULT_CONFIDENCE,
+    INFERENCE_MODELS_YOLOV7_DEFAULT_IOU_THRESHOLD,
+    INFERENCE_MODELS_YOLOV7_DEFAULT_MAX_DETECTIONS,
+)
+from inference_models.developer_tools import align_device_with_onnx_session
+from inference_models.entities import ColorFormat, Confidence
+from inference_models.errors import (
+    EnvironmentConfigurationError,
+    MissingDependencyError,
+    ModelInputError,
+)
+from inference_models.models.common.model_packages import get_model_package_contents
+from inference_models.models.common.onnx import (
+    run_onnx_session_with_batch_size_limit,
+    set_onnx_execution_provider_defaults,
+)
+from inference_models.models.common.roboflow.model_packages import (
+    InferenceConfig,
+    PreProcessingMetadata,
+    ResizeMode,
+    parse_class_names_file,
+    parse_inference_config,
+)
+from inference_models.models.common.roboflow.post_processing import (
+    ConfidenceFilter,
+    run_nms_for_instance_segmentation,
+)
+from inference_models.models.common.roboflow.pre_processing import (
+    pre_process_network_input,
+)
+from inference_models.models.common.streams import get_cuda_stream, use_cuda_stream
+from inference_models.models.yolov7.common import prepare_dense_masks, prepare_rle_masks
+from inference_models.utils.onnx_introspection import (
+    get_selected_onnx_execution_providers,
+)
+from inference_models.weights_providers.entities import RecommendedParameters
+
+try:
+    import onnxruntime
+except ImportError as import_error:
+    raise MissingDependencyError(
+        message="Running YOLOv7 model with ONNX backend requires pycuda installation, which is brought with "
+        "`onnx-*` extras of `inference-models` library. If you see this error running locally, "
+        "please follow our installation guide: https://inference-models.roboflow.com/getting-started/installation/"
+        " If you see this error using Roboflow infrastructure, make sure the service you use does support the "
+        f"model, You can also contact Roboflow to get support."
+        "Additionally - if AutoModel.from_pretrained(...) "
+        f"automatically selects model package which does not match your environment - that's a serious problem and "
+        f"we will really appreciate letting us know - https://github.com/roboflow/inference/issues",
+        help_url="https://inference-models.roboflow.com/errors/runtime-environment/#missingdependencyerror",
+    ) from import_error
+
+
+class YOLOv7ForInstanceSegmentationOnnx(
+    InstanceSegmentationModel[
+        torch.Tensor, PreProcessingMetadata, Tuple[torch.Tensor, torch.Tensor]
+    ]
+):
+
+    @classmethod
+    def from_pretrained(
+        cls,
+        model_name_or_path: str,
+        onnx_execution_providers: Optional[List[Union[str, tuple]]] = None,
+        default_onnx_trt_options: bool = True,
+        device: torch.device = DEFAULT_DEVICE,
+        recommended_parameters: Optional[RecommendedParameters] = None,
+        **kwargs,
+    ) -> "YOLOv7ForInstanceSegmentationOnnx":
+        if onnx_execution_providers is None:
+            onnx_execution_providers = get_selected_onnx_execution_providers()
+        if not onnx_execution_providers:
+            raise EnvironmentConfigurationError(
+                message=f"Could not initialize model - selected backend is ONNX which requires execution provider to "
+                f"be specified - explicitly in `from_pretrained(...)` method or via env variable "
+                f"`ONNXRUNTIME_EXECUTION_PROVIDERS`. If you run model locally - adjust your setup, otherwise "
+                f"contact the platform support.",
+                help_url="https://inference-models.roboflow.com/errors/runtime-environment/#environmentconfigurationerror",
+            )
+        onnx_execution_providers = set_onnx_execution_provider_defaults(
+            providers=onnx_execution_providers,
+            model_package_path=model_name_or_path,
+            device=device,
+            default_onnx_trt_options=default_onnx_trt_options,
+        )
+        model_package_content = get_model_package_contents(
+            model_package_dir=model_name_or_path,
+            elements=[
+                "class_names.txt",
+                "inference_config.json",
+                "weights.onnx",
+            ],
+        )
+        class_names = parse_class_names_file(
+            class_names_path=model_package_content["class_names.txt"]
+        )
+        inference_config = parse_inference_config(
+            config_path=model_package_content["inference_config.json"],
+            allowed_resize_modes={
+                ResizeMode.STRETCH_TO,
+                ResizeMode.LETTERBOX,
+                ResizeMode.CENTER_CROP,
+                ResizeMode.LETTERBOX_REFLECT_EDGES,
+            },
+            implicit_resize_mode_substitutions={
+                ResizeMode.FIT_LONGER_EDGE: (
+                    ResizeMode.LETTERBOX,
+                    127,
+                    "YOLOv7 Instance Segmentation model running with ONNX backend was trained with "
+                    "`fit-longer-edge` input resize mode. This transform cannot be applied properly for "
+                    "models with input dimensions fixed during weights export. To ensure interoperability, `letterbox` "
+                    "resize mode with gray edges will be used instead. If model was trained on Roboflow platform, "
+                    "we recommend using preprocessing method different that `fit-longer-edge`.",
+                )
+            },
+        )
+        session = onnxruntime.InferenceSession(
+            path_or_bytes=model_package_content["weights.onnx"],
+            providers=onnx_execution_providers,
+        )
+        device = align_device_with_onnx_session(session=session, device=device)
+        input_batch_size = session.get_inputs()[0].shape[0]
+        if isinstance(input_batch_size, str):
+            input_batch_size = None
+        input_name = session.get_inputs()[0].name
+        return cls(
+            session=session,
+            input_name=input_name,
+            class_names=class_names,
+            inference_config=inference_config,
+            device=device,
+            input_batch_size=input_batch_size,
+            recommended_parameters=recommended_parameters,
+        )
+
+    def __init__(
+        self,
+        session: onnxruntime.InferenceSession,
+        input_name: str,
+        inference_config: InferenceConfig,
+        class_names: List[str],
+        device: torch.device,
+        input_batch_size: Optional[int],
+        recommended_parameters=None,
+    ):
+        self._session = session
+        self._input_name = input_name
+        self._inference_config = inference_config
+        self._class_names = class_names
+        self._device = device
+        self._input_batch_size = input_batch_size
+        self._session_thread_lock = Lock()
+        self.recommended_parameters = recommended_parameters
+
+    @property
+    def class_names(self) -> List[str]:
+        return self._class_names
+
+    @property
+    def supported_mask_formats(self) -> Set[InstanceSegmentationMaskFormat]:
+        return {"dense", "rle"}
+
+    def pre_process(
+        self,
+        images: Union[torch.Tensor, List[torch.Tensor], np.ndarray, List[np.ndarray]],
+        input_color_format: Optional[ColorFormat] = None,
+        pre_processing_overrides: Optional[PreProcessingOverrides] = None,
+        **kwargs,
+    ) -> Tuple[torch.Tensor, List[PreProcessingMetadata]]:
+        pre_process_stream = self._pre_process_stream
+        with use_cuda_stream(pre_process_stream):
+            pre_processed_images, pre_processing_meta = pre_process_network_input(
+                images=images,
+                image_pre_processing=self._inference_config.image_pre_processing,
+                network_input=self._inference_config.network_input,
+                target_device=self._device,
+                input_color_format=input_color_format,
+                pre_processing_overrides=pre_processing_overrides,
+            )
+        if pre_process_stream is not None:
+            pre_process_stream.synchronize()
+        return pre_processed_images, pre_processing_meta
+
+    def forward(
+        self, pre_processed_images: torch.Tensor, **kwargs
+    ) -> Tuple[torch.Tensor, torch.Tensor]:
+        with self._session_thread_lock:
+            raw_outputs = run_onnx_session_with_batch_size_limit(
+                session=self._session,
+                inputs={self._input_name: pre_processed_images},
+                min_batch_size=self._input_batch_size,
+                max_batch_size=self._input_batch_size,
+                stream=self._inference_stream,
+            )
+            instances, protos = raw_outputs[0], raw_outputs[4]
+            return instances, protos
+
+    def post_process(
+        self,
+        model_results: Tuple[torch.Tensor, torch.Tensor],
+        pre_processing_meta: List[PreProcessingMetadata],
+        confidence: Confidence = "default",
+        iou_threshold: float = INFERENCE_MODELS_YOLOV7_DEFAULT_IOU_THRESHOLD,
+        max_detections: int = INFERENCE_MODELS_YOLOV7_DEFAULT_MAX_DETECTIONS,
+        class_agnostic_nms: bool = INFERENCE_MODELS_YOLOV7_DEFAULT_CLASS_AGNOSTIC_NMS,
+        mask_format: InstanceSegmentationMaskFormat = "dense",
+        **kwargs,
+    ) -> List[InstanceDetections]:
+        if mask_format not in self.supported_mask_formats:
+            raise ModelInputError(
+                message=f"YOLOv7 Instance Segmentation models support the following mask "
+                f"formats: {self.supported_mask_formats}. Requested format: {mask_format} "
+                f"is not supported. If you see this error while running on Roboflow platform, "
+                f"contact support or raise an issue at https://github.com/roboflow/inference/issues. "
+                f"When running locally - please verify your integration to make sure that appropriate "
+                f"value of `mask_format` parameter is set.",
+                help_url="https://inference-models.roboflow.com/errors/input-validation/#modelinputerror",
+            )
+        confidence_filter = ConfidenceFilter(
+            confidence=confidence,
+            recommended_parameters=self.recommended_parameters,
+            default_confidence=INFERENCE_MODELS_YOLOV7_DEFAULT_CONFIDENCE,
+        )
+        # YOLOv7 IS output scores slice includes the objectness column at
+        # index 0 with real classes at 1..N, so class_ids can land at 0
+        # (objectness-dominated). Prepend a dummy slot so the per-class
+        # tensor aligns with the slice-space indexing — get_threshold's
+        # missing-key fallback covers it with `fallback_threshold`.
+        confidence = confidence_filter.get_threshold(
+            ["__objectness_slot__", *self.class_names]
+        )
+        post_process_stream = self._post_process_stream
+        with use_cuda_stream(post_process_stream):
+            if post_process_stream is not None:
+                for result_element in model_results:
+                    result_element.record_stream(post_process_stream)
+            instances, protos = model_results
+            nms_results = run_nms_for_instance_segmentation(
+                output=instances.permute(0, 2, 1),
+                conf_thresh=confidence,
+                iou_thresh=iou_threshold,
+                max_detections=max_detections,
+                class_agnostic=class_agnostic_nms,
+            )
+            if mask_format == "dense":
+                final_results = prepare_dense_masks(
+                    nms_results=nms_results,
+                    protos=protos,
+                    pre_processing_meta=pre_processing_meta,
+                )
+            else:
+                final_results = prepare_rle_masks(
+                    nms_results=nms_results,
+                    protos=protos,
+                    pre_processing_meta=pre_processing_meta,
+                )
+        if post_process_stream is not None:
+            post_process_stream.synchronize()
+        return final_results
+
+    @property
+    def _pre_process_stream(self) -> Optional[torch.cuda.Stream]:
+        return get_cuda_stream(device=self._device, purpose="pre-processing")
+
+    @property
+    def _post_process_stream(self) -> Optional[torch.cuda.Stream]:
+        return get_cuda_stream(device=self._device, purpose="post-processing")
+
+    @property
+    def _inference_stream(self) -> Optional[torch.cuda.Stream]:
+        return get_cuda_stream(device=self._device, purpose="inference")

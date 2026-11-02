@@ -1,0 +1,11 @@
+{
+  "gaze_timestamps_and_direction_rows": 14277,
+  "manual_raw_quaternion_pose_samples": 140,
+  "world_direction_max_abs_error": 6.661338147750939e-16,
+  "optical_center_max_abs_m": 3.552713678800501e-15,
+  "raw_csv_vs_official_direction_max_abs": 1.298668240723444e-07,
+  "historical_windows_checked": 623,
+  "future_truncation_passed": true,
+  "protected_files_unchanged": 119,
+  "scope": "Arithmetic and read-only checks, not gaze accuracy, behavior labels, or independent event counts."
+}

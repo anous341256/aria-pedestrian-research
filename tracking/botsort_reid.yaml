@@ -1,0 +1,19 @@
+# BoT-SORT configuration for moving-camera pedestrian pre-annotation.
+# Derived from the Ultralytics default tracker configuration (AGPL-3.0).
+tracker_type: botsort
+track_high_thresh: 0.25
+track_low_thresh: 0.10
+new_track_thresh: 0.35
+track_buffer: 90
+match_thresh: 0.80
+fuse_score: true
+
+# Sparse optical flow compensates the shared image motion of a walking camera.
+gmc_method: sparseOptFlow
+
+# Appearance features help reconnect pedestrians after short occlusions.
+proximity_thresh: 0.50
+appearance_thresh: 0.80
+with_reid: true
+model: auto
+

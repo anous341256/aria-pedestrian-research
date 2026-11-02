@@ -1,0 +1,252 @@
+max_age:
+  geometry: aabb
+  type: randint
+  range: [15, 200]
+
+# Display history capacity; AMS has its own kalman.ams.buffer_size.
+max_obs: {}
+
+min_hits:
+  type: randint
+  range: [1, 5]
+
+det_thresh:
+  geometry: aabb
+  type: uniform
+  range: [0.1, 0.9]
+
+iou_threshold:
+  geometry: aabb
+  type: uniform
+  range: [0.05, 0.99]
+
+asso_func:
+  type: choice
+  options: [iou, giou, diou, ciou, hmiou, centroid]
+
+use_cmc:
+  type: choice
+  options: [False, True]
+  activates:
+    cmc_method:
+      type: choice
+      options: [sof, ecc]
+
+min_box_area:
+  type: randint
+  range: [5, 100]
+
+aspect_ratio_thresh:
+  type: uniform
+  range: [0.1, 2.0]
+
+lambda_iou:
+  type: uniform
+  range: [0.1, 2.0]
+
+lambda_mhd:
+  geometry: aabb
+  type: uniform
+  range: [0.1, 2.0]
+
+lambda_shape:
+  geometry: aabb
+  type: uniform
+  range: [0.1, 2.0]
+
+use_dlo_boost:
+  type: choice
+  options: [False, True]
+  activates:
+    dlo_boost_coef:
+      type: uniform
+      range: [0.3, 2.0]
+    use_rich_s:
+      type: choice
+      options: [False, True]
+    use_sb:
+      type: choice
+      options: [False, True]
+    use_vt:
+      type: choice
+      options: [False, True]
+
+use_duo_boost:
+  type: choice
+  options: [False, True]
+
+s_sim_corr:
+  geometry: aabb
+  type: choice
+  options: [False, True]
+
+use_embeddings:
+  type: choice
+  options: [False, True]
+  activates:
+    recovery_appearance_thresh:
+      type: uniform
+      range: [0.2, 0.99]
+    recovery_iou_thresh:
+      type: uniform
+      range: [0.0, 0.5]
+    recovery_max_age:
+      geometry: aabb
+      type: randint
+      range: [1, 120]
+    feat_alpha:
+      type: uniform
+      range: [0.7, 1.0]
+    lambda_emb_multiplier:
+      geometry: aabb
+      type: uniform
+      range: [0.1, 8.0]
+
+use_second_pass:
+  type: choice
+  options: [False, True]
+  activates:
+    track_low_thresh:
+      type: uniform
+      range: [0.01, 0.3]
+    second_iou_thresh:
+      geometry: aabb
+      type: uniform
+      range: [0.3, 0.9]
+    second_appearance_thresh:
+      type: uniform
+      range: [0.2, 0.9]
+    second_pass_max_age:
+      type: randint
+      range: [1, 10]
+    second_pass_min_hits:
+      type: randint
+      range: [1, 20]
+
+new_track_thresh:
+  geometry: aabb
+  type: uniform
+  range: [0.3, 0.9]
+
+confirm_hits:
+  type: randint
+  range: [1, 8]
+
+instant_confirm_thresh:
+  geometry: aabb
+  type: uniform
+  range: [0.5, 0.95]
+
+tentative_max_age:
+  type: randint
+  range: [0, 5]
+
+duplicate_iou_thresh:
+  type: uniform
+  range: [0.5, 1.0]
+
+obb_det_thresh:
+  geometry: obb
+  type: uniform
+  range: [0.05, 0.8]
+
+obb_iou_threshold:
+  geometry: obb
+  type: uniform
+  range: [0.01, 0.8]
+
+obb_new_track_thresh:
+  geometry: obb
+  type: uniform
+  range: [0.05, 0.9]
+
+obb_instant_confirm_thresh:
+  geometry: obb
+  type: uniform
+  range: [0.1, 0.95]
+
+obb_max_age:
+  geometry: obb
+  type: randint
+  range: [1, 200]
+
+obb_recovery_max_age:
+  geometry: obb
+  type: randint
+  range: [1, 120]
+
+obb_second_iou_thresh:
+  geometry: obb
+  type: uniform
+  range: [0.05, 0.9]
+
+kalman:
+  # Fixed KF mode; select it before calibration.
+  adaptive_kf:
+    default: False
+
+  # Timing and reference-prior units stay fixed across all tuning trials.
+  variable_dt:
+    default: false
+
+  # Fixed covariance defaults; --calibrate-kf supplies fitted values.
+  noise:
+    time_unit:
+      default: null
+    reference_dt_s:
+      default: 0.03333333333333333
+    process_position_scale:
+      default: 1.0
+    process_velocity_scale:
+      default: 1.0
+    measurement_noise_scale:
+      default: 1.0
+    initial_position_scale:
+      default: 1.0
+    initial_velocity_scale:
+      default: 1.0
+  ams:
+    enabled:
+      geometry: aabb
+      type: choice
+      default: True
+      options: [False, True]
+      activates:
+        alpha0:
+          type: uniform
+          default: 0.8732388616784778
+          range: [0.0, 1.0]
+        threshold:
+          type: uniform
+          default: 0.9206232808452425
+          range: [0.0, 1.0]
+        buffer_size:
+          type: randint
+          default: 57
+          range: [3, 60]
+        shrink_ratio:
+          type: uniform
+          default: 0.6934881647679682
+          range: [0.5, 1.0]
+
+# Optional temporal EdgeTAM guidance; searched only with --edgetam.
+edgetam:
+  min_coverage:
+    type: uniform
+    default: 0.90
+    range: [0.50, 1.0]
+
+  min_fill:
+    type: uniform
+    default: 0.05
+    range: [0.01, 0.3]
+
+  prompt_overlap:
+    type: uniform
+    default: 0.10
+    range: [0.01, 0.50]
+
+  max_objects:
+    type: choice
+    default: 96
+    options: [32, 64, 96, 128]

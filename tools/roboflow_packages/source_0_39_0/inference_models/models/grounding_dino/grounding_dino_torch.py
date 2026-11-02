@@ -1,0 +1,281 @@
+import os.path
+from threading import Lock
+from typing import List, Optional, Tuple, Union
+
+import numpy as np
+import torch
+import torchvision
+from transformers import BertModel
+
+# Monkey-patch BertModel for transformers>=5.0 compatibility.
+# groundingdino's BertModelWarper relies on APIs removed/changed in transformers 5.x.
+_original_get_extended_attention_mask = BertModel.get_extended_attention_mask
+
+# 1) get_head_mask was removed from PreTrainedModel in transformers 5.x.
+if not hasattr(BertModel, "get_head_mask"):
+
+    def _get_head_mask(
+        self,
+        head_mask: Optional[torch.Tensor],
+        num_hidden_layers: int,
+        is_attention_chunked: bool = False,
+    ) -> List[Optional[torch.Tensor]]:
+        if head_mask is not None:
+            head_mask = self._convert_head_mask_to_5d(head_mask, num_hidden_layers)
+            if is_attention_chunked:
+                head_mask = head_mask.unsqueeze(-1)
+        else:
+            head_mask = [None] * num_hidden_layers
+        return head_mask
+
+    BertModel.get_head_mask = _get_head_mask
+
+
+# 2) get_extended_attention_mask's 3rd arg changed from `device` to `dtype` in transformers 5.x.
+#    groundingdino passes (attention_mask, input_shape, device) — wrap to handle both.
+def _patched_get_extended_attention_mask(
+    self, attention_mask, input_shape, *args, **kwargs
+):
+    # If the third positional arg is a torch.device, drop it (transformers 5.x ignores device).
+    if args and isinstance(args[0], torch.device):
+        args = args[1:]
+    if "device" in kwargs and isinstance(kwargs.get("device"), torch.device):
+        kwargs.pop("device")
+    return _original_get_extended_attention_mask(
+        self, attention_mask, input_shape, *args, **kwargs
+    )
+
+
+BertModel.get_extended_attention_mask = _patched_get_extended_attention_mask
+
+from groundingdino.util.inference import load_model, predict
+from torch import nn
+from torchvision import transforms
+from torchvision.ops import box_convert
+
+from inference_models import Detections
+from inference_models.configuration import (
+    DEFAULT_DEVICE,
+    INFERENCE_MODELS_GROUNDING_DINO_DEFAULT_BOX_CONFIDENCE,
+    INFERENCE_MODELS_GROUNDING_DINO_DEFAULT_IOU_THRESHOLD,
+    INFERENCE_MODELS_GROUNDING_DINO_DEFAULT_MAX_DETECTIONS,
+)
+from inference_models.entities import ColorFormat, ImageDimensions
+from inference_models.errors import ModelInputError, ModelRuntimeError
+from inference_models.models.base.object_detection import (
+    OpenVocabularyObjectDetectionModel,
+)
+from inference_models.models.common.model_packages import get_model_package_contents
+
+
+class GroundingDinoForObjectDetectionTorch(
+    OpenVocabularyObjectDetectionModel[
+        torch.Tensor,
+        List[ImageDimensions],
+        Tuple[List[torch.Tensor], List[torch.Tensor], List[List[str]], List[str]],
+    ]
+):
+    @classmethod
+    def from_pretrained(
+        cls,
+        model_name_or_path: str,
+        device: torch.device = DEFAULT_DEVICE,
+        **kwargs,
+    ) -> "GroundingDinoForObjectDetectionTorch":
+        model_package_content = get_model_package_contents(
+            model_package_dir=model_name_or_path,
+            elements=["weights.pth", "config.py"],
+        )
+        text_encoder_dir = os.path.join(model_name_or_path, "text_encoder")
+        loader_kwargs = {}
+        if os.path.isdir(text_encoder_dir):
+            loader_kwargs["text_encoder_type"] = text_encoder_dir
+        model = load_model(
+            model_config_path=model_package_content["config.py"],
+            model_checkpoint_path=model_package_content["weights.pth"],
+            **loader_kwargs,
+        ).to(device)
+        return cls(model=model, device=device)
+
+    def __init__(
+        self,
+        model: nn.Module,
+        device: torch.device,
+    ):
+        self._model = model
+        self._device = device
+        self._numpy_transformations = transforms.Compose(
+            [
+                transforms.ToTensor(),
+                transforms.Resize([800, 800]),
+                transforms.Normalize(
+                    mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+                ),
+            ]
+        )
+        self._tensors_transformations = transforms.Compose(
+            [
+                lambda x: x / 255.0,
+                transforms.Resize([800, 800]),
+                transforms.Normalize(
+                    mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+                ),
+            ]
+        )
+        self._lock = Lock()
+
+    def pre_process(
+        self,
+        images: Union[torch.Tensor, List[torch.Tensor], np.ndarray, List[np.ndarray]],
+        input_color_format: Optional[ColorFormat] = None,
+        **kwargs,
+    ) -> Tuple[torch.Tensor, List[ImageDimensions]]:
+        if isinstance(images, np.ndarray):
+            input_color_format = input_color_format or "bgr"
+            if input_color_format != "rgb":
+                images = np.ascontiguousarray(images[:, :, ::-1])
+            pre_processed = self._numpy_transformations(images)
+            return (
+                torch.unsqueeze(pre_processed, dim=0).to(self._device),
+                [ImageDimensions(height=images.shape[0], width=images.shape[1])],
+            )
+        if isinstance(images, torch.Tensor):
+            input_color_format = input_color_format or "rgb"
+            if len(images.shape) == 3:
+                images = torch.unsqueeze(images, dim=0)
+            image_dimensions = ImageDimensions(
+                height=images.shape[2], width=images.shape[3]
+            )
+            images = images.to(self._device)
+            if input_color_format != "rgb":
+                images = images[:, [2, 1, 0], :, :]
+            return (
+                self._tensors_transformations(images.float()),
+                [image_dimensions] * images.shape[0],
+            )
+        if not isinstance(images, list):
+            raise ModelInputError(
+                message="Pre-processing supports only np.array or torch.Tensor or list of above.",
+                help_url="https://inference-models.roboflow.com/errors/input-validation/#modelinputerror",
+            )
+        if not len(images):
+            raise ModelInputError(
+                message="Detected empty input to the model",
+                help_url="https://inference-models.roboflow.com/errors/input-validation/#modelinputerror",
+            )
+        if isinstance(images[0], np.ndarray):
+            input_color_format = input_color_format or "bgr"
+            pre_processed, image_dimensions = [], []
+            for image in images:
+                if input_color_format != "rgb":
+                    image = np.ascontiguousarray(image[:, :, ::-1])
+                image_dimensions.append(
+                    ImageDimensions(height=image.shape[0], width=image.shape[1])
+                )
+                pre_processed.append(self._numpy_transformations(image))
+            return torch.stack(pre_processed, dim=0).to(self._device), image_dimensions
+        if isinstance(images[0], torch.Tensor):
+            input_color_format = input_color_format or "rgb"
+            pre_processed, image_dimensions = [], []
+            for image in images:
+                if len(image.shape) == 3:
+                    image = torch.unsqueeze(image, dim=0)
+                if input_color_format != "rgb":
+                    image = image[:, [2, 1, 0], :, :]
+                image_dimensions.append(
+                    ImageDimensions(height=image.shape[2], width=image.shape[3])
+                )
+                pre_processed.append(self._tensors_transformations(image.float()))
+            return torch.cat(pre_processed, dim=0).to(self._device), image_dimensions
+        raise ModelInputError(
+            message=f"Detected unknown input batch element: {type(images[0])}",
+            help_url="https://inference-models.roboflow.com/errors/input-validation/#modelinputerror",
+        )
+
+    def forward(
+        self,
+        pre_processed_images: torch.Tensor,
+        classes: List[str],
+        box_confidence: float = INFERENCE_MODELS_GROUNDING_DINO_DEFAULT_BOX_CONFIDENCE,
+        text_confidence: Optional[float] = None,
+        **kwargs,
+    ) -> Tuple[List[torch.Tensor], List[torch.Tensor], List[List[str]], List[str]]:
+        if text_confidence is None:
+            text_confidence = box_confidence
+        caption = ". ".join(classes)
+        all_boxes, all_logits, all_phrases = [], [], []
+        with self._lock, torch.inference_mode():
+            for image in pre_processed_images:
+                boxes, logits, phrases = predict(
+                    model=self._model,
+                    image=image,
+                    caption=caption,
+                    box_threshold=box_confidence,
+                    text_threshold=text_confidence,
+                    device=self._device,
+                    remove_combined=True,
+                )
+                all_boxes.append(boxes)
+                all_logits.append(logits)
+                all_phrases.append(phrases)
+        return all_boxes, all_logits, all_phrases, classes
+
+    def post_process(
+        self,
+        model_results: Tuple[
+            List[torch.Tensor], List[torch.Tensor], List[List[str]], List[str]
+        ],
+        pre_processing_meta: List[ImageDimensions],
+        iou_threshold: float = INFERENCE_MODELS_GROUNDING_DINO_DEFAULT_IOU_THRESHOLD,
+        max_detections: int = INFERENCE_MODELS_GROUNDING_DINO_DEFAULT_MAX_DETECTIONS,
+        class_agnostic_nms: bool = False,
+        **kwargs,
+    ) -> List[Detections]:
+        all_boxes, all_logits, all_phrases, classes = model_results
+        results = []
+        for boxes, logits, phrases, origin_size in zip(
+            all_boxes, all_logits, all_phrases, pre_processing_meta
+        ):
+            boxes = boxes * torch.Tensor(
+                [
+                    origin_size.width,
+                    origin_size.height,
+                    origin_size.width,
+                    origin_size.height,
+                ],
+                device=boxes.device,
+            )
+            xyxy = box_convert(boxes=boxes, in_fmt="cxcywh", out_fmt="xyxy")
+            class_id = map_phrases_to_classes(
+                phrases=phrases,
+                classes=classes,
+            ).to(boxes.device)
+            nms_class_ids = (
+                torch.zeros_like(class_id) if class_agnostic_nms else class_id
+            )
+            keep = torchvision.ops.batched_nms(
+                xyxy, logits, nms_class_ids, iou_threshold
+            )
+            if keep.numel() > max_detections:
+                keep = keep[:max_detections]
+            results.append(
+                Detections(
+                    xyxy=xyxy[keep].round().int(),
+                    confidence=logits[keep],
+                    class_id=class_id[keep].int(),
+                ),
+            )
+        return results
+
+
+def map_phrases_to_classes(phrases: List[str], classes: List[str]) -> torch.Tensor:
+    class_ids = []
+    for phrase in phrases:
+        for class_ in classes:
+            if class_ in phrase:
+                class_ids.append(classes.index(class_))
+                break
+        else:
+            # TODO: figure out how to mark additional classes
+            class_ids.append(len(classes))
+    return torch.tensor(class_ids)

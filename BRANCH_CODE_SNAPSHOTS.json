@@ -1,0 +1,20 @@
+[
+  {
+    "branch": "research/scene-pedestrian",
+    "commit": "b2f60881f0442e1aa9fa572c11405753b661fdf2",
+    "included_code": [
+      "scripts/scene_pedestrian_20261029/audit.py",
+      "scripts/scene_pedestrian_20261029/review_samples.py"
+    ],
+    "note": "Code snapshot only; no .git history or separate branches inside this package."
+  },
+  {
+    "branch": "research/gaze-motion",
+    "commit": "23b662b3356f1fede6505d3636ca49683d79eb98",
+    "included_code": [
+      "scripts/gaze_motion_20261029/audit.py",
+      "scripts/gaze_motion_20261029/verify.py"
+    ],
+    "note": "Code snapshot only; no .git history or separate branches inside this package."
+  }
+]

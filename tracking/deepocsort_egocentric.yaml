@@ -1,0 +1,17 @@
+# Deep OC-SORT tuned for a 10 FPS moving-camera annotation pass.
+tracker_type: deepocsort
+track_high_thresh: 0.25
+track_low_thresh: 0.08
+new_track_thresh: 0.35
+track_buffer: 90
+match_thresh: 0.80
+fuse_score: true
+delta_t: 3
+inertia: 0.20
+use_byte: true
+gmc_method: sparseOptFlow
+with_reid: true
+model: auto
+proximity_thresh: 0.45
+appearance_thresh: 0.85
+alpha_fixed_emb: 0.95

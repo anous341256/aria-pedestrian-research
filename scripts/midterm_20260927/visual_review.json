@@ -1,0 +1,32 @@
+{
+  "reviewer": "assistant_visual_precheck",
+  "date": "2026-09-27",
+  "human_confirmed": false,
+  "protocol": "Inspected every frame of the selected YOLO runs and newly used SAM-assisted ranges in numbered 220px context-crop contact sheets. This checks apparent identity and gross box errors, not pixel-accurate geometry or detection completeness. Reviewed before forecasting outcomes. User independent review remains necessary.",
+  "tracks": [
+    {"clip":"dev_164557_005","id":1,"parts":[["review_proposals","yolo_66_62_99",62,99]],"description":"白上衣、黑裤、挎包、扎发行人","flags":"多人贴近；框边界仍为检测器输出"},
+    {"clip":"dev_165112_015","id":1,"parts":[["review_proposals","yolo_8_0_37",0,37]],"description":"正前方白色宽松上衣、长发、背对相机行人","flags":"后段下身越出图像；不得当完整人体框"},
+    {"clip":"dev_165112_015","id":2,"parts":[["review_proposals","yolo_54_67_99",67,99]],"description":"黑上衣、白短裙、白头饰行人","flags":"末段模糊但身份可连续辨认"},
+    {"clip":"test_150809_040","id":1,"parts":[["samdet_review","samdet_2_0_99",0,13],["review_proposals","yolo_4_14_99",14,99]],"description":"站立看手机、黑上衣长裤背包行人","flags":"用SAM引导检测补回前14帧关联；后段接近图像边缘"},
+    {"clip":"test_150809_040","id":2,"parts":[["review_proposals","yolo_3_0_69",0,69]],"description":"黑上衣蓝裤、身旁白行李箱行人","flags":"末段越出右边缘"},
+    {"clip":"test_150809_040","id":3,"parts":[["review_proposals","yolo_36_15_76",15,73]],"description":"远处黑上衣、浅灰长裤行人","flags":"74–76帧前景白衣人遮挡后身份/框范围不明确，截去"},
+    {"clip":"test_150809_080","id":1,"parts":[["samdet_review","samdet_2_0_54",0,54]],"description":"黑帽黑上衣黑短裤、背包、看手机行人","flags":"原YOLO ID3在16帧改跟白衣人；SAM引导当前帧检测保留黑衣身份；末帧右侧截断"},
+    {"clip":"test_150809_080","id":2,"parts":[["samdet_review","samdet_1_0_53",0,53]],"description":"黑衣人旁白短袖、深色长裤行人","flags":"与黑衣人独立ID；SAM引导检测关联"},
+    {"clip":"test_150809_080","id":3,"parts":[["review_proposals","yolo_7_15_83",15,83]],"description":"坐着、白衬衫、手持黄色容器行人","flags":"后段下身被图像边缘截断"},
+    {"clip":"test_150809_080","id":4,"parts":[["review_proposals","yolo_25_45_99",45,99]],"description":"相邻座位浅色短发、白T恤看手机行人","flags":"后段下身被图像边缘截断"},
+    {"clip":"test_155313_060","id":1,"parts":[["review_proposals","yolo_92_31_77",31,77]],"description":"背深色背包、无袖、穿闸机行人","flags":"闸机遮挡腿部；可见框范围变化；77帧运动模糊"},
+    {"clip":"test_155313_060","id":2,"parts":[["review_proposals","yolo_7_0_37",0,34]],"description":"深底花纹上衣、黑裤、指路行人","flags":"35–37帧框漂向经过的白衣背包者，截去"},
+    {"clip":"test_155313_180","id":1,"parts":[["review_proposals","yolo_168_66_99",66,83]],"description":"黑上衣、绿色长裤、背向相机行人","flags":"原168在84帧换人；截成独立短轨迹"},
+    {"clip":"test_155313_180","id":2,"parts":[["review_proposals","yolo_168_66_99",84,99]],"description":"浅灰无袖套装、迎面行人","flags":"与66–83帧绿色裤子行人不是同一人；不连接"},
+    {"clip":"test_155313_180","id":3,"parts":[["review_proposals","yolo_171_66_99",66,83]],"description":"白图案上衣、黑长裤、背向相机行人","flags":"原171在84帧换人；截成独立短轨迹"},
+    {"clip":"test_155313_180","id":4,"parts":[["review_proposals","yolo_171_66_99",84,99]],"description":"白上衣黑裤、黑斜挎带、迎面行人","flags":"与66–83帧目标不是同一人；不连接"}
+  ],
+  "negative_examples":[
+    {"clip":"test_150809_080","method":"YOLO11l+BoT-SORT","track":3,"frame":16,"issue":"same ID switches from black-shirt person to adjacent white-shirt person while both visible"},
+    {"clip":"test_155313_060","method":"YOLO11l+BoT-SORT","track":7,"frame":35,"issue":"box leaves floral-shirt person and overlaps a different passing person"},
+    {"clip":"test_155313_180","method":"YOLO11l+BoT-SORT","track":168,"frame":84,"issue":"identity jumps from green-trouser rear-facing person to light-grey front-facing person"},
+    {"clip":"test_155313_180","method":"YOLO11l+BoT-SORT","track":171,"frame":84,"issue":"second simultaneous identity jump"},
+    {"clip":"dev_164557_005","method":"SAM2 first-frame prompts only","track":1,"frame":20,"issue":"mask spills onto large background area, later reappears on a person; no automatic acceptance"},
+    {"clip":"dev_165112_015","method":"YOLO prompts for SAM2","frame":0,"issue":"top-confidence detections include advertisement/mannequin people; detector confidence is not label validity"}
+  ]
+}

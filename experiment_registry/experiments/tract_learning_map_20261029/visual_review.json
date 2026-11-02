@@ -1,0 +1,11 @@
+{
+  "reviewed": true,
+  "images": ["learning_curves.png", "learning_curves_zoom.png", "data_map.png", "example_curves.png", "edgc_map.png", "group_proportions.png"],
+  "notes": [
+    "Chinese labels and figure titles visually inspected.",
+    "Data-map axes corrected to positive logarithmic common limits; old/new thresholds remain shared within fit.",
+    "Zoomed curves preserve full-step figure separately; axes use different vertical scales per panel.",
+    "New-window original-arm examples explicitly labeled untrained probes.",
+    "EDGC figure shows continuous historical features and descriptive training errors; no causal claims."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "fit_records": 4974,
+  "unique_windows": 207,
+  "no_test_or_validation_in_maps": true,
+  "exposure_sums_exact": true,
+  "figures": 6,
+  "source_files_unchanged": true
+}

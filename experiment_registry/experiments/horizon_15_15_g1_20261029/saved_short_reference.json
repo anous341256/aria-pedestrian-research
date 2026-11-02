@@ -1,0 +1,254 @@
+{
+  "windows": 59,
+  "ADE": 83.99349597783952,
+  "FDE": 126.10495772306591,
+  "new_long_first5_ADE": 108.6811165923704,
+  "new_long_first5_FDE": 154.5225766095648,
+  "mapping": [
+    {
+      "long_index": 0,
+      "old117_index": 111
+    },
+    {
+      "long_index": 1,
+      "old117_index": 112
+    },
+    {
+      "long_index": 2,
+      "old117_index": 113
+    },
+    {
+      "long_index": 3,
+      "old117_index": 114
+    },
+    {
+      "long_index": 4,
+      "old117_index": 105
+    },
+    {
+      "long_index": 5,
+      "old117_index": 106
+    },
+    {
+      "long_index": 6,
+      "old117_index": 107
+    },
+    {
+      "long_index": 7,
+      "old117_index": 108
+    },
+    {
+      "long_index": 8,
+      "old117_index": 83
+    },
+    {
+      "long_index": 9,
+      "old117_index": 84
+    },
+    {
+      "long_index": 10,
+      "old117_index": 85
+    },
+    {
+      "long_index": 11,
+      "old117_index": 86
+    },
+    {
+      "long_index": 16,
+      "old117_index": 0
+    },
+    {
+      "long_index": 17,
+      "old117_index": 1
+    },
+    {
+      "long_index": 18,
+      "old117_index": 2
+    },
+    {
+      "long_index": 19,
+      "old117_index": 3
+    },
+    {
+      "long_index": 20,
+      "old117_index": 6
+    },
+    {
+      "long_index": 21,
+      "old117_index": 7
+    },
+    {
+      "long_index": 22,
+      "old117_index": 8
+    },
+    {
+      "long_index": 23,
+      "old117_index": 9
+    },
+    {
+      "long_index": 24,
+      "old117_index": 10
+    },
+    {
+      "long_index": 25,
+      "old117_index": 11
+    },
+    {
+      "long_index": 26,
+      "old117_index": 12
+    },
+    {
+      "long_index": 27,
+      "old117_index": 13
+    },
+    {
+      "long_index": 28,
+      "old117_index": 14
+    },
+    {
+      "long_index": 29,
+      "old117_index": 15
+    },
+    {
+      "long_index": 30,
+      "old117_index": 18
+    },
+    {
+      "long_index": 31,
+      "old117_index": 19
+    },
+    {
+      "long_index": 32,
+      "old117_index": 20
+    },
+    {
+      "long_index": 33,
+      "old117_index": 21
+    },
+    {
+      "long_index": 34,
+      "old117_index": 22
+    },
+    {
+      "long_index": 35,
+      "old117_index": 23
+    },
+    {
+      "long_index": 36,
+      "old117_index": 24
+    },
+    {
+      "long_index": 37,
+      "old117_index": 25
+    },
+    {
+      "long_index": 38,
+      "old117_index": 26
+    },
+    {
+      "long_index": 39,
+      "old117_index": 27
+    },
+    {
+      "long_index": 40,
+      "old117_index": 30
+    },
+    {
+      "long_index": 41,
+      "old117_index": 31
+    },
+    {
+      "long_index": 42,
+      "old117_index": 32
+    },
+    {
+      "long_index": 43,
+      "old117_index": 35
+    },
+    {
+      "long_index": 44,
+      "old117_index": 36
+    },
+    {
+      "long_index": 45,
+      "old117_index": 37
+    },
+    {
+      "long_index": 46,
+      "old117_index": 38
+    },
+    {
+      "long_index": 47,
+      "old117_index": 41
+    },
+    {
+      "long_index": 48,
+      "old117_index": 42
+    },
+    {
+      "long_index": 49,
+      "old117_index": 43
+    },
+    {
+      "long_index": 50,
+      "old117_index": 44
+    },
+    {
+      "long_index": 51,
+      "old117_index": 47
+    },
+    {
+      "long_index": 52,
+      "old117_index": 48
+    },
+    {
+      "long_index": 53,
+      "old117_index": 49
+    },
+    {
+      "long_index": 54,
+      "old117_index": 50
+    },
+    {
+      "long_index": 55,
+      "old117_index": 53
+    },
+    {
+      "long_index": 56,
+      "old117_index": 54
+    },
+    {
+      "long_index": 57,
+      "old117_index": 55
+    },
+    {
+      "long_index": 58,
+      "old117_index": 56
+    },
+    {
+      "long_index": 61,
+      "old117_index": 92
+    },
+    {
+      "long_index": 62,
+      "old117_index": 93
+    },
+    {
+      "long_index": 63,
+      "old117_index": 94
+    },
+    {
+      "long_index": 64,
+      "old117_index": 95
+    }
+  ],
+  "unmatched_long_indices": [
+    12,
+    13,
+    14,
+    15,
+    59,
+    60
+  ],
+  "note": "Exact old21-frame match only. Long-window stride phase can differ; unmatched windows excluded ONLY from this secondary comparison, never from main65 evaluation. Saved 1.5s->0.5s expanded GRU on same first5 future targets. Descriptive system reference: training pool, initialization and one validation pairing differ. Test recording excluded in both."
+}

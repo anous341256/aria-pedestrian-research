@@ -1,0 +1,826 @@
+import os
+from typing import Any, Dict, List, Literal, Optional, Union
+
+import numpy as np
+import torch
+
+from inference_models.errors import (
+    EnvironmentConfigurationError,
+    MissingDependencyError,
+    ModelInputError,
+    ModelRuntimeError,
+)
+from inference_models.logger import LOGGER
+
+try:
+    import onnxruntime
+except ImportError as import_error:
+    raise MissingDependencyError(
+        message="Running model with ONNX backend requires onnxruntime installation, which is brought with "
+        "`onnx-*` extras of `inference-models` library. If you see this error running locally, "
+        "please follow our installation guide: https://inference-models.roboflow.com/getting-started/installation/"
+        " If you see this error using Roboflow infrastructure, make sure the service you use does support the "
+        f"model, You can also contact Roboflow to get support."
+        "Additionally - if AutoModel.from_pretrained(...) "
+        f"automatically selects model package which does not match your environment - that's a serious problem and "
+        f"we will really appreciate letting us know - https://github.com/roboflow/inference/issues",
+        help_url="https://inference-models.roboflow.com/errors/runtime-environment/#missingdependencyerror",
+    ) from import_error
+
+
+GPU_CAPABLE_EXECUTION_PROVIDERS = {
+    "CUDAExecutionProvider",
+    "TensorrtExecutionProvider",
+    "NvTensorRTRTXExecutionProvider",
+    "ROCMExecutionProvider",
+    "MIGraphXExecutionProvider",
+}
+
+TORCH_TYPES_MAPPING = {
+    torch.float32: np.float32,
+    torch.float16: np.float16,
+    torch.int64: np.int64,
+    torch.int32: np.int32,
+    torch.uint8: np.uint8,
+}
+
+ORT_TYPES_TO_TORCH_TYPES_MAPPING = {
+    "tensor(float)": torch.float32,
+    "tensor(float16)": torch.float16,
+    "tensor(double)": torch.float64,
+    "tensor(int32)": torch.int32,
+    "tensor(int64)": torch.int64,
+    "tensor(int16)": torch.int16,
+    "tensor(int8)": torch.int8,
+    "tensor(uint8)": torch.uint8,
+    "tensor(uint16)": torch.uint16,
+    "tensor(uint32)": torch.uint32,
+    "tensor(uint64)": torch.uint64,
+    "tensor(bool)": torch.bool,
+}
+
+MODEL_INPUT_CASTING = {
+    torch.float16: {torch.float16, torch.float32, torch.float64},
+    torch.float32: {torch.float16, torch.float32, torch.float64},
+    torch.int8: {
+        torch.int8,
+        torch.int16,
+        torch.int32,
+        torch.int64,
+        torch.float64,
+        torch.float32,
+        torch.float16,
+    },
+    torch.int16: {
+        torch.int16,
+        torch.int32,
+        torch.int64,
+        torch.float16,
+        torch.float32,
+        torch.float64,
+    },
+    torch.int32: {
+        torch.int32,
+        torch.int64,
+        torch.float16,
+        torch.float32,
+        torch.float64,
+    },
+    torch.uint8: {
+        torch.uint8,
+        torch.int16,
+        torch.int32,
+        torch.int64,
+        torch.float16,
+        torch.float32,
+        torch.float64,
+    },
+    torch.bool: {torch.uint8, torch.int8, torch.float16, torch.float32, torch.float64},
+}
+
+
+def set_onnx_execution_provider_defaults(
+    providers: List[Union[str, tuple]],
+    model_package_path: str,
+    device: torch.device,
+    enable_fp16: bool = True,
+    default_onnx_trt_options: bool = True,
+) -> List[Union[str, tuple[str, dict[str, Any]]]]:
+    """Configure ONNX Runtime execution providers with default options.
+
+    Applies default configuration options to ONNX Runtime execution providers,
+    particularly for TensorRT and CUDA providers. This includes setting up
+    TensorRT engine caching, FP16 precision, and device selection.
+
+    Args:
+        providers: List of execution provider names or (name, options) tuples.
+            Example: ["CUDAExecutionProvider", "CPUExecutionProvider"]
+
+        model_package_path: Path to model package directory, used for TensorRT
+            engine cache storage.
+
+        device: PyTorch device specifying which GPU to use. The device index
+            is used to configure the execution provider.
+
+        enable_fp16: Enable FP16 (half precision) for TensorRT execution provider.
+            Default: True.
+
+        default_onnx_trt_options: Apply default TensorRT options (engine caching,
+            FP16). If False, TensorRT provider is used without modifications.
+            Default: True.
+
+    Returns:
+        List of execution providers with configured options. Each element is either
+        a string (provider name) or a tuple of (provider_name, options_dict).
+
+    Examples:
+        Configure providers for CUDA inference:
+
+        >>> from inference_models.developer_tools import set_onnx_execution_provider_defaults
+        >>> import torch
+        >>>
+        >>> providers = ["CUDAExecutionProvider", "CPUExecutionProvider"]
+        >>> configured = set_onnx_execution_provider_defaults(
+        ...     providers=providers,
+        ...     model_package_path="/path/to/model",
+        ...     device=torch.device("cuda:0"),
+        ...     enable_fp16=True
+        ... )
+        >>> # Returns: [("CUDAExecutionProvider", {"device_id": 0}), "CPUExecutionProvider"]
+
+        Configure TensorRT with custom options:
+
+        >>> providers = ["TensorrtExecutionProvider"]
+        >>> configured = set_onnx_execution_provider_defaults(
+        ...     providers=providers,
+        ...     model_package_path="/cache/models/yolov8n",
+        ...     device=torch.device("cuda:1"),
+        ...     enable_fp16=False,
+        ...     default_onnx_trt_options=True
+        ... )
+        >>> # TensorRT provider will cache engines in /cache/models/yolov8n
+
+    Note:
+        - TensorRT provider gets: engine caching, cache path, FP16 setting, device ID
+        - CUDA provider gets: device ID
+        - Other providers are passed through unchanged
+        - Engine caching significantly speeds up subsequent model loads
+
+    See Also:
+        - `run_onnx_session_via_iobinding()`: Run ONNX sessions with configured providers
+    """
+    result = []
+    device_id_options = {}
+    if device.index is not None:
+        device_id_options["device_id"] = device.index
+    for provider in providers:
+        if provider == "TensorrtExecutionProvider" and default_onnx_trt_options:
+            engine_cached = os.path.isdir(model_package_path) and any(
+                f.endswith(".engine") for f in os.listdir(model_package_path)
+            )
+            if not engine_cached:
+                LOGGER.warning(
+                    "No cached TensorRT engine found in %s. ONNX Runtime will build one "
+                    "during the first inference; this can take many minutes on embedded "
+                    "devices and blocks requests for this model until it finishes. "
+                    "Persist this directory to avoid rebuilds.",
+                    model_package_path,
+                )
+            provider_options = {
+                "trt_engine_cache_enable": True,
+                "trt_fp16_enable": enable_fp16,
+                **device_id_options,
+            }
+            provider_options["trt_engine_cache_path"] = model_package_path
+            provider = (
+                "TensorrtExecutionProvider",
+                provider_options,
+            )
+        if provider == "CUDAExecutionProvider":
+            provider = ("CUDAExecutionProvider", device_id_options)
+        result.append(provider)
+    return result
+
+
+DeviceMismatchResolutionMode = Literal["fail", "fallback"]
+
+ALLOWED_DEVICE_MISMATCH_RESOLUTION_MODES = {"fail", "fallback"}
+
+
+def align_device_with_onnx_session(
+    session: onnxruntime.InferenceSession,
+    device: torch.device,
+    resolution_mode: DeviceMismatchResolutionMode = "fallback",
+    fallback_device: Optional[torch.device] = None,
+) -> torch.device:
+    """Make sure the declared torch device is in line with onnxruntime session capacity.
+
+    An onnxruntime session can only consume GPU-resident tensors when it runs a
+    GPU-capable execution provider. When a model is initialized with a CUDA
+    torch device (e.g. the auto-selected default on a GPU machine) but the
+    session ended up CPU-only - either because the caller requested only
+    `CPUExecutionProvider` or because onnxruntime silently fell back during
+    initialization - binding CUDA tensors would fail at runtime with a cryptic
+    "no data transfer registered" error. This function detects that mismatch
+    upfront and resolves it according to `resolution_mode`, so pre- and
+    post-processing stay on a device the session can read from.
+
+    Limitations:
+        For now, only CUDA devices passed as the primary `device` are verified -
+        any non-CUDA device is returned unchanged without validation.
+
+    Args:
+        session: Initialized ONNX Runtime session. Its effective (post-fallback)
+            providers are read via `session.get_providers()`.
+
+        device: Torch device requested for the model.
+
+        resolution_mode: How to resolve a detected mismatch. `"fallback"`
+            (default) logs a warning and returns the fallback device,
+            `"fail"` raises `EnvironmentConfigurationError`.
+
+        fallback_device: Device to return when a mismatch is resolved in
+            `"fallback"` mode. Default value (`None`) means default behaviour -
+            falling back to the CPU device.
+
+    Returns:
+        The requested device when it is compatible with the session's providers,
+        otherwise the fallback device (in `"fallback"` mode).
+
+    Raises:
+        ModelInputError: When `resolution_mode` is not one of `"fail"`,
+            `"fallback"`.
+
+        EnvironmentConfigurationError: When a mismatch is detected and
+            `resolution_mode` is `"fail"`.
+
+    Examples:
+        Align device in a model's `from_pretrained`:
+
+        >>> session = onnxruntime.InferenceSession(
+        ...     "model.onnx", providers=["CPUExecutionProvider"]
+        ... )
+        >>> device = align_device_with_onnx_session(
+        ...     session=session, device=torch.device("cuda:0")
+        ... )
+        >>> device
+        device(type='cpu')
+
+        Raise instead of falling back:
+
+        >>> device = align_device_with_onnx_session(
+        ...     session=session,
+        ...     device=torch.device("cuda:0"),
+        ...     resolution_mode="fail",
+        ... )
+        Traceback (most recent call last):
+        EnvironmentConfigurationError: ...
+    """
+    if resolution_mode not in ALLOWED_DEVICE_MISMATCH_RESOLUTION_MODES:
+        raise ModelInputError(
+            message=f"`align_device_with_onnx_session(...)` supports the following values of "
+            f"`resolution_mode` parameter: {sorted(ALLOWED_DEVICE_MISMATCH_RESOLUTION_MODES)}. "
+            f"Requested mode: {resolution_mode} is not supported. Please verify your integration "
+            f"to make sure that appropriate value of `resolution_mode` parameter is set.",
+            help_url="https://inference-models.roboflow.com/errors/input-validation/#modelinputerror",
+        )
+    if device.type != "cuda":
+        return device
+    session_providers = set(session.get_providers())
+    if session_providers & GPU_CAPABLE_EXECUTION_PROVIDERS:
+        return device
+    if resolution_mode == "fail":
+        raise EnvironmentConfigurationError(
+            message=f"Model requested device {device}, but the onnxruntime session runs only CPU-bound "
+            f"execution providers ({', '.join(sorted(session_providers))}), so it cannot consume "
+            f"GPU-resident tensors. If you run model locally - adjust your setup (either request a "
+            f"GPU-capable execution provider or initialize the model with CPU device), otherwise "
+            f"contact the platform support.",
+            help_url="https://inference-models.roboflow.com/errors/runtime-environment/#environmentconfigurationerror",
+        )
+    resolved_fallback_device = (
+        fallback_device if fallback_device is not None else torch.device("cpu")
+    )
+    LOGGER.warning(
+        "Model requested device %s, but the onnxruntime session runs only CPU-bound "
+        "execution providers (%s) - falling back to %s tensors for this model.",
+        device,
+        ", ".join(sorted(session_providers)),
+        resolved_fallback_device,
+    )
+    return resolved_fallback_device
+
+
+def run_onnx_session_with_batch_size_limit(
+    session: onnxruntime.InferenceSession,
+    inputs: Dict[str, torch.Tensor],
+    output_shape_mapping: Optional[Dict[str, tuple]] = None,
+    max_batch_size: Optional[int] = None,
+    min_batch_size: Optional[int] = None,
+    stream: Optional[torch.cuda.Stream] = None,
+) -> List[torch.Tensor]:
+    """Run ONNX inference session with automatic batch splitting.
+
+    Executes an ONNX model with automatic batching when the input batch size
+    exceeds the maximum supported batch size. Splits large batches into smaller
+    chunks, runs inference on each chunk, and concatenates the results.
+
+    This is useful for models with static batch size constraints or to avoid
+    GPU memory issues with large batches.
+
+    Args:
+        session: ONNX Runtime inference session.
+
+        inputs: Dictionary mapping input names to PyTorch tensors. All tensors
+            must have the same batch size (first dimension).
+
+        output_shape_mapping: Optional dictionary mapping output names to their
+            expected shapes. Used for pre-allocating output buffers. If None,
+            outputs are dynamically allocated.
+
+        max_batch_size: Maximum batch size to process at once. If None or if
+            input batch size is smaller, processes the entire batch at once.
+
+        min_batch_size: Minimum batch size for the model. If the last chunk is
+            smaller, it will be padded to this size. Useful for models with
+            static batch size requirements.
+        stream: Optional CUDA stream to run the torch side of the operation on
+            (batch chunking, input casts, result concatenation). Defaults to the
+            calling thread's current stream. The stream is synchronized before
+            each dispatch to ONNX Runtime and after results are assembled, so
+            returned tensors are fully materialized. Ignored for CPU inputs.
+
+    Returns:
+        List of output tensors from the ONNX model, in the order defined by
+        the model's output specification.
+
+    Raises:
+        ModelRuntimeError: If input tensors have different batch sizes.
+
+    Examples:
+        Run inference with batch size limit:
+
+        >>> from inference_models.developer_tools import run_onnx_session_with_batch_size_limit
+        >>> import onnxruntime as ort
+        >>> import torch
+        >>>
+        >>> session = ort.InferenceSession("model.onnx")
+        >>>
+        >>> # Large batch that exceeds model's max batch size
+        >>> inputs = {
+        ...     "input": torch.randn(100, 3, 640, 640, device="cuda")
+        ... }
+        >>>
+        >>> # Process in chunks of 16
+        >>> outputs = run_onnx_session_with_batch_size_limit(
+        ...     session=session,
+        ...     inputs=inputs,
+        ...     max_batch_size=16
+        ... )
+        >>> # Returns concatenated results from all chunks
+
+        Handle models with static batch size:
+
+        >>> # Model requires exactly batch size of 8
+        >>> inputs = {"input": torch.randn(20, 3, 640, 640, device="cuda")}
+        >>>
+        >>> outputs = run_onnx_session_with_batch_size_limit(
+        ...     session=session,
+        ...     inputs=inputs,
+        ...     max_batch_size=8,
+        ...     min_batch_size=8  # Pad last chunk to size 8
+        ... )
+
+    Note:
+        - Automatically handles batch splitting and result concatenation
+        - Pads the last chunk if min_batch_size is specified
+        - Uses `run_onnx_session_via_iobinding()` internally for efficiency
+        - All input tensors must have the same batch size
+
+    See Also:
+        - `run_onnx_session_via_iobinding()`: Lower-level ONNX execution
+        - `generate_batch_chunks()`: Utility for creating batch chunks
+    """
+    device = get_input_device(inputs=inputs)
+    if device.type != "cuda":
+        return _run_onnx_session_with_batch_size_limit(
+            session=session,
+            inputs=inputs,
+            output_shape_mapping=output_shape_mapping,
+            max_batch_size=max_batch_size,
+            min_batch_size=min_batch_size,
+        )
+    if stream is None:
+        stream = torch.cuda.current_stream(device)
+    with torch.cuda.stream(stream):
+        for input_tensor in inputs.values():
+            input_tensor.record_stream(stream)
+        results = _run_onnx_session_with_batch_size_limit(
+            session=session,
+            inputs=inputs,
+            output_shape_mapping=output_shape_mapping,
+            max_batch_size=max_batch_size,
+            min_batch_size=min_batch_size,
+            stream=stream,
+        )
+    stream.synchronize()
+    return results
+
+
+def _run_onnx_session_with_batch_size_limit(
+    session: onnxruntime.InferenceSession,
+    inputs: Dict[str, torch.Tensor],
+    output_shape_mapping: Optional[Dict[str, tuple]] = None,
+    max_batch_size: Optional[int] = None,
+    min_batch_size: Optional[int] = None,
+    stream: Optional[torch.cuda.Stream] = None,
+) -> List[torch.Tensor]:
+    if max_batch_size is None:
+        return run_onnx_session_via_iobinding(
+            session=session,
+            inputs=inputs,
+            output_shape_mapping=output_shape_mapping,
+            stream=stream,
+        )
+    input_batch_sizes = set()
+    for input_tensor in inputs.values():
+        input_batch_sizes.add(input_tensor.shape[0])
+    if len(input_batch_sizes) != 1:
+        raise ModelInputError(
+            message="When running forward pass through ONNX model detected inputs with different batch sizes. "
+            "This is the error with the model you run. If the model was trained or exported "
+            "on Roboflow platform - contact us to get help. Otherwise, verify your model package or "
+            "implementation of the model class.",
+            help_url="https://inference-models.roboflow.com/errors/input-validation/#modelinputerror",
+        )
+    input_batch_size = input_batch_sizes.pop()
+    if input_batch_size <= max_batch_size and (
+        min_batch_size is None or input_batch_size >= min_batch_size
+    ):
+        # no point iterating
+        return run_onnx_session_via_iobinding(
+            session=session,
+            inputs=inputs,
+            output_shape_mapping=output_shape_mapping,
+            stream=stream,
+        )
+    all_results = []
+    for _ in session.get_outputs():
+        all_results.append([])
+    for i in range(0, input_batch_size, max_batch_size):
+        batch_inputs = {}
+        reminder = 0
+        for name, value in inputs.items():
+            batched_value = value[i : i + max_batch_size]
+            if min_batch_size is not None:
+                reminder = min_batch_size - batched_value.shape[0]
+            if reminder > 0:
+                batched_value = torch.cat(
+                    (
+                        batched_value,
+                        torch.zeros(
+                            (reminder,) + batched_value.shape[1:],
+                            dtype=batched_value.dtype,
+                            device=batched_value.device,
+                        ),
+                    ),
+                    dim=0,
+                )
+            batched_value = batched_value.contiguous()
+            batch_inputs[name] = batched_value
+        batch_output_shape_mapping = None
+        if output_shape_mapping:
+            batch_output_shape_mapping = {}
+            for name, shape in output_shape_mapping.items():
+                batch_output_shape_mapping[name] = (max_batch_size,) + shape[1:]
+        batch_results = run_onnx_session_via_iobinding(
+            session=session,
+            inputs=batch_inputs,
+            output_shape_mapping=batch_output_shape_mapping,
+            stream=stream,
+        )
+        if reminder > 0:
+            batch_results = [r[:-reminder] for r in batch_results]
+        for partial_result, all_result_element in zip(batch_results, all_results):
+            all_result_element.append(partial_result)
+    return [torch.cat(e, dim=0).contiguous() for e in all_results]
+
+
+def run_onnx_session_via_iobinding(
+    session: onnxruntime.InferenceSession,
+    inputs: Dict[str, torch.Tensor],
+    output_shape_mapping: Optional[Dict[str, tuple]] = None,
+    stream: Optional[torch.cuda.Stream] = None,
+) -> List[torch.Tensor]:
+    """Run ONNX inference session using IO binding for optimal GPU performance.
+
+    Executes an ONNX model using ONNX Runtime's IO binding API, which provides
+    better performance on CUDA devices by avoiding unnecessary memory copies
+    between CPU and GPU. For CPU inference, falls back to standard execution.
+
+    IO binding allows direct binding of GPU tensors to ONNX Runtime, eliminating
+    the need to copy data to CPU and back. This is particularly beneficial for
+    large models and high-throughput scenarios.
+
+    Args:
+        session: ONNX Runtime inference session.
+
+        inputs: Dictionary mapping input names to PyTorch tensors. Tensors can
+            be on CPU or CUDA devices.
+
+        output_shape_mapping: Optional dictionary mapping output names to their
+            expected shapes. Used for pre-allocating output buffers on GPU,
+            which improves performance. If not provided or if output has dynamic
+            shape, outputs are allocated dynamically.
+
+        stream: Optional CUDA stream to run the torch side of the operation on
+            (input casts, output buffer allocation). Defaults to the calling
+            thread's current stream. The stream is synchronized right before the
+            session run, so all pending torch writes to the bound buffers are
+            complete when ONNX Runtime reads them. Ignored for CPU inputs.
+
+    Returns:
+        List of output tensors from the ONNX model, in the order defined by
+        the model's output specification. Tensors are on the same device as inputs.
+
+    Examples:
+        Run inference with IO binding on GPU:
+
+        >>> from inference_models.developer_tools import run_onnx_session_via_iobinding
+        >>> import onnxruntime as ort
+        >>> import torch
+        >>>
+        >>> session = ort.InferenceSession(
+        ...     "model.onnx",
+        ...     providers=["CUDAExecutionProvider"]
+        ... )
+        >>>
+        >>> inputs = {
+        ...     "images": torch.randn(1, 3, 640, 640, device="cuda:0")
+        ... }
+        >>>
+        >>> outputs = run_onnx_session_via_iobinding(
+        ...     session=session,
+        ...     inputs=inputs
+        ... )
+        >>> # Returns list of tensors on cuda:0
+
+        Pre-allocate outputs for better performance:
+
+        >>> output_shapes = {
+        ...     "output0": (1, 84, 8400),  # Detection output shape
+        ... }
+        >>>
+        >>> outputs = run_onnx_session_via_iobinding(
+        ...     session=session,
+        ...     inputs=inputs,
+        ...     output_shape_mapping=output_shapes
+        ... )
+        >>> # Outputs are pre-allocated, avoiding dynamic allocation overhead
+
+        CPU inference (automatic fallback):
+
+        >>> inputs_cpu = {
+        ...     "images": torch.randn(1, 3, 640, 640)  # CPU tensor
+        ... }
+        >>>
+        >>> outputs = run_onnx_session_via_iobinding(
+        ...     session=session,
+        ...     inputs=inputs_cpu
+        ... )
+        >>> # Automatically uses standard execution for CPU
+
+    Note:
+        - Automatically casts input types to match model requirements
+        - Uses IO binding for CUDA devices, standard execution for CPU
+        - Requires PyCUDA for CUDA execution
+        - Synchronizes `stream` (the current stream by default) before the session
+          run - ONNX Runtime executes on its own internal stream, so all pending
+          torch work on the bound buffers must be complete before it reads them
+        - Pre-allocating outputs via output_shape_mapping improves performance
+        - Handles both static and dynamic output shapes
+
+    See Also:
+        - `run_onnx_session_with_batch_size_limit()`: Higher-level function with batching
+        - `set_onnx_execution_provider_defaults()`: Configure execution providers
+    """
+    device = get_input_device(inputs=inputs)
+    if device.type != "cuda":
+        inputs = auto_cast_session_inputs(
+            session=session,
+            inputs=inputs,
+        )
+        inputs_np = {name: value.cpu().numpy() for name, value in inputs.items()}
+        results = session.run(None, inputs_np)
+        return [torch.from_numpy(element).to(device=device) for element in results]
+    try:
+        import pycuda.driver as cuda
+
+        from inference_models.models.common.cuda import use_primary_cuda_context
+    except ImportError as import_error:
+        raise MissingDependencyError(
+            message="Running model with ONNX backend on GPU requires pycuda installation, which is brought with "
+            "`onnx-*` extras of `inference-models` library. If you see this error running locally, "
+            "please follow our installation guide: https://inference-models.roboflow.com/getting-started/installation/"
+            " If you see this error using Roboflow infrastructure, make sure the service you use does support the "
+            f"model, You can also contact Roboflow to get support."
+            "Additionally - if AutoModel.from_pretrained(...) "
+            f"automatically selects model package which does not match your environment - that's a serious problem and "
+            f"we will really appreciate letting us know - https://github.com/roboflow/inference/issues",
+            help_url="https://inference-models.roboflow.com/errors/runtime-environment/#missingdependencyerror",
+        ) from import_error
+
+    if not any(
+        provider in GPU_CAPABLE_EXECUTION_PROVIDERS
+        for provider in session.get_providers()
+    ):
+        raise ModelRuntimeError(
+            message="Model inputs reside on CUDA device, but the onnxruntime session does not run any "
+            "GPU-capable execution provider, so it cannot consume GPU-resident tensors. This is a bug in "
+            "the model implementation - the model should align its processing device with the session "
+            "providers (see `align_device_with_onnx_session(...)`). Submit issue to help us solve this "
+            "problem: https://github.com/roboflow/inference/issues",
+            help_url="https://inference-models.roboflow.com/errors/models-runtime/#modelruntimeerror",
+        )
+    if stream is None:
+        stream = torch.cuda.current_stream(device)
+    cuda.init()
+    cuda_device = cuda.Device(device.index or 0)
+    with use_primary_cuda_context(cuda_device=cuda_device), torch.cuda.stream(stream):
+        for input_tensor in inputs.values():
+            input_tensor.record_stream(stream)
+        inputs = auto_cast_session_inputs(
+            session=session,
+            inputs=inputs,
+        )
+        if output_shape_mapping is None:
+            output_shape_mapping = {}
+        binding = session.io_binding()
+        pre_allocated_outputs: List[Optional[torch.Tensor]] = []
+        some_outputs_dynamically_allocated = False
+        for output in session.get_outputs():
+            if is_tensor_shape_dynamic(output.shape):
+                if output.name in output_shape_mapping:
+                    torch_output_type = ort_tensor_type_to_torch_tensor_type(
+                        output.type
+                    )
+                    pre_allocated_output = torch.empty(
+                        output_shape_mapping[output.name],
+                        dtype=torch_output_type,
+                        device=device,
+                    )
+                    binding.bind_output(
+                        name=output.name,
+                        device_type="cuda",
+                        device_id=device.index or 0,
+                        element_type=torch_tensor_type_to_onnx_type(torch_output_type),
+                        shape=tuple(pre_allocated_output.shape),
+                        buffer_ptr=pre_allocated_output.data_ptr(),
+                    )
+                    pre_allocated_outputs.append(pre_allocated_output)
+                else:
+                    binding.bind_output(
+                        name=output.name,
+                        device_type="cuda",
+                        device_id=device.index or 0,
+                    )
+                    some_outputs_dynamically_allocated = True
+                    pre_allocated_outputs.append(None)
+            else:
+                torch_output_type = ort_tensor_type_to_torch_tensor_type(output.type)
+                pre_allocated_output = torch.empty(
+                    output.shape,
+                    dtype=torch_output_type,
+                    device=device,
+                )
+                binding.bind_output(
+                    name=output.name,
+                    device_type="cuda",
+                    device_id=device.index or 0,
+                    element_type=torch_tensor_type_to_onnx_type(torch_output_type),
+                    shape=tuple(pre_allocated_output.shape),
+                    buffer_ptr=pre_allocated_output.data_ptr(),
+                )
+                pre_allocated_outputs.append(pre_allocated_output)
+        for ort_input in session.get_inputs():
+            input_tensor = inputs[ort_input.name].contiguous()
+            input_type = torch_tensor_type_to_onnx_type(tensor_dtype=input_tensor.dtype)
+            binding.bind_input(
+                name=ort_input.name,
+                device_type=input_tensor.device.type,
+                device_id=input_tensor.device.index or 0,
+                element_type=input_type,
+                shape=input_tensor.shape,
+                buffer_ptr=input_tensor.data_ptr(),
+            )
+        # ORT executes on its own internal stream and binding.synchronize_inputs()
+        # cannot be relied upon to order it against torch work (it resolves to
+        # cudaDeviceSynchronize under CUDA EP - a device-wide barrier - and to a no-op
+        # under TensorrtExecutionProvider), so the torch stream carrying all pending
+        # writes to the bound buffers is synchronized here instead.
+        stream.synchronize()
+        session.run_with_iobinding(binding)
+        if not some_outputs_dynamically_allocated:
+            return pre_allocated_outputs
+        bound_outputs = binding.get_outputs()
+        result = []
+        for pre_allocated_output, bound_output in zip(
+            pre_allocated_outputs, bound_outputs
+        ):
+            if pre_allocated_output is not None:
+                result.append(pre_allocated_output)
+                continue
+            # This is added for the sake of true compatibility with older builds of onnxruntime
+            # which do not support zero-copy OrtValue -> torch.Tensor thanks top dlpack
+            if not hasattr(bound_output._ortvalue, "to_dlpack"):
+                # slower but needed :(
+                out_tensor = torch.from_numpy(bound_output._ortvalue.numpy()).to(device)
+            else:
+                dlpack_tensor = bound_output._ortvalue.to_dlpack()
+                out_tensor = torch.utils.dlpack.from_dlpack(dlpack_tensor)
+            result.append(out_tensor)
+        return result
+
+
+def auto_cast_session_inputs(
+    session: onnxruntime.InferenceSession, inputs: Dict[str, torch.Tensor]
+) -> Dict[str, torch.Tensor]:
+    for ort_input in session.get_inputs():
+        expected_type = ort_tensor_type_to_torch_tensor_type(ort_input.type)
+        if ort_input.name not in inputs:
+            raise ModelRuntimeError(
+                message="While performing forward pass through the model, library bug was discovered - "
+                f"required model input named '{ort_input.name}' is missing. Submit "
+                f"issue to help us solving this problem: https://github.com/roboflow/inference/issues",
+                help_url="https://inference-models.roboflow.com/errors/models-runtime/#modelruntimeerror",
+            )
+        actual_type = inputs[ort_input.name].dtype
+        if actual_type == expected_type:
+            continue
+        if not can_model_input_be_casted(source=actual_type, target=expected_type):
+            raise ModelRuntimeError(
+                message="While performing forward pass through the model, library bug was discovered - "
+                f"model requires the input type to be {expected_type}, but the actual input type is {actual_type} - "
+                f"this is a bug in model implementation. Submit issue to help us solving this problem: "
+                f"https://github.com/roboflow/inference/issues",
+                help_url="https://inference-models.roboflow.com/errors/models-runtime/#modelruntimeerror",
+            )
+        inputs[ort_input.name] = inputs[ort_input.name].to(dtype=expected_type)
+    return inputs
+
+
+def torch_tensor_type_to_onnx_type(tensor_dtype: torch.dtype) -> Union[np.dtype, int]:
+    if tensor_dtype not in TORCH_TYPES_MAPPING:
+        raise ModelRuntimeError(
+            message=f"While performing forward pass through the model, library discovered tensor of type {tensor_dtype} "
+            f"which needs to be passed to onnxruntime session. Conversion of this type is currently not "
+            f"supported in inference. At the moment you shall assume your model incompatible with the library. "
+            f"To change that state - please submit new issue: https://github.com/roboflow/inference/issues",
+            help_url="https://inference-models.roboflow.com/errors/models-runtime/#modelruntimeerror",
+        )
+    return TORCH_TYPES_MAPPING[tensor_dtype]
+
+
+def ort_tensor_type_to_torch_tensor_type(ort_dtype: str) -> torch.dtype:
+    if ort_dtype not in ORT_TYPES_TO_TORCH_TYPES_MAPPING:
+        raise ModelRuntimeError(
+            message=f"While performing forward pass through the model, library discovered ORT tensor of type {ort_dtype} "
+            f"which needs to be casted into torch.Tensor. Conversion of this type is currently not "
+            f"supported in inference. At the moment you shall assume your model incompatible with the library. "
+            f"To change that state - please submit new issue: https://github.com/roboflow/inference/issues",
+            help_url="https://inference-models.roboflow.com/errors/models-runtime/#modelruntimeerror",
+        )
+    return ORT_TYPES_TO_TORCH_TYPES_MAPPING[ort_dtype]
+
+
+def is_tensor_shape_dynamic(shape: tuple) -> bool:
+    return any(isinstance(dim, str) for dim in shape)
+
+
+def can_model_input_be_casted(source: torch.dtype, target: torch.dtype) -> bool:
+    if source not in MODEL_INPUT_CASTING:
+        return False
+    return target in MODEL_INPUT_CASTING[source]
+
+
+def get_input_device(inputs: Dict[str, torch.Tensor]) -> torch.device:
+    device = None
+    for input_name, input_tensor in inputs.items():
+        if device is None:
+            device = input_tensor.device
+        elif input_tensor.device != device:
+            raise ModelRuntimeError(
+                message="While performing forward pass through the model, library discovered the input tensor which is "
+                f"wrongly allocated on a different device that rest of the inputs - input named '{input_name}' "
+                f"is allocated on {input_tensor.device}, whereas rest of the inputs are allocated on {device}. "
+                f"This is a bug in model implementation. To help us fixing that, please submit new issue: "
+                f"https://github.com/roboflow/inference/issues",
+                help_url="https://inference-models.roboflow.com/errors/models-runtime/#modelruntimeerror",
+            )
+    if device is None:
+        raise ModelRuntimeError(
+            message="No inputs detected for the model. Raise new issue to help us fixing the problem: "
+            "https://github.com/roboflow/inference/issues",
+            help_url="https://inference-models.roboflow.com/errors/models-runtime/#modelruntimeerror",
+        )
+    return device

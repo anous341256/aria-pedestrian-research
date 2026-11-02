@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "old_target_frames": 2015,
+  "new_target_frames": 4402,
+  "camera_histories": 26901,
+  "manual_quaternion_translation_max_m": 2.3616517097480028e-07,
+  "rotation_cache_max": 1.1740002785892711e-07,
+  "projection_roundtrip_max_px": 1.3642420526593924e-12,
+  "recording_disjoint": true,
+  "all_new_windows_pass_boundary_camera_screen": true,
+  "prediction_rows": 390,
+  "metric_max_px": 0.0,
+  "scipy_projection_max_px": 1.3642420526593924e-12
+}

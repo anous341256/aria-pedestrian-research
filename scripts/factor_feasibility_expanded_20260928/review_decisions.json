@@ -1,0 +1,29 @@
+{
+  "review_type": "Assistant visual review at 1Hz plus segment endpoints, before expanded forecast scores. Not user-confirmed identities or pixel-accurate gold labels.",
+  "review_sheets_seen": 26,
+  "previous_pilot_review": "Reuse earlier sampled review of the four identical pilot ranges; no new scores used for selection.",
+  "excluded": {
+    "151153_S3": "449-499 samples already represent a different short-sleeved person from the original long-sleeved prompt. At 509 mask transfers to the gray-blue backpack target, at 516 a small patch. Within-segment identity instability.",
+    "151153_S5": "503 box lies on the gray-blue backpack target, 513-543 on the intended white-shirt skirt target, 549 on a non-person/background patch. Within-segment identity/mask instability.",
+    "164557_S3": "Original child ID has transferred to the adult also covered by S5; duplicate identity plus background patch at 996. Exclude rather than count as another example.",
+    "164557_S5": "900-980 samples show intended adult, but 990 is dominated by the intervening black-clothed person and 996 is a small background patch. Exclude entire preselected longest segment; no score-guided trimming."
+  },
+  "accepted_notes": {
+    "151153_S1": "Red shirt identity consistent in samples; severe edge truncation at 46 retained and flagged by edge sensitivity.",
+    "151153_S2": "White shirt/tan trousers identity consistent in samples; first box includes neighboring person and motion blur. Label geometry remains noisy; retain uncertainty.",
+    "151153_S4": "Exact previous 400-669 pilot range.",
+    "162538_S2": "Striped shirt/ponytail identity consistent throughout samples; head turning, near-field walking and edge truncation retained.",
+    "164557_S1": "Exact previous 100-529 pilot range.",
+    "164557_S2": "Navy shirt/tan shorts identity consistent; walks across road and toward steps with suitcase. Border fragments at 535 and 735-736 retained.",
+    "164557_S4": "Black shirt/shorts with small backpack identity consistent; mall corridor. Edge truncation near end retained.",
+    "193709_S1": "Exact previous 565-790 pilot range.",
+    "193709_S2": "Cap/dark graphic shirt identity consistent; dim light, motion blur, edge fragments near end retained.",
+    "193709_S3": "Light polo/backpack identity consistent in samples; crossing and walking ahead, end partly outside image. Low resolution and blur remain.",
+    "193709_S4": "Exact previous 284-454 pilot range.",
+    "193709_S5": "White top/dark skirt identity consistent; distant crossing becoming closer. Initial partial occlusion and endpoint blur retained; original description says trousers but appearance is skirt.",
+    "201129_S1": "Gray plaid shirt identity consistent in sampled reentry segment; strong blur at 296/339 retained.",
+    "201129_S2": "Dark shirt/gold back graphic identity consistent; night station exterior, partial edge exit at 174 retained. Different time from accepted S1 reentry."
+  },
+  "selection_outcome": "18 longest-run candidates; 4 excluded for visible identity/duplicate/background failures; 14 accepted including 10 not used in pilot. No forecast errors were computed for any expanded candidate before this decision.",
+  "scope_limit": "14 recording-local identity segments do not establish 14 unique people; some companions recur across recordings. Five recordings, not 14 independent scenes."
+}

@@ -1,0 +1,37 @@
+﻿团队共享研究文档（7份）
+2026-11-03；基于截至2026-10-29完成记录。
+
+1. 项目概览与当前状态
+reports/github_share_inventory_20261103/PROJECT_OVERVIEW.txt
+研究问题、当前方法、数据、结论、下一步与共享边界。
+
+2. 预测实验进度总览
+reports/forecast_milestones_20261029/RESULTS.txt
+历次预测结果与可比较范围，包含有效改进和失败尝试。
+
+3. 当前数据的构造与边界
+reports/g1_bulk_association_20261029/RESULTS.txt
+G1自动关联、299质量通过窗口的来源和限制。
+
+4. 最新短时预测结果
+reports/g1_expanded_forecast_20261029/RESULTS.txt
+原基线、新数据配对对照、当前最佳候选及收益局限。
+
+5. 长时域实验结果
+reports/horizon_15_15_g1_20261029/RESULTS.txt
+1.5秒未来扩充后退步的事实、设置与限制。
+
+6. 训练过程诊断
+reports/tract_learning_map_20261029/RESULTS.txt
+解释当前泛化瓶颈及仍未解决的问题。
+
+7. 下一步研究分支概览
+reports/research_branches_20261029/OVERVIEW.txt
+场景与眼动的前期证据、研究顺序与尚未验证的假设。
+
+这7份替代原先90份Markdown整包作为研究文档入口；文档格式不必统一为Markdown。
+旧文档本地保留，不进入共享研究文档目录。当前不实施旧人工标注流程；保留实际数据来源、质量限制及历史人工警示说明。
+工具运行说明/第三方LICENSE单独随工具提供；详细实验参数继续由源码和配置保留。
+研究分支概览指向的两份完整可行性报告暂作按需查阅，不再扩充入门文件数量。
+
+7份正文总计40,124字节，约40.1KB。

@@ -1,0 +1,20 @@
+# TrackTrack tuned for a 10 FPS moving-camera annotation pass.
+tracker_type: tracktrack
+track_high_thresh: 0.35
+track_low_thresh: 0.10
+new_track_thresh: 0.45
+track_buffer: 90
+match_thresh: 0.75
+lost_match_thr: 0.90
+iou_weight: 0.50
+reid_weight: 0.50
+conf_weight: 0.10
+angle_weight: 0.05
+penalty_p: 0.20
+penalty_q: 0.40
+reduce_step: 0.05
+tai_thr: 0.55
+min_track_len: 3
+gmc_method: sparseOptFlow
+with_reid: true
+model: auto

@@ -1,0 +1,103 @@
+{
+  "created": "2026-11-03",
+  "research_record_cutoff": "2026-10-29",
+  "language": "ja",
+  "documents": [
+    {
+      "source": "reports/github_share_inventory_20261103/PROJECT_OVERVIEW.txt",
+      "translation": "01_PROJECT_OVERVIEW_JA.txt",
+      "source_sha256": "325912ad39cc6c81f902dffd1fa5508feb0b86185079b63913de7ca057707049",
+      "translation_sha256": "a45807e5159ff3eddeac6fc484156310ec725668549eb7cb3c9a2fab96c9d7a6",
+      "source_decimal_tokens": 11,
+      "missing_decimal_tokens": [],
+      "missing_recording_ids": [],
+      "exact_numeric_rows_checked": 0,
+      "source_characters": 1355,
+      "translation_characters": 1957
+    },
+    {
+      "source": "reports/forecast_milestones_20261029/RESULTS.txt",
+      "translation": "02_FORECAST_MILESTONES_JA.txt",
+      "source_sha256": "a277e3d08d31025afc611ce24bdcdc0728f481676fa020a84e885827ea8bfebe",
+      "translation_sha256": "5537001540d056419a0d5d39820fe36c2fb06d14170d27a5f32b1bc4ad29945a",
+      "source_decimal_tokens": 137,
+      "missing_decimal_tokens": [],
+      "missing_recording_ids": [],
+      "exact_numeric_rows_checked": 0,
+      "source_characters": 4569,
+      "translation_characters": 5231
+    },
+    {
+      "source": "reports/g1_bulk_association_20261029/RESULTS.txt",
+      "translation": "03_G1_DATA_CONSTRUCTION_JA.txt",
+      "source_sha256": "4e4249067ed26effa6609f28949c0810a41a37ff67127bc6dbc4c70d6b55dda5",
+      "translation_sha256": "3559a367dbed6676130083a27c7da5684af58f520bb2dfe1f3cf7b0d34f87f59",
+      "source_decimal_tokens": 3,
+      "missing_decimal_tokens": [],
+      "missing_recording_ids": [],
+      "exact_numeric_rows_checked": 21,
+      "source_characters": 2798,
+      "translation_characters": 3385
+    },
+    {
+      "source": "reports/g1_expanded_forecast_20261029/RESULTS.txt",
+      "translation": "04_G1_EXPANDED_FORECAST_JA.txt",
+      "source_sha256": "c7a6cf572e6dcb035352d0d890fd608c35d750daafe79e7bd68a0a00e782b104",
+      "translation_sha256": "7d7a45a1385d2159c7d2da46b8134ed119454819c66f545dbbd34a5dacb67b15",
+      "source_decimal_tokens": 78,
+      "missing_decimal_tokens": [],
+      "missing_recording_ids": [],
+      "exact_numeric_rows_checked": 12,
+      "source_characters": 3621,
+      "translation_characters": 3625
+    },
+    {
+      "source": "reports/horizon_15_15_g1_20261029/RESULTS.txt",
+      "translation": "05_LONG_HORIZON_JA.txt",
+      "source_sha256": "ae15352c718c09bc8367283f4dde4033b98b6eb3567b82635008ef8cf9f2041b",
+      "translation_sha256": "7279a26f491f84fdc92704fdc42789ef7b6c7532023974640fa02407c4932235",
+      "source_decimal_tokens": 74,
+      "missing_decimal_tokens": [],
+      "missing_recording_ids": [],
+      "exact_numeric_rows_checked": 8,
+      "source_characters": 3335,
+      "translation_characters": 3643
+    },
+    {
+      "source": "reports/tract_learning_map_20261029/RESULTS.txt",
+      "translation": "06_LEARNING_DIAGNOSIS_JA.txt",
+      "source_sha256": "5d4bc1e5a97bd48c163e1372e1bd47166ff758098bfc420742a8276289ca0370",
+      "translation_sha256": "1be30067086d370fcb58facda5dabc727a74601dd5a1ee93172b88638f955b14",
+      "source_decimal_tokens": 66,
+      "missing_decimal_tokens": [],
+      "missing_recording_ids": [],
+      "exact_numeric_rows_checked": 0,
+      "source_characters": 3432,
+      "translation_characters": 3869
+    },
+    {
+      "source": "reports/research_branches_20261029/OVERVIEW.txt",
+      "translation": "07_RESEARCH_BRANCHES_JA.txt",
+      "source_sha256": "f48eb0cb10ba5dcc17efceb42ddf72ff488d104256399046a120b0555c346be3",
+      "translation_sha256": "6a23fe2566c4f337c1c16193458f4a7291d158214326ba6449a586129d6914f4",
+      "source_decimal_tokens": 6,
+      "missing_decimal_tokens": [],
+      "missing_recording_ids": [],
+      "exact_numeric_rows_checked": 0,
+      "source_characters": 1895,
+      "translation_characters": 2437
+    }
+  ],
+  "additional_files": [
+    {
+      "file": "00_README_JA.txt",
+      "sha256": "f538fec33e5173ba4511af5b243f19630706a790e16b5e3d9424ef2d43c8dfb6"
+    },
+    {
+      "file": "AI_HANDOFF_JA.txt",
+      "sha256": "7fee6e978cd5a67e0c793116c8d9912c92c19a2f4de24ceff9bde24ddd310cef"
+    }
+  ],
+  "validation": "Checked all original decimal/scientific values after full-width character normalization, recording IDs and exact seed/recording metric rows. Manually reviewed comparison scope, caveats and chronology. Numeric checks alone do not prove semantic equivalence. No model execution or external literature verification.",
+  "source_policy": "Original seven Chinese documents remain at original paths. Japanese editions preserve report-time state with chronology/sharing notes."
+}

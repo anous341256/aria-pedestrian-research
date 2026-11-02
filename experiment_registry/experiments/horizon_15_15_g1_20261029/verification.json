@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checkpoint_replays": 30,
+  "future_physically_truncated_exact": true,
+  "paired_initializations": true,
+  "same_time_camera_max": 0.0,
+  "invalid_rays": 0,
+  "protected_files": 284
+}

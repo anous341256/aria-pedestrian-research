@@ -1,0 +1,320 @@
+[
+  {
+    "run": "joined_001",
+    "recording": "unknown_20260803_150809",
+    "chunks": [
+      "043",
+      "061"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 3,
+    "quality31": 3
+  },
+  {
+    "run": "joined_002",
+    "recording": "unknown_20260803_150809",
+    "chunks": [
+      "077",
+      "092"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 2,
+    "quality31": 2
+  },
+  {
+    "run": "joined_003",
+    "recording": "unknown_20260803_150809",
+    "chunks": [
+      "160",
+      "164"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 3,
+    "quality31": 3
+  },
+  {
+    "run": "joined_004",
+    "recording": "unknown_20260803_150809",
+    "chunks": [
+      "174",
+      "177"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 3,
+    "quality31": 3
+  },
+  {
+    "run": "joined_005",
+    "recording": "unknown_20260803_150809",
+    "chunks": [
+      "179",
+      "181",
+      "183"
+    ],
+    "frames": 63,
+    "continuous31_candidates": 7,
+    "quality31": 7
+  },
+  {
+    "run": "joined_006",
+    "recording": "unknown_20260803_150809",
+    "chunks": [
+      "185",
+      "187",
+      "189"
+    ],
+    "frames": 63,
+    "continuous31_candidates": 7,
+    "quality31": 7
+  },
+  {
+    "run": "joined_007",
+    "recording": "unknown_20260803_151153",
+    "chunks": [
+      "023",
+      "044",
+      "062"
+    ],
+    "frames": 63,
+    "continuous31_candidates": 21,
+    "quality31": 21
+  },
+  {
+    "run": "joined_008",
+    "recording": "unknown_20260803_151841",
+    "chunks": [
+      "003",
+      "024"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 2,
+    "quality31": 2
+  },
+  {
+    "run": "joined_009",
+    "recording": "unknown_20260803_155313",
+    "chunks": [
+      "045",
+      "063"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 6,
+    "quality31": 6
+  },
+  {
+    "run": "joined_010",
+    "recording": "unknown_20260803_155313",
+    "chunks": [
+      "079",
+      "094",
+      "109"
+    ],
+    "frames": 63,
+    "continuous31_candidates": 0,
+    "quality31": 0
+  },
+  {
+    "run": "joined_011",
+    "recording": "unknown_20260803_155313",
+    "chunks": [
+      "147",
+      "152",
+      "157"
+    ],
+    "frames": 63,
+    "continuous31_candidates": 8,
+    "quality31": 7
+  },
+  {
+    "run": "joined_012",
+    "recording": "unknown_20260803_155313",
+    "chunks": [
+      "161",
+      "165"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 10,
+    "quality31": 0
+  },
+  {
+    "run": "joined_013",
+    "recording": "unknown_20260803_163303",
+    "chunks": [
+      "006",
+      "027"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 9,
+    "quality31": 9
+  },
+  {
+    "run": "joined_014",
+    "recording": "unknown_20260803_163303",
+    "chunks": [
+      "096",
+      "111"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 0,
+    "quality31": 0
+  },
+  {
+    "run": "joined_015",
+    "recording": "unknown_20260803_164557",
+    "chunks": [
+      "066",
+      "082"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 6,
+    "quality31": 0
+  },
+  {
+    "run": "joined_016",
+    "recording": "unknown_20260803_165112",
+    "chunks": [
+      "125",
+      "135"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 9,
+    "quality31": 8
+  },
+  {
+    "run": "joined_017",
+    "recording": "unknown_20260803_165112",
+    "chunks": [
+      "158",
+      "162"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 3,
+    "quality31": 3
+  },
+  {
+    "run": "joined_018",
+    "recording": "unknown_20260803_170022",
+    "chunks": [
+      "084",
+      "099"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 0,
+    "quality31": 0
+  },
+  {
+    "run": "joined_019",
+    "recording": "unknown_20260803_180512",
+    "chunks": [
+      "051",
+      "069",
+      "085"
+    ],
+    "frames": 63,
+    "continuous31_candidates": 13,
+    "quality31": 11
+  },
+  {
+    "run": "joined_020",
+    "recording": "unknown_20260803_180512",
+    "chunks": [
+      "115",
+      "127"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 4,
+    "quality31": 4
+  },
+  {
+    "run": "joined_021",
+    "recording": "unknown_20260803_192702",
+    "chunks": [
+      "163",
+      "167"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 1,
+    "quality31": 1
+  },
+  {
+    "run": "joined_022",
+    "recording": "unknown_20260803_192702",
+    "chunks": [
+      "173",
+      "176"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 3,
+    "quality31": 3
+  },
+  {
+    "run": "joined_023",
+    "recording": "unknown_20260803_192702",
+    "chunks": [
+      "178",
+      "180"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 9,
+    "quality31": 9
+  },
+  {
+    "run": "joined_024",
+    "recording": "unknown_20260803_192702",
+    "chunks": [
+      "182",
+      "184"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 6,
+    "quality31": 6
+  },
+  {
+    "run": "joined_025",
+    "recording": "unknown_20260803_193709",
+    "chunks": [
+      "054",
+      "071"
+    ],
+    "frames": 42,
+    "continuous31_candidates": 6,
+    "quality31": 6
+  },
+  {
+    "run": "joined_026",
+    "recording": "unknown_20260803_193956",
+    "chunks": [
+      "055",
+      "072",
+      "088"
+    ],
+    "frames": 63,
+    "continuous31_candidates": 10,
+    "quality31": 4
+  },
+  {
+    "run": "joined_027",
+    "recording": "unknown_20260803_201451",
+    "chunks": [
+      "020",
+      "041",
+      "059"
+    ],
+    "frames": 63,
+    "continuous31_candidates": 15,
+    "quality31": 15
+  },
+  {
+    "run": "joined_028",
+    "recording": "unknown_20260803_205416",
+    "chunks": [
+      "042",
+      "060",
+      "076",
+      "091"
+    ],
+    "frames": 84,
+    "continuous31_candidates": 5,
+    "quality31": 2
+  }
+]

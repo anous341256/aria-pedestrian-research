@@ -1,0 +1,2522 @@
+[
+  {
+    "path": "outputs/tract_learning_map_20261029/analysis_summary.json",
+    "bytes": 9141,
+    "sha256": "2554c62146c7bbb551f59589578b694dda3262b78edcbe9544f3d253e2463e59"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/analysis_verification.json",
+    "bytes": 190,
+    "sha256": "63754fc4558e11ae761cbb3ca7324acb73450efb3e5c8431b3964d1ced0c7dea"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/edgc_features.json",
+    "bytes": 56524,
+    "sha256": "8f5bb35b3b6462a84b916e78e28b429287f5ea9f23056a36b436603eabdba8fb"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/example_windows.json",
+    "bytes": 3348,
+    "sha256": "f3f9cb54cb48eba2110f8016679849e3151bb0b5faa14dbd3b2d5fe09c7fabae"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/complete.json",
+    "bytes": 583,
+    "sha256": "6eb36ec687c78b07169491a22b61f1b11f11feca2e47623fa0fcfc42042bf415"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/curves.npz",
+    "bytes": 557821,
+    "sha256": "545299126e63c7548fc2332b53d6fcb3535457a59f147627583663b13c60012f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_000.pt",
+    "bytes": 517179,
+    "sha256": "b2fdae7b9e50f8027413cfbab1e45e0c7d95867ff2a9f8fe8904d364fca07a03"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_020.pt",
+    "bytes": 517179,
+    "sha256": "90e25296204a4e1fb8f1a1e4c54c0e8b83418547669368d534729c5e866664f8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_040.pt",
+    "bytes": 517179,
+    "sha256": "f4d38ac03aa3b96c64643bb134eed448feee71f4f078547c0945d275335d439c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_060.pt",
+    "bytes": 517179,
+    "sha256": "63f41deac828c4a2d55a50b83d04e65ee0235cef8e7b10201d0acec1950f9446"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_080.pt",
+    "bytes": 517179,
+    "sha256": "618faaca2f187a95c7c8b10ea9f351f7915ea2622ec802fcbe41f3879ac3a4d4"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_100.pt",
+    "bytes": 517179,
+    "sha256": "e034fb224cb6242f08f2284ffefbcd9073effa546dd90d8b4ab714f58ded1ba3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_120.pt",
+    "bytes": 517179,
+    "sha256": "3085e771b3e971ecbc7448a44f636814e25cb5154b31d62c4b1d72ae628249be"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_140.pt",
+    "bytes": 517179,
+    "sha256": "c31b43cb63d43e8fc56d7533436c22bf349bf51d1fdad9bb64443ce70359223e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_160.pt",
+    "bytes": 517179,
+    "sha256": "1bf7f616ef83552caa51e4c51faece0ed3a9a9337225d131e7c0521b17fd0759"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_180.pt",
+    "bytes": 517179,
+    "sha256": "91efb5d5274260ddb5aa17c8aef14fd4ff91eb0942593c8e40fc0db8efcd0532"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_200.pt",
+    "bytes": 517179,
+    "sha256": "0e474aa9fc78b2414a165a97db926af76c0667a0f4a3c95629d86e5f4e7db052"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_220.pt",
+    "bytes": 517179,
+    "sha256": "3e8bbd782b71443b61b239f204abb28ae4f2579a7ce015aa1372523fdf211bd3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/step_240.pt",
+    "bytes": 517179,
+    "sha256": "05c6b99926102f72919d87334ef65e7dea971dc0bc27aba8c62e0db631a6c6af"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_17/training.json",
+    "bytes": 981,
+    "sha256": "4043c360cf1e894ddd920890de402a52e677989b9074654a40984302192436c7"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/complete.json",
+    "bytes": 582,
+    "sha256": "97423d0fab4e333f2cad41b88d6d3767781c9d72c41afce4738596951167c998"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/curves.npz",
+    "bytes": 557679,
+    "sha256": "80ecc7e82495ba2a1a81b51b556c7bc7c0b4dc679d18d26684e988da6b7afe3f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_000.pt",
+    "bytes": 517179,
+    "sha256": "199dfb7d6e0c1fd41cb52c740b1d5688e8d63c87136b8eab1aa32324fd599788"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_020.pt",
+    "bytes": 517179,
+    "sha256": "743c6f2fee435d37f96d15eb8563561bb8925f8eb25b90d991206050807ec1dc"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_040.pt",
+    "bytes": 517179,
+    "sha256": "6e83de0b208b904599398b9caa9e21690847ddf4895adfc69ed5ec1874b37760"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_060.pt",
+    "bytes": 517179,
+    "sha256": "655eff314b85156af7225a620fa438b8b99bc9b5ca86a0ce98abbd712d42c191"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_080.pt",
+    "bytes": 517179,
+    "sha256": "1d81ac649fce879456440d173d1b2af6741baf6ddaa2ddce5ea121634017a61d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_100.pt",
+    "bytes": 517179,
+    "sha256": "28bed1709e19c92c91df124cd647d7cabf9ffeec75cb6bd5027538f6d819adda"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_120.pt",
+    "bytes": 517179,
+    "sha256": "e4833477427e8fe8c8c125c8449c4bc75fbd0a35e0432cf99b8e59ea8ea7b927"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_140.pt",
+    "bytes": 517179,
+    "sha256": "56578e06139a49a16dc5a0102b42a663cff5e7b093029578618f4581bcc87ac7"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_160.pt",
+    "bytes": 517179,
+    "sha256": "d1f246fb347d0215b59aea4a55acffa38dfec792ba8efc7db64dc6ac754fee63"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_180.pt",
+    "bytes": 517179,
+    "sha256": "f2196933adb490571111d9170ed18e367717e0f6f4d137d2bbf9682d62b911c9"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_200.pt",
+    "bytes": 517179,
+    "sha256": "19e2e3ed31f30572ec0e2138bd0868342e241a26e7d6645a755ef1439e7f46ca"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_220.pt",
+    "bytes": 517179,
+    "sha256": "ee2204b100c04b3c763120af5f2bc9dd5859bbedf02867ca1d78ae33f7dc201f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/step_240.pt",
+    "bytes": 517179,
+    "sha256": "a09b04552ad0ea8d0ae5f8f96215cd494603a624818cfc1d8a4f1afa575d4d4e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_29/training.json",
+    "bytes": 983,
+    "sha256": "0046863e2fe98c59c69091f57d09ba71efa24deadb91bba7463eb060b163cf3c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/complete.json",
+    "bytes": 582,
+    "sha256": "b2b48f4811288e67e3daf50225c029a97698a6b2b04ac6579698b263ba04e3f5"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/curves.npz",
+    "bytes": 557715,
+    "sha256": "89c2cbbca0482810ceb5bda30ddd7a78a9bfbe6c6799e196994e3f72fe9b77b9"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_000.pt",
+    "bytes": 517179,
+    "sha256": "8c3b1c34e33db071948b65e625291f69f19a69e823999061ece4cdfad68c752f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_020.pt",
+    "bytes": 517179,
+    "sha256": "183464ff6455ab555de227a7a4253093fab7eca2ed2b74c02c04b36602755aec"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_040.pt",
+    "bytes": 517179,
+    "sha256": "33088be9de9ac92cf1d6ed1e65f0f2a07114017ab300ff632ab7d2684228f4f6"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_060.pt",
+    "bytes": 517179,
+    "sha256": "00694229b179923edf661cf1e27343bb68fc858202d655204c47ae0bd2656221"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_080.pt",
+    "bytes": 517179,
+    "sha256": "85bc3249c56cf2872b6c1006415ed55a0a808050800a4eff56db6f12f58654a0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_100.pt",
+    "bytes": 517179,
+    "sha256": "5261ba3024f2086f4121e6f13088754c703f2ccd51a918ccea56c496284eb02e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_120.pt",
+    "bytes": 517179,
+    "sha256": "56fbb6962179abfa54b76ace6b604ecfe9d3fb331621f13134181a68bc9e63ca"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_140.pt",
+    "bytes": 517179,
+    "sha256": "60955f590e1973bd7eecfc9bc737236d59a40759a151843a49b0eead39ee58fa"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_160.pt",
+    "bytes": 517179,
+    "sha256": "435df317490fc3c606f16011ca03107a8df508d6b5b4cd1f81e9d2a227e99c2d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_180.pt",
+    "bytes": 517179,
+    "sha256": "1d24cfbeba4fe6cfc0a745e570d411b269896bed5ec40302f6ba014581d88a8d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_200.pt",
+    "bytes": 517179,
+    "sha256": "6068242bcf8de6a3a6c254b288e49d4db7b42fbcaebe76a5573f21b9de6e29ba"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_220.pt",
+    "bytes": 517179,
+    "sha256": "e19d9313fe34787c9ac890b49fa3a7b1ff557ace1ab4f0bed2f79c682aae4204"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/step_240.pt",
+    "bytes": 517179,
+    "sha256": "ae4e20ae8ec2efa4c45807d56c0f7502dbc1666420c581c6634bed70ea886b82"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_0/seed_43/training.json",
+    "bytes": 978,
+    "sha256": "2c431fa910423530e3bdd9e18b388059be9e812946a341e56cef3bdf51029621"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/complete.json",
+    "bytes": 583,
+    "sha256": "10dc9c206ee4f352c5a8f22600cb14248b4e597271bb7b33fbe8cc975192ac80"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/curves.npz",
+    "bytes": 608045,
+    "sha256": "f6485967919ce78f9cec167acf9676058ed59c2f5f2a35c36dd7f369f6ffa87e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_000.pt",
+    "bytes": 517179,
+    "sha256": "b2fdae7b9e50f8027413cfbab1e45e0c7d95867ff2a9f8fe8904d364fca07a03"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_020.pt",
+    "bytes": 517179,
+    "sha256": "005f500fc5a20b4aec0b49fbe6603c0634bff9ca3c7a69291818838cda7ead4f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_040.pt",
+    "bytes": 517179,
+    "sha256": "a075950be2937063c6831cec9f98edd54bcc24dd7a2511e12b1481ded70a74df"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_060.pt",
+    "bytes": 517179,
+    "sha256": "e593a26fa49dd2bf694a32aa2dd71f6abb76c277833e90854741094ebfdee384"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_080.pt",
+    "bytes": 517179,
+    "sha256": "b47cab498eb6684d58defd40a5db7bfd8acdd13ef43bbb5f4b8947287c36614c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_100.pt",
+    "bytes": 517179,
+    "sha256": "0f1286bb239ef62d64e79b24127f0f9209a89af82113fc00c15bf8107702e584"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_120.pt",
+    "bytes": 517179,
+    "sha256": "fc62b5269fcd03f8d92b5949c1fe113c1b184955f6d545abe9424bb3cb76d5fd"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_140.pt",
+    "bytes": 517179,
+    "sha256": "255f10abea76a5272ede5534843f672ba7e08b43b6e1c075645bcec627419238"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_160.pt",
+    "bytes": 517179,
+    "sha256": "a2740a64fcb6754c1c573d9c8814846848d9f54c851f32e9a9b4b823f2fe3411"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_180.pt",
+    "bytes": 517179,
+    "sha256": "01b40cb2789342185e611c4f24e25e6c3b5c497738962ac6cb9ef9e2ae94912b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_200.pt",
+    "bytes": 517179,
+    "sha256": "c0eb66eb8ed7957eea782bb60acca96c992a6a8304e481f6b40d36e456bd9574"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_220.pt",
+    "bytes": 517179,
+    "sha256": "6c3e24db2d7adf0b650446c9645b38879d4bb14cc269f236fe285c05f47ba1a3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/step_240.pt",
+    "bytes": 517179,
+    "sha256": "55a7ce6b0fbc618bdfd825c7ed56ca30b827412399f46c97e81b973cde494165"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_17/training.json",
+    "bytes": 972,
+    "sha256": "d3929755fc201db11cb5b50848d396fa996afbcd0194aedbba74edb10e8d9267"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/complete.json",
+    "bytes": 584,
+    "sha256": "bf5f145aeb4b710ad87e13baa66820dce05660b651bc7509587896780aa09b3b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/curves.npz",
+    "bytes": 607935,
+    "sha256": "ed8415c61c62cd9a86d70d9d756e2199094a26198108b5e33f112474530b9914"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_000.pt",
+    "bytes": 517179,
+    "sha256": "199dfb7d6e0c1fd41cb52c740b1d5688e8d63c87136b8eab1aa32324fd599788"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_020.pt",
+    "bytes": 517179,
+    "sha256": "a3ef691fa9e8ae3e15b97c56be4747e125e4d092cd2c267a8d3db3741d478922"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_040.pt",
+    "bytes": 517179,
+    "sha256": "7342237ca30e2e470b7720f63bbdf50a6ce59a5bfb34be04c58b7c78ba282b38"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_060.pt",
+    "bytes": 517179,
+    "sha256": "521d007f9ad8d8fddd1f8d6554533b7282933f31d5e5513ad904803f7b4b1217"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_080.pt",
+    "bytes": 517179,
+    "sha256": "2eec829edc8af7efc0422fc932df3e328951d5811870af703d56d8c482a7ce3a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_100.pt",
+    "bytes": 517179,
+    "sha256": "e21c345cf181b9792e122670036dd3127ddcf7fecca4b2611468f25a53a96825"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_120.pt",
+    "bytes": 517179,
+    "sha256": "a3fb37511533b38f435a4e412b0e6ff27d7b19ff0bad35878d09b1128ce41da7"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_140.pt",
+    "bytes": 517179,
+    "sha256": "419e7a3998a14073ed9046094d0a4c51d5aabe014f50266b4b4e09ec51326851"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_160.pt",
+    "bytes": 517179,
+    "sha256": "16a327a393f40931590b7ae499f4daaa5eef7988a1ed4a609a62b10cce74dafa"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_180.pt",
+    "bytes": 517179,
+    "sha256": "1478006e627a9f84a79c4b0979dbdc890bf80be2c56dda6d81e5d795f435ba23"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_200.pt",
+    "bytes": 517179,
+    "sha256": "5f1b57823d6b976dd6b257cbd3f1bd1297f274ff369a211076dd35cb31e1953b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_220.pt",
+    "bytes": 517179,
+    "sha256": "f6845b4afa3ab5ebb0ddae31a2052445aae0c48f24794cba3449edb9392de30b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/step_240.pt",
+    "bytes": 517179,
+    "sha256": "677cf2a4c6bf77fcdb40cede06be833c745db550476530e420749ef05a547a42"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_29/training.json",
+    "bytes": 979,
+    "sha256": "8557092926adad25e9fd1a3eb8b9c7e32110bc48cb31f8679e2d0fe48c258967"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/complete.json",
+    "bytes": 584,
+    "sha256": "5313a3f653f6b7c3facb413de7b16d383e2927eb53d7f08af3dd5dc7952971c9"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/curves.npz",
+    "bytes": 607948,
+    "sha256": "42fdd4574b2fe3620bceeae89a110598a8f4a2e5795c55c3b8c7903b15fdb03c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_000.pt",
+    "bytes": 517179,
+    "sha256": "8c3b1c34e33db071948b65e625291f69f19a69e823999061ece4cdfad68c752f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_020.pt",
+    "bytes": 517179,
+    "sha256": "6dd8c31ae620e17dc0f7f1b0f1d722ad2777c6bd7ef894d540f6609d856286b3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_040.pt",
+    "bytes": 517179,
+    "sha256": "7ad57e5f735b57655a2f7a1ce26a9a37fa2b9e7ff10eeb8c06b42287966c0ba3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_060.pt",
+    "bytes": 517179,
+    "sha256": "66b732c866481be944a41eb9c9a66fd0f78b1d6046e022e176cd7776b33a059f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_080.pt",
+    "bytes": 517179,
+    "sha256": "ac7ddba468279912821108f946c60fa2b00a4a32c4e26da9e1ff91dcd9bfb992"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_100.pt",
+    "bytes": 517179,
+    "sha256": "8e028602ea4b2a684105310df94107a39b5460078ef5db5c50090fdff221f0cc"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_120.pt",
+    "bytes": 517179,
+    "sha256": "144bbde6c8d2fc3b6fc6a41e115291b711c51d9d070d5f095c95fa215b2943bd"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_140.pt",
+    "bytes": 517179,
+    "sha256": "44a81802c3ab8ff291a0b4ed7a948b7288b91a079c6e3830dc251f8a057c1ff9"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_160.pt",
+    "bytes": 517179,
+    "sha256": "79ce6a5e19e53c48de991daf938271d42a91b8e390b4336341111c6dc0d921c6"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_180.pt",
+    "bytes": 517179,
+    "sha256": "9135bc37fe095cf7ad429eb8770c95cec32478dffc17305bef7f1b4fa31f9d51"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_200.pt",
+    "bytes": 517179,
+    "sha256": "3b8b31c6122b8c80eb15a63a81d25fb3fb33bfea921c5c5bbd5e4ad439207f27"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_220.pt",
+    "bytes": 517179,
+    "sha256": "08dea34fc895ba8cc3c5cf05710bdc8b4ee12e096d76345dd4e5099d4646c65d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/step_240.pt",
+    "bytes": 517179,
+    "sha256": "bf440d6711734c5b16ecc4676ae275c8efabf076f914bff915dd42ca000abf05"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_1/seed_43/training.json",
+    "bytes": 979,
+    "sha256": "013dbc4e366d2c3b67214ae66e97439f359a3461c96ed06077be095432cc94cd"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/complete.json",
+    "bytes": 581,
+    "sha256": "113d610bc57ea224eea1bcd7a292c9c0186be4a33c53531557c0bd8c6bc5363d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/curves.npz",
+    "bytes": 551372,
+    "sha256": "c14719edba1bbe45519a9ce706f512efa6523d2fc24c38c384cecb508adaf888"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_000.pt",
+    "bytes": 517179,
+    "sha256": "b2fdae7b9e50f8027413cfbab1e45e0c7d95867ff2a9f8fe8904d364fca07a03"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_020.pt",
+    "bytes": 517179,
+    "sha256": "aa11fd0feffec7aec4bd2ab9354bb52afcae11685e56e58ec5cdb615aaabd29b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_040.pt",
+    "bytes": 517179,
+    "sha256": "0639a487354d2298c2b15216b3af41e2e40873afa112256f3c2d11aeb158d08d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_060.pt",
+    "bytes": 517179,
+    "sha256": "0a37be5b3e2e1da362c06faa5fb5037684965103799e1b17c8ba37a897ca5437"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_080.pt",
+    "bytes": 517179,
+    "sha256": "a7a049019c788b7bd1b7a7c589223ccd9eecd33c0b3186a47c8365937567e319"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_100.pt",
+    "bytes": 517179,
+    "sha256": "b74965a2d4f858293f99b87c5eb69b19c60f16f6166fcbdc0e85478ca2d0811c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_120.pt",
+    "bytes": 517179,
+    "sha256": "4dfeeefb05450284241e5bd4d66aa6b661745d2c835480ad3b680b5c6e451ed4"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_140.pt",
+    "bytes": 517179,
+    "sha256": "aa7e4f6570d341894cb63e0680226a663515e58cf235a44a0debec17930543a2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_160.pt",
+    "bytes": 517179,
+    "sha256": "209f3e7a5107d5faf9617175b679d72f87734069e400b6e3b8a4b6ba06d2b3d0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_180.pt",
+    "bytes": 517179,
+    "sha256": "0a77667b9a7a1bb6a78cd6fc117d98024db8c6df16a36b0122dbddeaf1deaf31"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_200.pt",
+    "bytes": 517179,
+    "sha256": "e0cc935a2ff24dfe1a958e95ff402f72c5eebcab9952782854ea820bab180019"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_220.pt",
+    "bytes": 517179,
+    "sha256": "c9220e73f6d365361c76302c0460c694864273b063ea3ae366f3eba40557d410"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/step_240.pt",
+    "bytes": 517179,
+    "sha256": "1a0b454341fa6af9573394c4ad4340836fdd263e13ef52216f348f2c48e84cea"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_17/training.json",
+    "bytes": 974,
+    "sha256": "27c0bc139ce7086e3ba88bfc9ab689218f6a11b5c3c177ae52ed947a74da7a27"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/complete.json",
+    "bytes": 582,
+    "sha256": "361e8e0fac9ef3232013f2ef9a1da0cb8c0480775b708f3789ae72470dcd69f6"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/curves.npz",
+    "bytes": 551316,
+    "sha256": "bc9de095f445168f6b0543782718c2f7c2c143f344bc8cb3d2c37ade68b9825e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_000.pt",
+    "bytes": 517179,
+    "sha256": "199dfb7d6e0c1fd41cb52c740b1d5688e8d63c87136b8eab1aa32324fd599788"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_020.pt",
+    "bytes": 517179,
+    "sha256": "e6b4327ba3edd01b9b74a4d55ed7d110f3feac941262426316b4c98e9af5c940"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_040.pt",
+    "bytes": 517179,
+    "sha256": "a311a93f558adb332c5aa8e4ecaf6d3d0a9c0b60398fd86cf470aa3dec07fa25"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_060.pt",
+    "bytes": 517179,
+    "sha256": "f11d3d4df3e90bc19b4ac4eb0c1a0bd9afb0581ea2e8dfb3d9a996b6511e6f7f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_080.pt",
+    "bytes": 517179,
+    "sha256": "2ec1f9552885ec4cf786c2a8353f114d06722459cd6bbcdf194eaed6200e91c2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_100.pt",
+    "bytes": 517179,
+    "sha256": "1a486ca31426cefb93955a41e81b8b62d1a6ed4ac35ec1c3abb7c29ca6b71c4b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_120.pt",
+    "bytes": 517179,
+    "sha256": "82c9d002d8e406a112ac75d6d7bf44aa8c81c2ccb3e9fd2d128a72b8c18fff7f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_140.pt",
+    "bytes": 517179,
+    "sha256": "1dc2e94313c939d9595ffbcd24052f981757bfa00f7fabf9a96f3482552bc412"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_160.pt",
+    "bytes": 517179,
+    "sha256": "49d652c5f521f3db52452852609d80286fd52031e31818f8f5460f928b2edaf2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_180.pt",
+    "bytes": 517179,
+    "sha256": "d421e48fbd9a1b067f2cb0408da10c6dbc69477a5776a33b190039a75b065edc"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_200.pt",
+    "bytes": 517179,
+    "sha256": "2c09e0444c5afe75ec58c1ce694366d8437ae9be5d73a45d06feb490240437be"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_220.pt",
+    "bytes": 517179,
+    "sha256": "b08b28072b2d713152b00b7add43268ad094328abccf8394da7ef413cc2395a9"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/step_240.pt",
+    "bytes": 517179,
+    "sha256": "7cf0d9b92275ebb451f5fc88c9e9663257ee35120b174c123b0fdb5c417fcf2d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_29/training.json",
+    "bytes": 975,
+    "sha256": "ca8f226ae813dd9f72597d7fd8ec6147a8f9da046756291f7ab8642f9db7244d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/complete.json",
+    "bytes": 581,
+    "sha256": "7d727abed6f0fbce4b9b47533e274595fd84f8afd059724fbe16fb2ae01f5481"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/curves.npz",
+    "bytes": 551361,
+    "sha256": "d01a67ae2e9aaa5ab872d721009df670c992bc6c588588a60ba042212cf1f714"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_000.pt",
+    "bytes": 517179,
+    "sha256": "8c3b1c34e33db071948b65e625291f69f19a69e823999061ece4cdfad68c752f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_020.pt",
+    "bytes": 517179,
+    "sha256": "c1e28bef3b36443723f3b46f2038f86fd65d7bffe44e548b390cd64607065d26"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_040.pt",
+    "bytes": 517179,
+    "sha256": "8ac014f132ae9a81d74617c8bf5c018c7386ed76156bdc5fcfe89871ad316190"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_060.pt",
+    "bytes": 517179,
+    "sha256": "8af97f0e02e98aece66b278d5489d841e4d7f0782a5efdfd1ccf99c70fe7a0f4"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_080.pt",
+    "bytes": 517179,
+    "sha256": "38a6b7bfd75fc6ff03cd0ecbe3b151ca4edc45e56030abd0bdf32328b5c8b62e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_100.pt",
+    "bytes": 517179,
+    "sha256": "daa8c705ff08433cf47670e864b1e0ce62fd8fc42ac53ae5a0a046102dda75f3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_120.pt",
+    "bytes": 517179,
+    "sha256": "793d1416ac0d2c909ef0a9baa8171d204e2ce175bb720f4f23b77393dbd66b97"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_140.pt",
+    "bytes": 517179,
+    "sha256": "952182253d7910e5cac7ed8ec2a73437f99b7a9c20093cb6876a29380e908f06"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_160.pt",
+    "bytes": 517179,
+    "sha256": "8813d3d109878b35ad361cc4593b0c94db217654708c6e09b1524a61c14a59ff"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_180.pt",
+    "bytes": 517179,
+    "sha256": "604f270153931920b211789ddbbaf37c5cc2b9e92494c8a179adc37ec830f438"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_200.pt",
+    "bytes": 517179,
+    "sha256": "80c42601481fadbaa24a5e13a4c14931afcf38042a24cdbda355fa82c7a65554"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_220.pt",
+    "bytes": 517179,
+    "sha256": "14f31f446728a6e08c9c4a733cb231bf5d9c770c9ef01adf13a2b219fd3dfae2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/step_240.pt",
+    "bytes": 517179,
+    "sha256": "82c78f5228c18f6cc96f3de02f4cf4f8c66deec32eff9a07961c86c93f9644e4"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_2/seed_43/training.json",
+    "bytes": 974,
+    "sha256": "1ae4a3b6adf88710e28136b0137bd50355dc5eeec0a78285cf317bd32e578c0b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/complete.json",
+    "bytes": 583,
+    "sha256": "5fde0a1a31f92bbb3d56b644bd75bdc9d7a591a08dab83abf9a8501e3c4782c5"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/curves.npz",
+    "bytes": 412698,
+    "sha256": "c40b9dc4e60ef38d2b68fd4c420b9e971b5fbcea3f3172e528a85467ae6b6f1c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_000.pt",
+    "bytes": 517179,
+    "sha256": "b2fdae7b9e50f8027413cfbab1e45e0c7d95867ff2a9f8fe8904d364fca07a03"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_020.pt",
+    "bytes": 517179,
+    "sha256": "fceadf5dc2c41c8d8bf95556602459f21c3072688744944bacc502ac2a3a7e7f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_040.pt",
+    "bytes": 517179,
+    "sha256": "008632c428c0b3830078f6b8082dbc3ba0e9c597ca664f8c11fc885f34f022ea"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_060.pt",
+    "bytes": 517179,
+    "sha256": "792d356f5383a487bca1b71d45f9f4a9c3a5bbb4c158232b93917075492b5048"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_080.pt",
+    "bytes": 517179,
+    "sha256": "d46e8b08c0190306cce4ee1896185b5a6ba1a70f9591b20fa508f93392aa0d98"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_100.pt",
+    "bytes": 517179,
+    "sha256": "45c0088d6a9e6a68a29b25f82913ddbfef2dd8e3b65657f6e0891b0517407034"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_120.pt",
+    "bytes": 517179,
+    "sha256": "5c636d8c6cca2571d99e6c28b1a0e3b094ed6570b111979e85ea262a167001b0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_140.pt",
+    "bytes": 517179,
+    "sha256": "e6725480bdcad28d60322436faa52c45dcf8061435a930921402578429a544ac"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_160.pt",
+    "bytes": 517179,
+    "sha256": "dd0d0565e019fa6ca3d91afb69e8589661d4d7733096fdc7fa9c6956fb97b12a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_180.pt",
+    "bytes": 517179,
+    "sha256": "0caa384129506fdbc555f9200e038973dff6070432bde0e86790929272bf4622"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_200.pt",
+    "bytes": 517179,
+    "sha256": "0b33f1e00bc395f62ff1084959a15674b52d3d6f9940316959f710dc57df9444"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_220.pt",
+    "bytes": 517179,
+    "sha256": "2d7498c183be42e9f2ac2ef7aa7f23ae85a70463d31c05efa400603de997786d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/step_240.pt",
+    "bytes": 517179,
+    "sha256": "e8f4a5a468a67bd220d859852efdce6a2121098397128b8d747e153517e641be"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_17/training.json",
+    "bytes": 971,
+    "sha256": "65a4a713abc740a9c6b0a83149c461e70289100e27cfad1d81141b6e53e7f1c2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/complete.json",
+    "bytes": 583,
+    "sha256": "8e96c2d1c8dde37235166ca61cb4cab7752dcea6e6cd1326656fd06556b5840a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/curves.npz",
+    "bytes": 412632,
+    "sha256": "33c400054bd2a98c17e157778a7c10982dbbbc07e94645a91ed05d46cdde6324"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_000.pt",
+    "bytes": 517179,
+    "sha256": "199dfb7d6e0c1fd41cb52c740b1d5688e8d63c87136b8eab1aa32324fd599788"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_020.pt",
+    "bytes": 517179,
+    "sha256": "70d8227e03caa04b6433ab04b59512a78dca54dbde94a80074ab6623db2310b1"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_040.pt",
+    "bytes": 517179,
+    "sha256": "63c49ab5a67f5e8bb3521ba1ec192fd10314ac0dfe661fa35d30b7dc92c44237"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_060.pt",
+    "bytes": 517179,
+    "sha256": "3f1ee08f4aeb4d0930839d32d8ed9725bd4f291b0cab72dd821b12101b4724d0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_080.pt",
+    "bytes": 517179,
+    "sha256": "bf725c287ef357f94936daf7f7bf5c5ccb0f7f450837a36a9b70f738b61b05ab"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_100.pt",
+    "bytes": 517179,
+    "sha256": "5673958d86be7d438d761c16993895b0b82001797f26b1eaf1768a355a7e56c8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_120.pt",
+    "bytes": 517179,
+    "sha256": "707b346e27f975ca09512a68223ae499e20ecbf70f67f4f91a362e59b3e91271"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_140.pt",
+    "bytes": 517179,
+    "sha256": "bd3f503b09190a5e00486bfe13cdd520f49535a2ef78e727950b5a2b345df2ba"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_160.pt",
+    "bytes": 517179,
+    "sha256": "eb25e3187ef99b1f84285283961d4c9e74dfcb407df698dfe20a324f5ba0b613"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_180.pt",
+    "bytes": 517179,
+    "sha256": "62e916632046796f4d6323873a184ce7e44eeb45f23b7811d17c502d10f12dbc"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_200.pt",
+    "bytes": 517179,
+    "sha256": "4e5c2db512f9dd7d5506a15a84ebd6310d09df40b9af462f25230396e20ab78a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_220.pt",
+    "bytes": 517179,
+    "sha256": "77f7c44ceabf7f4dc716ad57923f58e5b42377b6c8d6e93a87e163b31e48a175"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/step_240.pt",
+    "bytes": 517179,
+    "sha256": "8a5a126b2a2d0630552225126b3efbd1b4c8623318a2ca8ca63c4d4c0c32ef50"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_29/training.json",
+    "bytes": 970,
+    "sha256": "365239d18372f6091106035c90f399f8ed59b9c23c3687449b3e8bea2152e3ac"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/complete.json",
+    "bytes": 582,
+    "sha256": "9dbf366f6f6529432e07601544bac761fe4710e4056435a46a2d2470c6ea1606"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/curves.npz",
+    "bytes": 412735,
+    "sha256": "7b8f62cddf1966c8b88eb6bee6cc918fd99fe56f10801c570e0b59bd08aec9a8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_000.pt",
+    "bytes": 517179,
+    "sha256": "8c3b1c34e33db071948b65e625291f69f19a69e823999061ece4cdfad68c752f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_020.pt",
+    "bytes": 517179,
+    "sha256": "402fb56dfd879a729a89cc82d909143b1d59651cadb4992b340808dbeb0a45bd"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_040.pt",
+    "bytes": 517179,
+    "sha256": "a0f9c5e8e6da4738ab81fd49eca072549f536bff9b15652a9cca564e9cbb175c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_060.pt",
+    "bytes": 517179,
+    "sha256": "953c8e2a04edb11da13e63723b06b3d0172ae2575b6c10dd25bd4a7dec50a6e9"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_080.pt",
+    "bytes": 517179,
+    "sha256": "b7dc4c70fd1581f1cebac7f4c95c26060283ff0492dd89af3384305dff1b3184"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_100.pt",
+    "bytes": 517179,
+    "sha256": "c9d855f64e4d84570b907a1ceb57f76e924d827edade2febbf6bb5400defa9a0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_120.pt",
+    "bytes": 517179,
+    "sha256": "0ea1ea7fb612f3f0a77e191fa74cdd1d866953f52bcfbdaea6643188cd7f1dc2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_140.pt",
+    "bytes": 517179,
+    "sha256": "26d4c5b855ce38c86e237565e9d306001855b0a4d532d876e12ba3a2f388bccc"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_160.pt",
+    "bytes": 517179,
+    "sha256": "887c54dd8f3adbf0b2532f10ee2497c437e1feeb5a3ff69262d801037c5512b3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_180.pt",
+    "bytes": 517179,
+    "sha256": "b55a1ef9860ea82d06dd2de41352e5932628e9bf8f9ad22c53345f3072e10956"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_200.pt",
+    "bytes": 517179,
+    "sha256": "2cc0be4e42c5ca6d19ce71d120162583ceb3738e9b65e615ea2adc7592da3d24"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_220.pt",
+    "bytes": 517179,
+    "sha256": "0d3e144974392ceeb0ab4a8deec0ef7b0377d90870d368f8c7dbbd8966e626ac"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/step_240.pt",
+    "bytes": 517179,
+    "sha256": "fc80bf1acc02c38e130d645d583b0682c836ce6e9348cc53e8948e3cfe8a5e99"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_3/seed_43/training.json",
+    "bytes": 968,
+    "sha256": "d9071a482671d8185294137b91399ca6e1defd4f3d5001d4ac2a1d5f3ec5858e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/complete.json",
+    "bytes": 583,
+    "sha256": "b8ecf5fb0cb9d332d28e54361a660c08a15a9e2427f0f9832fe8c11825073008"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/curves.npz",
+    "bytes": 551673,
+    "sha256": "43b3770278cb403814d2eb0466dbb656a1fe056fcd561df33e4c1e0fe71e1e72"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_000.pt",
+    "bytes": 517179,
+    "sha256": "b2fdae7b9e50f8027413cfbab1e45e0c7d95867ff2a9f8fe8904d364fca07a03"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_020.pt",
+    "bytes": 517179,
+    "sha256": "a49e80aad1e435fbdd9734bd1fa3390d4dc3e289a9a54daaa7e989e87783e563"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_040.pt",
+    "bytes": 517179,
+    "sha256": "44e6b4644c0785234223e62232f870570121429c850b9ac7f2bb48063143d5e2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_060.pt",
+    "bytes": 517179,
+    "sha256": "c8f2a24b0781e5ec6cdd783d56188e836875ce856833cff80ca88e2210520840"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_080.pt",
+    "bytes": 517179,
+    "sha256": "5eec0b44e6e23f5d1100e3aff8eb0843ec756356bec0ee72eb6a3b067b611458"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_100.pt",
+    "bytes": 517179,
+    "sha256": "6973867f64cf7da48620b174bc45057f13741dd8896889b1f754d6aea668923e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_120.pt",
+    "bytes": 517179,
+    "sha256": "cb58e731250f6a74f7b51e81d927dbd331c2449b0fabf639754149f0320a8243"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_140.pt",
+    "bytes": 517179,
+    "sha256": "1a62b556126aae6496aa4ad182428815a4def1b5db8d290977b368ac12d032b8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_160.pt",
+    "bytes": 517179,
+    "sha256": "8ee4aecdb5c6641cf8b4d6f0ee03624bc59b771f4cbb509a3b70e472309306eb"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_180.pt",
+    "bytes": 517179,
+    "sha256": "eb6b1b423580fe1aa526b6b74335ce68fb66f25ff27af4fe8636aeca98eca8a6"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_200.pt",
+    "bytes": 517179,
+    "sha256": "3a41485f26ad85868447f5064d839846bf92796ccc9efa1f1819e3e372d94620"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_220.pt",
+    "bytes": 517179,
+    "sha256": "b06ca02b7a794f33c6077ee93f6cb72588a6ab83ef58b68eb9fa8038393e445e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/step_240.pt",
+    "bytes": 517179,
+    "sha256": "378f4d318044946824658a044be4dfb9cf28abfcf4bca57947a1fe9bd5ec4b07"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_17/training.json",
+    "bytes": 975,
+    "sha256": "a53f660b70b2351f45f20924b86c7cbd3e35925300b486ce15bc216ced9c4425"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/complete.json",
+    "bytes": 583,
+    "sha256": "9d57cc8776f92726ab1b39b377f3e05eb82c922a75ee7704a5af21333625ece8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/curves.npz",
+    "bytes": 551644,
+    "sha256": "f42c526082466e4973f2c02acf09fd32dedabe11788a4d3a49e70a06b2867760"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_000.pt",
+    "bytes": 517179,
+    "sha256": "199dfb7d6e0c1fd41cb52c740b1d5688e8d63c87136b8eab1aa32324fd599788"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_020.pt",
+    "bytes": 517179,
+    "sha256": "5f027295278ee40f05f2762ed52d9bfa50f754cb2a08969d3405274b8bfd002a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_040.pt",
+    "bytes": 517179,
+    "sha256": "04fa65b5728106a87ccd2565476c5ca8e668ab1afea0f5f67ed4b83083bbc276"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_060.pt",
+    "bytes": 517179,
+    "sha256": "62d5cfaf215b4e280c07561eccf606b1c6ab164b7773c2640fb2a2f9c037df32"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_080.pt",
+    "bytes": 517179,
+    "sha256": "3391ca0dc647b6a86fdd6d726fb1826c92f946de4889c077f6ee9ce74d494a85"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_100.pt",
+    "bytes": 517179,
+    "sha256": "1e3e6671b0e30b83eddbe9428cd49f89561afbcfd37636a12dec63ca04386402"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_120.pt",
+    "bytes": 517179,
+    "sha256": "82ae4a3674736461b0be6a68b12108899c980ae783f0f70c11bbdfcf44413efb"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_140.pt",
+    "bytes": 517179,
+    "sha256": "7c60fd7170f4c4687b9a5b448b8ddb05debc33a7f7c6a1e48c1199f37c542d69"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_160.pt",
+    "bytes": 517179,
+    "sha256": "024825a0ba19031f60ec3b55d6f0fc5c19b97a4010332cb71f4ea49efa30bea4"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_180.pt",
+    "bytes": 517179,
+    "sha256": "2f92a10c4af99a834ddfd62d1ac503d41984a1f19bb5dd1f93e24cf463bdaf12"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_200.pt",
+    "bytes": 517179,
+    "sha256": "a9e15126d32601439c959a56c20e5895ee96829225e9aeeae58df2d8c6bc63be"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_220.pt",
+    "bytes": 517179,
+    "sha256": "eb4be0a3fa121f586ff53fd834637270ff162b190a97d5e1be9e4f349f0e6f9e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/step_240.pt",
+    "bytes": 517179,
+    "sha256": "e8ef4fe6082bb03c168d11dd84ff3aa1aa130fef528d0e54f490bc5b803d084b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_29/training.json",
+    "bytes": 975,
+    "sha256": "d4e4203e395b5e36c2a69cc2cc8152d5d19553a7d463194e9265f4f967f09c00"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/complete.json",
+    "bytes": 582,
+    "sha256": "8cab162372f8ab8336f7320748fc8a1d2722ae4a8b61f6308e148e13d0649a01"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/curves.npz",
+    "bytes": 551725,
+    "sha256": "1fedc9cef28b59b3cf45fc140bb5c0639325fb05b405a0616aa8a5c4038f4b54"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_000.pt",
+    "bytes": 517179,
+    "sha256": "8c3b1c34e33db071948b65e625291f69f19a69e823999061ece4cdfad68c752f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_020.pt",
+    "bytes": 517179,
+    "sha256": "36ec368e7954e08b151492fdb3d4cacf445d300a7757991d360a6ca528571cdc"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_040.pt",
+    "bytes": 517179,
+    "sha256": "58a42ec5e9b7926f006db5443ff9ed637f5d4de30a3da27c44bbd7dce6f84be1"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_060.pt",
+    "bytes": 517179,
+    "sha256": "ceaff413f7e6b1b99092a6026f8b833e81a7d42498a3a6db59f07053a569781e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_080.pt",
+    "bytes": 517179,
+    "sha256": "8dcd151359d55e0ae178cfc490800a9d7dad7e5dc6fa83298930bf007162e5a1"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_100.pt",
+    "bytes": 517179,
+    "sha256": "3979db1d6340283b998e07cc8ead3adf8db2191f87e9de578c9616663dffa383"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_120.pt",
+    "bytes": 517179,
+    "sha256": "d120de6233656349ea0dba1378399f9944802ac37f244015e8cc0cf70c6e8638"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_140.pt",
+    "bytes": 517179,
+    "sha256": "5d92d01bf42b9e9a3d28c0f70bfcc628037b76a7e5df2e26e60c574e6784cf92"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_160.pt",
+    "bytes": 517179,
+    "sha256": "fcacfc055dfbf8bc53889074cdba41e36f9a2442e88118f9d57f79951c1d0eb0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_180.pt",
+    "bytes": 517179,
+    "sha256": "2339603bb18e2d2287afe7268109cf9b193d32258b5739f190e450634188f57c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_200.pt",
+    "bytes": 517179,
+    "sha256": "6230c809a4728e2de5150d96cfb2530bb0a463c499a798d5033ec319fecd97f1"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_220.pt",
+    "bytes": 517179,
+    "sha256": "11b37e96742a11801344dea389dd85aa4b78f10163971d899331e7179001ccf9"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/step_240.pt",
+    "bytes": 517179,
+    "sha256": "e5448dac173dbde6fd0e6b0200d4d6133bfcbf1d9443216103658ba49f3229b6"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/expanded_long/fold_4/seed_43/training.json",
+    "bytes": 974,
+    "sha256": "05175c8e2ba64fae6c5c4fb03ade6d1ad0540104475eba7242d8814895d54649"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/feature_distribution.json",
+    "bytes": 850,
+    "sha256": "4a22c19d995af0b6199732d97cb9472c462c135a606bd991dea80b890ced7448"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/independent_audit.json",
+    "bytes": 2630,
+    "sha256": "ce6b00a02571b1aa05fd91142ff0279d1ec987939be70b92cf77031eec8eb5e7"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/learning_curves.json",
+    "bytes": 713932,
+    "sha256": "293e33b1ba53b71ab7480da1e942add332e42d170683f2e480ccc55bb9faab97"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/map_thresholds.json",
+    "bytes": 2820,
+    "sha256": "296eec377b1056f14f1db5b9d0048f25321b836470ff65b536da37d8bbc6a779"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/complete.json",
+    "bytes": 580,
+    "sha256": "67891cc8f0d2e7a2c163ed92f1acda19033fb4e49dc485f493fd7387239a905d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/curves.npz",
+    "bytes": 555674,
+    "sha256": "f4722e9775abb33de80f8f31d9d371a2bd43f91be7c2c0ee9ec75d0276185ae5"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_000.pt",
+    "bytes": 517179,
+    "sha256": "b2fdae7b9e50f8027413cfbab1e45e0c7d95867ff2a9f8fe8904d364fca07a03"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_020.pt",
+    "bytes": 517179,
+    "sha256": "c0f03160e63ad925b23ce99db5ea641efe38195f74e9f7c2eaa4e5881731bd10"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_040.pt",
+    "bytes": 517179,
+    "sha256": "99465b0649dd1e19db1caa97e2ea972fa7d9df05d350f81943487c7513302767"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_060.pt",
+    "bytes": 517179,
+    "sha256": "21e0810e20b6ad752a6f4514ea2987d668c34000ce158d6e8d2877dc5469f18a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_080.pt",
+    "bytes": 517179,
+    "sha256": "99762b1aaeaee5f7f2945649d22b6b27c0c3b7ffcd2a2a644abed72b4e5c9231"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_100.pt",
+    "bytes": 517179,
+    "sha256": "3a34ee177643c188598c7e5c0078403d6b823c11e2ce4fe20b7e4f128051af2b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_120.pt",
+    "bytes": 517179,
+    "sha256": "d2630eb6178f44d4d97a77be6fcf883dfe84c8b35f30c14d360a676f12f8e39b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_140.pt",
+    "bytes": 517179,
+    "sha256": "4751d0a76120075abeef065226a4d7700933bb29f50884890f9373ef046644e3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_160.pt",
+    "bytes": 517179,
+    "sha256": "88ec0a3aae0b2ee6ee881652877c074e443c4caadcb3b74fdfe0dd502e09be07"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_180.pt",
+    "bytes": 517179,
+    "sha256": "309a3520c2277eac4ad5b3089912ba7dc307c2e1a4180d3eb833d6409035abe3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_200.pt",
+    "bytes": 517179,
+    "sha256": "438fe6bcca6d7ff49542f47c26aea9dadc1036568702d4895c6e6d54b8981892"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_220.pt",
+    "bytes": 517179,
+    "sha256": "f4c8c3dbb6fdef44d273a7a41f2b3871f0f5c2ba63e648b36d7c30c663ae6b50"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/step_240.pt",
+    "bytes": 517179,
+    "sha256": "138c9aa5e8abce9abc5694063cdc0204fdc263e223f50770bd2e40df11fc2c57"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_17/training.json",
+    "bytes": 976,
+    "sha256": "693a3a539375f0bc33410a2d4e8b67e0d5d0c1c594fe26b9eb76f326f40197f0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/complete.json",
+    "bytes": 580,
+    "sha256": "ea70b32aebd5ed87fc6a81e723e69f3400c154bed15a644009ed18a7d12748be"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/curves.npz",
+    "bytes": 555547,
+    "sha256": "e42b1611f08f7e910a95c600047083a52dc8b119291e87dd330e20cf22ab055a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_000.pt",
+    "bytes": 517179,
+    "sha256": "199dfb7d6e0c1fd41cb52c740b1d5688e8d63c87136b8eab1aa32324fd599788"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_020.pt",
+    "bytes": 517179,
+    "sha256": "5c97cc126e60c4a5287c0cef60a2720b5a1255dc9f781db025478e6735ff331c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_040.pt",
+    "bytes": 517179,
+    "sha256": "80dc36f37074db11a01c4c86981f817e76fe6d976d8bd0571bba8890d59c63be"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_060.pt",
+    "bytes": 517179,
+    "sha256": "2b6a2af89a5bf9c46dff604ce8e7ab63240fc8dc0fae48014df4a60f37df1b06"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_080.pt",
+    "bytes": 517179,
+    "sha256": "f93d1d55de92f2daa819e4696dd3d232fde31d49891dae0a508d263d076de6e5"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_100.pt",
+    "bytes": 517179,
+    "sha256": "89f3e19cd371cc6b05d392e03eaca7ee42e0a3f62f7e6c1522c4e0214b7bad36"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_120.pt",
+    "bytes": 517179,
+    "sha256": "4315f5e8838d6dea8e77a9ad000dad156a2774f429c29683da2613142a1e8c3e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_140.pt",
+    "bytes": 517179,
+    "sha256": "f882c0518304a644d31166a3c942d239437db5afbbe8307e572d397297e0e087"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_160.pt",
+    "bytes": 517179,
+    "sha256": "15f97c730772bfc6826e1040c6fe470b5d0018eaad34123a2fbfa98b03b0cfb8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_180.pt",
+    "bytes": 517179,
+    "sha256": "9455fae97c0b4038fa69418bdb1b7d1575ae44f1cf5b0b213b1a76cc7f8cebf2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_200.pt",
+    "bytes": 517179,
+    "sha256": "4e2e78d4b62be902d3976bc0f19f92d917568751e78349ec5232796a6ff817e0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_220.pt",
+    "bytes": 517179,
+    "sha256": "abb070ea801789affb2458e0590caece175ba873e9689e90898e31ca5fab7b4b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/step_240.pt",
+    "bytes": 517179,
+    "sha256": "1cdfba4c71aac893e19d82f8a51a4d00ddab6da4f70201927c374d257be57317"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_29/training.json",
+    "bytes": 981,
+    "sha256": "c92b7c6b945dd652dc11c19b82d896a28f7ffc7aa598508ac088676d98824cb7"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/complete.json",
+    "bytes": 579,
+    "sha256": "e37be03a584b0fc9bb2c9574b2c8e253a468b6d04c7c9f334c3d239ad272985f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/curves.npz",
+    "bytes": 555592,
+    "sha256": "65e850491352755fe6a0ca68eb95ec22ce4ff728e8ac315aee373b55170237c6"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_000.pt",
+    "bytes": 517179,
+    "sha256": "8c3b1c34e33db071948b65e625291f69f19a69e823999061ece4cdfad68c752f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_020.pt",
+    "bytes": 517179,
+    "sha256": "43eaf8fc069ce0b94f783c1405073eea1e942015274f847f668af5551dc7b1c3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_040.pt",
+    "bytes": 517179,
+    "sha256": "6ee5b9e3951c4cc439e377c0a149191d446339f4b9a91746344ac53dee3aa2be"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_060.pt",
+    "bytes": 517179,
+    "sha256": "8f892b01c661d0ff751ac8c1b087e55db39844c56691ab5da0a9312015c0651e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_080.pt",
+    "bytes": 517179,
+    "sha256": "822cf5fde0df1e93c7111faff19db8797a314dff13e278428d4fcd294414f8c0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_100.pt",
+    "bytes": 517179,
+    "sha256": "f46a7b77f665f7cc76ddf89f5589a108bed3d1bab0bf558aef7864e946476e43"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_120.pt",
+    "bytes": 517179,
+    "sha256": "42393707eaacc9a4d0013b990a9bfb8b3320a9c3804bf7539ebce0d65e4be895"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_140.pt",
+    "bytes": 517179,
+    "sha256": "dfcfd2b58eb93bdb1780e3229ddc7105a6584ba1112ca739935259bca4cd58cf"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_160.pt",
+    "bytes": 517179,
+    "sha256": "c6e17a4a5b4b7bbc27a4f5a52ec3cf82835c633c9e761cd076a629d246923713"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_180.pt",
+    "bytes": 517179,
+    "sha256": "9f3f705f6268c8da730d45adeff6271675f8ebaeb4cef86852e30a03228441a3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_200.pt",
+    "bytes": 517179,
+    "sha256": "2a9da901a13cc2149e938e7d552e42be0799a3c43a3264be1416122b4bddf012"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_220.pt",
+    "bytes": 517179,
+    "sha256": "fc632fb6a6f7ad968d1294a600f95d83950153f56168299b929db25e7167a01b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/step_240.pt",
+    "bytes": 517179,
+    "sha256": "d8a53bdbfe673c3d58d4e8bce9bbb553c83621ceec7b4de3a3cc07956b0eb23b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_0/seed_43/training.json",
+    "bytes": 979,
+    "sha256": "49273e70afe22c9c4f3c6e3702b6d5e652cb3ba55901e3479fecc72b2fcf1d14"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/complete.json",
+    "bytes": 580,
+    "sha256": "0161267293680195386f506603972be34058c7e1baf2f46bcc16cafac69405f3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/curves.npz",
+    "bytes": 605881,
+    "sha256": "cab7f05daefdb498af9ff13417d85653465f8af5c138cea4b56052c83b1b0ffe"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_000.pt",
+    "bytes": 517179,
+    "sha256": "b2fdae7b9e50f8027413cfbab1e45e0c7d95867ff2a9f8fe8904d364fca07a03"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_020.pt",
+    "bytes": 517179,
+    "sha256": "7b48be3c075060186429dfd5549bfd43f034a3815d5f7f1921032e6aeef32b08"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_040.pt",
+    "bytes": 517179,
+    "sha256": "00c4adb8e518647a98e6414c5f781aaa2d32d50f537a8a7bac8e1107b92d7375"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_060.pt",
+    "bytes": 517179,
+    "sha256": "6125a8cdff102339d93f9be1fa9577208f5be1163a679771b60a6ed85f179117"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_080.pt",
+    "bytes": 517179,
+    "sha256": "0009494e468c08485022b2f0415c4d140d9e53ff9262658a3e940b5e81918822"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_100.pt",
+    "bytes": 517179,
+    "sha256": "7ca1261f653784bef3b5b5a4d79238fbc24a91294b9ad478f3ecb1001769b193"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_120.pt",
+    "bytes": 517179,
+    "sha256": "c94bc78c11dc32e4e948c483c1efd7afba7a7ebdff5fc3ab224c23adc0d442cb"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_140.pt",
+    "bytes": 517179,
+    "sha256": "b8c595f86f1590583d3066f9f682e8b3e5087b8e18a1ec48be57cdfefdedddbe"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_160.pt",
+    "bytes": 517179,
+    "sha256": "c9547ba03baecaa24b61c2244c5ecb946da1f2e633552438b3197c3dcfed2ec9"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_180.pt",
+    "bytes": 517179,
+    "sha256": "52c17f486ac26440b86fe382301a9ae036d9c435a499daabf44ca919232f8929"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_200.pt",
+    "bytes": 517179,
+    "sha256": "594f030d5940ca3e6d8ae111af19802895655ff809d7d767b59b3011f55738e6"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_220.pt",
+    "bytes": 517179,
+    "sha256": "e083cbf57bbaea4840f5f4cac9baff895e6c3c5703ec5ad0cb6de04016ddd74c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/step_240.pt",
+    "bytes": 517179,
+    "sha256": "cc3fa95d8efa9551e1e95f399b63afcfa172124919b5533b231536894634f61d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_17/training.json",
+    "bytes": 975,
+    "sha256": "c6b41a878d6a222438cb677173f251f8dd29d81f15274e74e4c4d1b895236867"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/complete.json",
+    "bytes": 572,
+    "sha256": "2713575f14eb0f286b0016f32edd1d5a7da32d09f4cca724c9b4a323b6bad824"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/curves.npz",
+    "bytes": 605906,
+    "sha256": "853cdada1f4947824e09fcfdd43b09142e012d279519709846fa13fbc6d7395a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_000.pt",
+    "bytes": 517179,
+    "sha256": "199dfb7d6e0c1fd41cb52c740b1d5688e8d63c87136b8eab1aa32324fd599788"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_020.pt",
+    "bytes": 517179,
+    "sha256": "933f1d096d20a0db83212cdb0de4810769dd1db6c95bb303cffb73e0eb12aec0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_040.pt",
+    "bytes": 517179,
+    "sha256": "6170cd188eaee08a03e21ef0ecfbc9e62e9f00db2e5f9adcba4206590f8ce9ec"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_060.pt",
+    "bytes": 517179,
+    "sha256": "197e199be59ee057d5d9a2c2e37bcc61d5c7ceaa379a3c92ef09e7e4fcc33f12"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_080.pt",
+    "bytes": 517179,
+    "sha256": "c3ff3221ca7b493ba5febb8a1fbae9c0c69d8b6961c9c727de5f0f674a3a26a6"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_100.pt",
+    "bytes": 517179,
+    "sha256": "909b8c666d4cb5dc8c0f5394076a0a87d9d15c48246db17c852cfab5461aa080"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_120.pt",
+    "bytes": 517179,
+    "sha256": "a03ceff52b27231fd36b145799acb137b5155c35e14bacd4100a5685d7902c97"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_140.pt",
+    "bytes": 517179,
+    "sha256": "9f2cf5f2c4c61ba74b6ccf5011455bce39b235670ec07c53d525d74bd70cd8a1"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_160.pt",
+    "bytes": 517179,
+    "sha256": "511fcc36e2b8b69110496ab619e3306694d23717a226a6cd358c9517d167fb09"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_180.pt",
+    "bytes": 517179,
+    "sha256": "06c83b19fd8e8cb4a6dadd03fc938b2a7a1f6d301a55ecefb83e80eec1def2f5"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_200.pt",
+    "bytes": 517179,
+    "sha256": "576d56765d94b185249a6f4982fec5075d8ebd9d5bab5b81b29546d32b70dc84"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_220.pt",
+    "bytes": 517179,
+    "sha256": "da60b9898c73f1d351a1e7d350dc62f094215298c88b295c18c8dbdaf5f3c4e8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/step_240.pt",
+    "bytes": 517179,
+    "sha256": "1ba7d5cd3eb9d1bdcb4702b03a132795671ffbc632490fe358a482f38d8f982e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_29/training.json",
+    "bytes": 975,
+    "sha256": "457da5b429f2aa3df5fbee684909b73dcd1c7ddbe4fe64827abc93564002c956"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/complete.json",
+    "bytes": 580,
+    "sha256": "310216f270eaef31ab448c97ee6180e051dc111b798be7fd8dad5ddff19a1c10"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/curves.npz",
+    "bytes": 605806,
+    "sha256": "35f30a86d858cd3e3415904bb0cd8a359b45dc9b5eedeb49efe2a71edce23b12"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_000.pt",
+    "bytes": 517179,
+    "sha256": "8c3b1c34e33db071948b65e625291f69f19a69e823999061ece4cdfad68c752f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_020.pt",
+    "bytes": 517179,
+    "sha256": "8c3d55be249432349e1230d0893d58047bde2357263bfdf2211924abf9f11b96"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_040.pt",
+    "bytes": 517179,
+    "sha256": "c49ccd85aa5ae1784b6c66010f0e0f4367b1abacd92787541ec9dc49a21b90aa"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_060.pt",
+    "bytes": 517179,
+    "sha256": "fb253a6f1bd44ea4fdd622399a714ade9e0e3042814a934b3147669b3069d4ef"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_080.pt",
+    "bytes": 517179,
+    "sha256": "f3a1c6b343e7fbc0aed7ad754124385e96a98bb8c3b010b5ad1cf48f09e62c97"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_100.pt",
+    "bytes": 517179,
+    "sha256": "f2eeb162d609b83c310184caf9943472f1ea919abd967cdb8f0ff431b6d231c0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_120.pt",
+    "bytes": 517179,
+    "sha256": "25b2324a46f9b7d5b1a175dd546cad1a1d315d99c9c9698c26c6561979cd9ce4"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_140.pt",
+    "bytes": 517179,
+    "sha256": "d323a4929c52b7315b30b0782efab1d7ff7c061bd655f06814637a869f906004"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_160.pt",
+    "bytes": 517179,
+    "sha256": "797bf9254b737468e2fba9c74b3d1b44c0d50e7b813bbd531021bff026c9488e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_180.pt",
+    "bytes": 517179,
+    "sha256": "68206b670c4bb347f65a194c32a06e5453366834ed2867c77f10530860fd51b7"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_200.pt",
+    "bytes": 517179,
+    "sha256": "bbbf41e9a02b7f63428ebebccd178ae1fc3a7000aec109e44ca204ad03a44533"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_220.pt",
+    "bytes": 517179,
+    "sha256": "94599e341d946bd3981e7c863b42133d15d64d5c46414d08a4597c71b8b5928d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/step_240.pt",
+    "bytes": 517179,
+    "sha256": "a635a6643d5c1836fff0087afb6c5f35aa8c6c50b584f8695d9abb498f51d727"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_1/seed_43/training.json",
+    "bytes": 975,
+    "sha256": "c8a96eec0d7ed22ac4e176752eb719688609cd46b66dab4109cd752a73f7c852"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/complete.json",
+    "bytes": 580,
+    "sha256": "8dcc33a39335b662afeab434130bc0effc7bc9d8d392ae6f1010ee34fac968bd"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/curves.npz",
+    "bytes": 549184,
+    "sha256": "4373289b283d2e57ed0cbaed8c979f188034cd3e00b1a0e0f51fefa73e956e89"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_000.pt",
+    "bytes": 517179,
+    "sha256": "b2fdae7b9e50f8027413cfbab1e45e0c7d95867ff2a9f8fe8904d364fca07a03"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_020.pt",
+    "bytes": 517179,
+    "sha256": "6c0a3216b649c0e584a5caa015357957b32ecac4939828f7d16027edf6fa6ffc"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_040.pt",
+    "bytes": 517179,
+    "sha256": "5dd0db5c1f0d5b84b71c6726086775046e5caa973e0d1c33cc9c477fa5c90098"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_060.pt",
+    "bytes": 517179,
+    "sha256": "a37b4cc8976cffa6e23cb469cc75a0fe0c0e98d75fa18cc67f8aebb68b5c56a2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_080.pt",
+    "bytes": 517179,
+    "sha256": "1049fc5999777e9b3068625c2d4f7a563006aa3a56264487513466a762f409bf"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_100.pt",
+    "bytes": 517179,
+    "sha256": "fcc3df56b34c070ede612bb99eaf19c36f643444786ac2cc60ca5ea2f0449c49"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_120.pt",
+    "bytes": 517179,
+    "sha256": "917bc0390a89cf49456d66e8228e929dd2378b53aa2ba07c97fc688a5065258f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_140.pt",
+    "bytes": 517179,
+    "sha256": "6efbc20702bcef4373c53075e3b84d0d5cfec3107103c0b00ee2a7e0fe1c40d6"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_160.pt",
+    "bytes": 517179,
+    "sha256": "1574bf2ba03bdd1962a7f2c690a30e5b513bbdd67345dfc0df11ceab9de83e78"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_180.pt",
+    "bytes": 517179,
+    "sha256": "dd8700d72c7a415050d0a644d35129b5e1d55506d4df8a4ed0ffa289253017e7"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_200.pt",
+    "bytes": 517179,
+    "sha256": "29fc3a39be279b7ce1a80e3c5bdf579a828e0c5fe95c6536904ebff0c1e7d80c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_220.pt",
+    "bytes": 517179,
+    "sha256": "e1bda942d0deb3fc12bad5fd7a00babd00488f751ad6ac5428e6ce31249b2566"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/step_240.pt",
+    "bytes": 517179,
+    "sha256": "b3e4e04f9564e07529d1c4ee457bdc2a9bdf2ba75b7c50376585861575efac69"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_17/training.json",
+    "bytes": 975,
+    "sha256": "6e7238ffecb6bd79d79c73f0efbdaa9f86b8eb3060f6e496e92ac6443ad9e851"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/complete.json",
+    "bytes": 580,
+    "sha256": "23e90b59b1b9e207bc232bb61958e069ac6c42f55cec5e45fc256ba1578711f0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/curves.npz",
+    "bytes": 549114,
+    "sha256": "4fe409b7a5f7895b3854918881b11a4988d92bbfe258349791f4d1e04657f6c5"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_000.pt",
+    "bytes": 517179,
+    "sha256": "199dfb7d6e0c1fd41cb52c740b1d5688e8d63c87136b8eab1aa32324fd599788"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_020.pt",
+    "bytes": 517179,
+    "sha256": "c03ad4248d65ccf5128deb36f31a9c74b693a538e0e81d5c53def99df4e02092"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_040.pt",
+    "bytes": 517179,
+    "sha256": "28486a34c6f15480c1bbecb0174fba4629622920d723cb6779237c414433d8d8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_060.pt",
+    "bytes": 517179,
+    "sha256": "2411f8d2deeb6696d634786921ebd2e41771fffa2308f0958a17da9bd65e8910"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_080.pt",
+    "bytes": 517179,
+    "sha256": "cb63edf91b60800267a44318d8062418bfcbe5fbc8cd19c364bd6c1b798d077b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_100.pt",
+    "bytes": 517179,
+    "sha256": "bf57523dfffcfbf60a758990e7ae805298b7a6ea41038b37e028e6f6fedde704"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_120.pt",
+    "bytes": 517179,
+    "sha256": "b38ad66bd84b363c7e99e56ca514fd27afb3b659a726a2d127525ea4fa6ad54e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_140.pt",
+    "bytes": 517179,
+    "sha256": "aad2d59f59f61ef7e01a2cdcd8101e3a5af4e8e378195148786cfff07c6943ee"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_160.pt",
+    "bytes": 517179,
+    "sha256": "c7b31614c24e65e8ef8be17e8ddf2108497084930c99e77e4db4f3bc69c56f86"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_180.pt",
+    "bytes": 517179,
+    "sha256": "0a9ce26980c5bcae292d7298a63df15981bed376ce747d5fc77059ed12dfe687"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_200.pt",
+    "bytes": 517179,
+    "sha256": "de62ed890b111705432810c33a5b28591179cd30e0d4ed4bb31d8c410347a245"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_220.pt",
+    "bytes": 517179,
+    "sha256": "80e0af63bf097ccab98a657cae8ea2645a17dddda49d65bf14701f7e0eaaa7fb"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/step_240.pt",
+    "bytes": 517179,
+    "sha256": "3a246f12a68fce61738b09ae1d801dfc83e413abd367eb277c23f60233e3777b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_29/training.json",
+    "bytes": 976,
+    "sha256": "aa383d67c5219f5fc0f32c18398fe51e6551d238cbf0a7ca05b4f1dfae415d94"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/complete.json",
+    "bytes": 580,
+    "sha256": "60e31993478768a79e400992daf41646fc343632e8d59c8d3f03a16097768e8d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/curves.npz",
+    "bytes": 549150,
+    "sha256": "73e50c85db2ce259a46b442a0402097f799548fd73f8a99121bc647ef764cb64"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_000.pt",
+    "bytes": 517179,
+    "sha256": "8c3b1c34e33db071948b65e625291f69f19a69e823999061ece4cdfad68c752f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_020.pt",
+    "bytes": 517179,
+    "sha256": "608513bce6f7c69fa15a9234b710a25ea531635734360280e3e2debd2b6bc80f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_040.pt",
+    "bytes": 517179,
+    "sha256": "eac58596c213918c767b64c54c0892bcec1b192cca8f8a15a3346f04d0f78877"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_060.pt",
+    "bytes": 517179,
+    "sha256": "fc5ee197dd59d724c172929bbb60ae316b4629ee67a9187d881640cbe2cc430a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_080.pt",
+    "bytes": 517179,
+    "sha256": "c542403a954a1fadb179ebafa6acbadeb5fdc1a897b0ddd90900838fe9ac48d1"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_100.pt",
+    "bytes": 517179,
+    "sha256": "74862ebba35ffcd3d8dc3f34987788144c0ec7f87d5592f8b369279483adaa23"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_120.pt",
+    "bytes": 517179,
+    "sha256": "52ea50584d9eb5101c872a74c32650380b628474c18137673692aca720adc48e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_140.pt",
+    "bytes": 517179,
+    "sha256": "00fa0ea576e5290617c4929ada971df2fa8ea2be349da341439f8a6f6d269c2e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_160.pt",
+    "bytes": 517179,
+    "sha256": "bae611eecea6a0f73821bb71c00cfea3c0b51009fad076ef7bfd60e6c8a412e4"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_180.pt",
+    "bytes": 517179,
+    "sha256": "8de7d90bd197e02421c3e8d9aed00d48ddcce5e2058e35df550becce62ff5311"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_200.pt",
+    "bytes": 517179,
+    "sha256": "6d9c6546256d9c9c935e9c98ef60f2435ba61f5afa5a0cff066a94cf751c7710"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_220.pt",
+    "bytes": 517179,
+    "sha256": "4811373abcda6f3c5808f0e263e1cbc91c7ee86966fbe5447a89fe9b70380222"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/step_240.pt",
+    "bytes": 517179,
+    "sha256": "38e36161e53c33b13bc9cd63f271137b52fdb3aeef9e15019cc84edf2d50e71b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_2/seed_43/training.json",
+    "bytes": 971,
+    "sha256": "18d2c400899dcfcc8101959098e56f0ffefa733850e7110b021e6df1f8e57e9d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/complete.json",
+    "bytes": 573,
+    "sha256": "92028b2ef8ad30d8aa9a007d75dc0f844fef7d16fea0d6606b8ffd32cb3ca926"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/curves.npz",
+    "bytes": 410592,
+    "sha256": "ad2398a0559cdd40432387eabfacf5196857077a78876b2eaca510d6f39e9b4d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_000.pt",
+    "bytes": 517179,
+    "sha256": "b2fdae7b9e50f8027413cfbab1e45e0c7d95867ff2a9f8fe8904d364fca07a03"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_020.pt",
+    "bytes": 517179,
+    "sha256": "699f3cb74a10b415fa866fe4e3a9be905d0f5da62924b4bff5bf6ae20e29a03a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_040.pt",
+    "bytes": 517179,
+    "sha256": "e3389afb4a1c9285c5a01006d103dba69b147eaadaac8b37c8307ad0401ce3ed"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_060.pt",
+    "bytes": 517179,
+    "sha256": "2a413b7e58157189fb7908893687cb7992dba2c77604f546696cb4caecd0c19e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_080.pt",
+    "bytes": 517179,
+    "sha256": "480084b828de59db5629ba0fd0a69a20f463c1b38b12cd11121b946c885ae7ba"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_100.pt",
+    "bytes": 517179,
+    "sha256": "1c85cdfcd1114f12bfba2924a85213b2a8fd275f62097804eb0a2db7628df862"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_120.pt",
+    "bytes": 517179,
+    "sha256": "3b1ffe4365cd836b2140954cdfa0c76a5f912009f91e2a1a2704efad12cea02b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_140.pt",
+    "bytes": 517179,
+    "sha256": "50298142c76d4878a44d3be4ca342d3a378b9242ae0d4347d96cfe8f1c79df76"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_160.pt",
+    "bytes": 517179,
+    "sha256": "1d9b4ebc3dffaa548f9436fd2c4f89faf2f5e165166695746e8b4933f2c2f1ec"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_180.pt",
+    "bytes": 517179,
+    "sha256": "dc39d53e029dc75a4ac726b2577230e5966e6d6e7fc66e4c484e5a5c16ac1fa6"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_200.pt",
+    "bytes": 517179,
+    "sha256": "e53990891c702ffa22e8c74d62310284f1ffa4ed8b761939156fa3f552c7716d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_220.pt",
+    "bytes": 517179,
+    "sha256": "627e1f9d00f17d3fb10d859fbc7633d367626cae3a8f1d7f5f676f862c77f4ec"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/step_240.pt",
+    "bytes": 517179,
+    "sha256": "366f022439b48e817b5099f52dd0aed1fe130ce8e8440a86a48466b2434b4514"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_17/training.json",
+    "bytes": 978,
+    "sha256": "c177ea3c8177635ff32337fd97d8985becb39333e8a6007d97cd0cde68cf1f8f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/complete.json",
+    "bytes": 579,
+    "sha256": "706f60a15fc429b6ca69b36c2df6ecb811c5a09929c108bbe4e0262fb2ba854c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/curves.npz",
+    "bytes": 410560,
+    "sha256": "381e3ea33efed558f04fc561433b2c32f0d5aaf8c6d6d41e6d6a919efc1b0fde"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_000.pt",
+    "bytes": 517179,
+    "sha256": "199dfb7d6e0c1fd41cb52c740b1d5688e8d63c87136b8eab1aa32324fd599788"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_020.pt",
+    "bytes": 517179,
+    "sha256": "789e9776e534c007aef1c0c5175c92eb7f01a34a791f490d178e4abbaa2d71e2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_040.pt",
+    "bytes": 517179,
+    "sha256": "c162a00aeb189ba04947af9840838557187e35d6ffbdfa965f83e9832be459aa"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_060.pt",
+    "bytes": 517179,
+    "sha256": "cd7f120d5e43e4c9fd1c7a72b0c7278edb1df8565b928a9dd0fcf29e79a65573"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_080.pt",
+    "bytes": 517179,
+    "sha256": "7ed7db3e2d5c1c5c029287164e523e174db70c46d2d7c673507d09974e644059"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_100.pt",
+    "bytes": 517179,
+    "sha256": "935d02f6ab4f2d6e4c3c7584c1a57b31e73172c9dccf1f2c926ca19d1e102ac8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_120.pt",
+    "bytes": 517179,
+    "sha256": "ffb7ca1a507970330d59fc6755c327099fb5b4c1c085ef5c2f7c4329a5b27eb8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_140.pt",
+    "bytes": 517179,
+    "sha256": "c3fad583d9c994271358984ccf82f0aca8aaa77598c9cd420ad4961d9661add4"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_160.pt",
+    "bytes": 517179,
+    "sha256": "b9541c4bcceb0c0c0cdc2af738aaf6a22a9102564c3f0b757bb48f516953287e"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_180.pt",
+    "bytes": 517179,
+    "sha256": "8b080b2d9ca3fd8377a891e9de2c110582124dd73f3abb96737d1d6bbfbab97b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_200.pt",
+    "bytes": 517179,
+    "sha256": "bc1955a1a2aec46a570857e452be5ccf2640ed5c2c6c85e3758ee19c224332f2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_220.pt",
+    "bytes": 517179,
+    "sha256": "9076baa9f9c582fb456bd72430aa36f84eb7097efef784949188c5d7b4e7c290"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/step_240.pt",
+    "bytes": 517179,
+    "sha256": "72c37d168bbd4e31fbbb6c7079d71f6512585d416814a9936d369fd20b0ba8b0"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_29/training.json",
+    "bytes": 980,
+    "sha256": "03070b5e6de23191dfb35c075ac1b83e3849b0993624af2d66f6c7cc44fea10d"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/complete.json",
+    "bytes": 580,
+    "sha256": "c508256969ab8099ba725ac8acbca3e20f3da93ad5fe97494f0b30374f4d6ff1"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/curves.npz",
+    "bytes": 410551,
+    "sha256": "ae664d5fbb3794103e8c61f52114598d31ac246f02a0be733341b5b528beac14"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_000.pt",
+    "bytes": 517179,
+    "sha256": "8c3b1c34e33db071948b65e625291f69f19a69e823999061ece4cdfad68c752f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_020.pt",
+    "bytes": 517179,
+    "sha256": "6f000e34dd6cd4adf36da89802906b19133f67616621a1eeec7646764b42c271"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_040.pt",
+    "bytes": 517179,
+    "sha256": "68ca3823343cd5457fba4f9c42f889fc6313f7479717e5952dc7702ac1544fad"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_060.pt",
+    "bytes": 517179,
+    "sha256": "e4a1c3c4e505271bc6b7390a090c0c960598642e3d1fe2269e1de55f2f21abb7"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_080.pt",
+    "bytes": 517179,
+    "sha256": "a70a3fff7be9d07ccd9c15159eaf282ff7d32a70dbdfa85bd0ea6f3e48313681"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_100.pt",
+    "bytes": 517179,
+    "sha256": "9f8f24b0023c9b9a7b638d73991d8674ebfdc2efbf23e23d2181f984b403222a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_120.pt",
+    "bytes": 517179,
+    "sha256": "8df0e3528f03c4bc0bb8d6d68dfffc81c3b235e7e2bff5258ca24e83613cf8aa"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_140.pt",
+    "bytes": 517179,
+    "sha256": "dcec77513d7b59c381512f2cfe0c7e29697511cf29fe97ac0b52b2eb54147f02"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_160.pt",
+    "bytes": 517179,
+    "sha256": "1f2ce9cd9923185913afb0eb4f47bdde0f770dbf8a9fa1b352a4e280462a86da"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_180.pt",
+    "bytes": 517179,
+    "sha256": "a11ff699adcd08720af1ba68cb8781d25c4ca645ffd7a4529377b0f8ad73fb39"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_200.pt",
+    "bytes": 517179,
+    "sha256": "614ca737110aac77b6df19cc8fe2eaa89e47b18ce6a71a427fbd8eb59460c59c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_220.pt",
+    "bytes": 517179,
+    "sha256": "dc14bded69bec2571667ebda6ed54aea0455a2be78384e5501d19d129a27d63c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/step_240.pt",
+    "bytes": 517179,
+    "sha256": "066637237558e33c08689cd21de134c99261a2f6b8d355fbf2b39237aa898136"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_3/seed_43/training.json",
+    "bytes": 977,
+    "sha256": "8febaa2fba4e546ab44f379cb74a35bd9bee7dabeecd8840806acceb738fd0da"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/complete.json",
+    "bytes": 580,
+    "sha256": "54e521a470019f57532795cb241ff07d9ac5462cdb9efd8e55553ea280822392"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/curves.npz",
+    "bytes": 549720,
+    "sha256": "38f808723123c5756328035e90c572e1f55dc4f87d1dd1771c7b5ad585250991"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_000.pt",
+    "bytes": 517179,
+    "sha256": "b2fdae7b9e50f8027413cfbab1e45e0c7d95867ff2a9f8fe8904d364fca07a03"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_020.pt",
+    "bytes": 517179,
+    "sha256": "5943bfffcfc7a14e27ef79d5147be884d23317943ab0e19671f811df947107f8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_040.pt",
+    "bytes": 517179,
+    "sha256": "32a8c915d64c0de491a71cc05073370a1d26a75be4a07c2068d6795858df79d9"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_060.pt",
+    "bytes": 517179,
+    "sha256": "ba830d4292eff3c32c86f85a35dfb75fe94dbea06b494fb53d4b16de22726b46"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_080.pt",
+    "bytes": 517179,
+    "sha256": "c0e2c6fe2c14932ffa89a3fb181772c98704e3274904939a089aa0420c72a01b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_100.pt",
+    "bytes": 517179,
+    "sha256": "fa5d2e2489a985094cf13bcae29b5475898a3ac7e3537c6c0fa4f9f97cb50344"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_120.pt",
+    "bytes": 517179,
+    "sha256": "3672a34408de08c8814a7380d7d66bdaa8ce3250c0bf78644428bc2bc55da3e3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_140.pt",
+    "bytes": 517179,
+    "sha256": "ef0042e663dd62fa452472d4a3456863303c3c936d4e4e0b38f1def5a0e7b690"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_160.pt",
+    "bytes": 517179,
+    "sha256": "d19a3de05641a80cc8ffcdb6089661c8b8b9ec5b1fc68f8334109719f83c9b9c"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_180.pt",
+    "bytes": 517179,
+    "sha256": "d1e7cf666d8b98679b351b76eba625c874ca25f82ec0294e3083c0afd4dfd8e2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_200.pt",
+    "bytes": 517179,
+    "sha256": "fadda043dc35e943b3bb09176a793ad34adc312676e3366d20990216aab8c7c9"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_220.pt",
+    "bytes": 517179,
+    "sha256": "ef08a7515f310d563027461dd1b53a81e23ba28d5b03b73b7b15e747e77e8853"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/step_240.pt",
+    "bytes": 517179,
+    "sha256": "86656ba139a6e00231686f10261648e402926375d6af2ccee38101c6c0f295bd"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_17/training.json",
+    "bytes": 972,
+    "sha256": "632f7e350b4b0e679c4651e324d40d8edfb7c8bfac49ba6e906b3be2a307ae74"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/complete.json",
+    "bytes": 580,
+    "sha256": "6ca84b9d9329d6533273cd5acba984079dda46eb587157433888b21f1de404ca"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/curves.npz",
+    "bytes": 549754,
+    "sha256": "50f0c104c4007b643202c0e7a901f1e86f4ae480c7996bf8e0e79f246fb2d141"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_000.pt",
+    "bytes": 517179,
+    "sha256": "199dfb7d6e0c1fd41cb52c740b1d5688e8d63c87136b8eab1aa32324fd599788"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_020.pt",
+    "bytes": 517179,
+    "sha256": "7248688494a63b5fb70839b590e18785457a3f300ac264bd9890c79c812e0fc1"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_040.pt",
+    "bytes": 517179,
+    "sha256": "25474cac8202ea20e90a70759f7f0a2b59b9c2603b2862387dbdb5b3704a5a40"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_060.pt",
+    "bytes": 517179,
+    "sha256": "c6d12d7d51af8fe7ef69a72054bce3c59f8d9407bfacfa82418857695ee51845"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_080.pt",
+    "bytes": 517179,
+    "sha256": "ae1fabcf6982cb6ae12af5818367b96a507f6a1ff4c5af0c96d764b1b3b906f1"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_100.pt",
+    "bytes": 517179,
+    "sha256": "f64adb4e7ec56c1f44fa44586818e0067aa16bd4f07e5cf2f19a342b397eab18"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_120.pt",
+    "bytes": 517179,
+    "sha256": "54da7ce2cb1f3c712b28631e94eb6761c26320611b73172463c86131e641d4b6"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_140.pt",
+    "bytes": 517179,
+    "sha256": "1064bd0f34d587ee1fb6c403a3a9670b26204429b47220d69f3a6536ff0dfc8f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_160.pt",
+    "bytes": 517179,
+    "sha256": "7c727f45357c8d18c02a3e9249aa0805a6674167019d832ef3fbdf20f9772a16"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_180.pt",
+    "bytes": 517179,
+    "sha256": "50884d331f201d3d79d4559eeabd084768a9cf25fbf530a61cba8ec0c6f3a0d1"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_200.pt",
+    "bytes": 517179,
+    "sha256": "9012da5564b3af0a1c7bad9aa05631151b4d9188f51b5093c0a75340ed6decc8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_220.pt",
+    "bytes": 517179,
+    "sha256": "13542460fadf46c60eb40032134063c2d46e9001f7314bea8db4aae4e8600fc4"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/step_240.pt",
+    "bytes": 517179,
+    "sha256": "876d92db48d2368a64d48d8a4b13c6b7ab879b215ce8fa3af9e76309229d62a2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_29/training.json",
+    "bytes": 973,
+    "sha256": "a9492c6a2b43de1d41738f45c04033272aea51b0424cabcfc60d43b05e93cc27"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/complete.json",
+    "bytes": 579,
+    "sha256": "cfe98be0f616d51b9980cf5866d1b8845e35ead89cef63cc576c6a670c5b9994"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/curves.npz",
+    "bytes": 549736,
+    "sha256": "07726db354ed7ce4327bad3834120e337e09aa2bb0843a10f9e1542a29c98619"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_000.pt",
+    "bytes": 517179,
+    "sha256": "8c3b1c34e33db071948b65e625291f69f19a69e823999061ece4cdfad68c752f"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_020.pt",
+    "bytes": 517179,
+    "sha256": "fdb8d404b5c437d35c704b3e07e85374b4f4e3618928561f219425b4319cf4ba"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_040.pt",
+    "bytes": 517179,
+    "sha256": "68b373980a5cb885a62f0bda646251ae58c930b4406c1d3eeb08d7c513016a27"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_060.pt",
+    "bytes": 517179,
+    "sha256": "b61303e314182adce90ecc132ba9980bd30f17f1897efd59ac86a73b46fe10a5"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_080.pt",
+    "bytes": 517179,
+    "sha256": "5e474f8f12c12c870856944ae28e75b268d35b19b3571c05b841767748f963d8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_100.pt",
+    "bytes": 517179,
+    "sha256": "84428d032aa76e10a1f435b5434abd225b922afe9eeca569d087a869137bf793"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_120.pt",
+    "bytes": 517179,
+    "sha256": "950db7f1f96d3ad7778dd14b82ecccbfbfa4c52517ef929f5a1705ba5ce02dc7"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_140.pt",
+    "bytes": 517179,
+    "sha256": "e2b6a48e84e101f03f2c9e18388a47f91d0d2bb96e025bf77ea20a4ae08a0cdc"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_160.pt",
+    "bytes": 517179,
+    "sha256": "2f8fadd59bfdfed5dc700498b7b28e00e9f0fdad5bc2f4ea91626048010cdf36"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_180.pt",
+    "bytes": 517179,
+    "sha256": "48a845e550a2f082d8ef0497879a886f5820f4231906cb5fad06520895301918"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_200.pt",
+    "bytes": 517179,
+    "sha256": "1bf2c2550fe64d10249c8dc8cabc85cd3959d203b77cc8566c4d66544506f47b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_220.pt",
+    "bytes": 517179,
+    "sha256": "b2d72917fc66a26e1ceaff59cf54ec58211da112d22b604a2ab5ab20503eb1c5"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/step_240.pt",
+    "bytes": 517179,
+    "sha256": "fded619b7b7b7e01995e536bb1e8b35a2ce3d485dd64b5cccd3dcf5e5eb7a468"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/original_long/fold_4/seed_43/training.json",
+    "bytes": 973,
+    "sha256": "b83aacf44fac67d3f962cb810526879844051e9b45030fbda52696ca4082fca8"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/presentation/START_HERE.txt",
+    "bytes": 439,
+    "sha256": "1d6bd7cf5179c53c99d1e6adcb2310d747af8e86f5c420eae6a37855faa06569"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/presentation/data_map.png",
+    "bytes": 205585,
+    "sha256": "42a12fcf448135cf40176bcb9e2e965f194b0ef177ddfa9fae4b97aacca6938a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/presentation/edgc_map.png",
+    "bytes": 378595,
+    "sha256": "9fd0203b54126de4cb7559c8d40cba7ae23d52353bd9fb80e3dcca05c47e2af3"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/presentation/example_curves.png",
+    "bytes": 289753,
+    "sha256": "d2dd83c9c0925216e089d211403d5d56dd4c98888d513c1983610bdd049bd024"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/presentation/group_proportions.png",
+    "bytes": 52027,
+    "sha256": "8f32421cbf5dca71e0c98b8271b8f6e389b4470589de72982ff97b3f6d0257db"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/presentation/index.html",
+    "bytes": 8716,
+    "sha256": "211b931eda288c4fe1c612a0264ee1599304cc0569e7b95128dc4416172e1ed2"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/presentation/learning_curves.png",
+    "bytes": 458763,
+    "sha256": "ecc50062e522ec20ee121adf9a5b18d3657537f718336eb1974adb9a6f8028bd"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/presentation/learning_curves_zoom.png",
+    "bytes": 577090,
+    "sha256": "7a85081f4bdd49a0cf431b5de472d370d91007c23a8df2ab4e2b005285353d45"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/progress.json",
+    "bytes": 73,
+    "sha256": "038b30d1f0aea8938f440fe33b8e7dc9fa27d070cc3fed55bbf089943902f07a"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/protocol.json",
+    "bytes": 2711,
+    "sha256": "e4b365c8785a50aeb3068624efa8f4afbe85cc06853bc16f0889dd57895de732"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/sample_dynamics.csv",
+    "bytes": 1770377,
+    "sha256": "d34433153e48a4a2f39b6cdd043ba56c5044d9d6a7eebaeba8df9c6e62b2f20b"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/sample_dynamics.json",
+    "bytes": 4227266,
+    "sha256": "874ded179ef956bb049a23d518d5d0ade232e18dd8ff48b1641ae50bf8ff1bdd"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/source_hashes.json",
+    "bytes": 22123,
+    "sha256": "1a958a9656f7c8721c8f85fde938d0b2298da6b1956c3c19f94912ee7f725f09"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/unique_window_map.json",
+    "bytes": 84892,
+    "sha256": "641c09f36ff61d8d4b7dc0e9dd3c234d104c8283e34ffe253aa6964597db09aa"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/verification.json",
+    "bytes": 19747,
+    "sha256": "54102cce1ac696a3958a7e1613ed121b66ec9e16c7b382e7d70e6de75c0d2034"
+  },
+  {
+    "path": "outputs/tract_learning_map_20261029/visual_review.json",
+    "bytes": 648,
+    "sha256": "ec9f250a099d3909b157c4f114908c2212013e4c5266b4460330b7c9fc2901fc"
+  }
+]

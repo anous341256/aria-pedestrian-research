@@ -1,0 +1,14 @@
+# Diagnostic only: test whether lower-score YOLO11 detections can start tracks.
+# Keep motion, ReID, buffering and matching identical to botsort_reid.yaml.
+tracker_type: botsort
+track_high_thresh: 0.10
+track_low_thresh: 0.05
+new_track_thresh: 0.10
+track_buffer: 90
+match_thresh: 0.80
+fuse_score: true
+gmc_method: sparseOptFlow
+proximity_thresh: 0.50
+appearance_thresh: 0.80
+with_reid: true
+model: auto

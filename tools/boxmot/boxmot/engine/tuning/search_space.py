@@ -1,0 +1,371 @@
+"""YAML config parsing and search-space helpers shared across all backends."""
+
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any
+
+import numpy as np
+
+from boxmot.trackers.common.config import flatten_tracker_options, load_tracker_defaults, load_tracker_schema
+from boxmot.trackers.common.motion.kalman_filters.noise import KALMAN_TIMING_OPTIONS
+from boxmot.utils import logger as LOGGER
+
+# ---------------------------------------------------------------------------
+# YAML loading
+# ---------------------------------------------------------------------------
+
+
+def load_yaml_config(tracker_name: str) -> dict:
+    """Load and validate the tuning metadata from a combined tracker YAML."""
+
+    cfg = load_tracker_schema(tracker_name)
+    validate_tuning_config(tracker_name, cfg)
+    return cfg
+
+
+# ---------------------------------------------------------------------------
+# Flattening / conditional tree
+# ---------------------------------------------------------------------------
+
+
+def expand_yaml_groups(yaml_cfg: dict, *, prefix: str = "") -> dict:
+    """Expand authored option groups to dotted keys, preserving conditionals."""
+    expanded = {}
+    for name, details in yaml_cfg.items():
+        key = f"{prefix}{name}"
+        if (
+            (key in {"kalman", "edgetam"} or key.startswith(("kalman.", "edgetam.")))
+            and isinstance(details, dict)
+            and not {"default", "type"}.intersection(details)
+        ):
+            expanded.update(expand_yaml_groups(details, prefix=f"{key}."))
+            continue
+        if isinstance(details, dict) and isinstance(details.get("activates"), dict):
+            details = {**details, "activates": expand_yaml_groups(details["activates"], prefix=prefix)}
+        expanded[key] = details
+    return expanded
+
+
+def flatten_yaml_config(yaml_cfg: dict) -> dict:
+    """Flatten a nested YAML config into a single-level dict.
+
+    Entries with an ``activates`` block have all descendants promoted to the
+    top level. Parent entries are preserved without their ``activates`` blocks.
+    """
+    flat: dict = {}
+
+    def _visit(entries: dict) -> None:
+        for param, details in entries.items():
+            if not isinstance(details, dict):
+                flat[param] = details
+                continue
+            flat[param] = {k: v for k, v in details.items() if k != "activates"}
+            children = details.get("activates")
+            if isinstance(children, dict):
+                _visit(children)
+
+    _visit(expand_yaml_groups(yaml_cfg))
+    return flat
+
+
+def condition_tracker_schema(
+    schema: dict, defaults: Mapping[str, Any], *, geometry: str
+) -> dict:
+    """Exclude inactive geometry and fixed conditional branches from search.
+
+    Keep inactive values as constants so trial records and saved profiles
+    retain the selected runtime configuration. Only fixed parent values are
+    resolved here; a searchable toggle's default does not disable its branch.
+    """
+    if geometry not in {"aabb", "obb"}:
+        raise ValueError("Tracker search geometry must be 'aabb' or 'obb'.")
+
+    def constant(name: str, entry: dict) -> dict:
+        return {"default": defaults[name] if name in defaults else entry["default"]}
+
+    def visit(entries: dict, *, inactive: bool = False) -> dict:
+        conditioned: dict = {}
+        for name, entry in entries.items():
+            if not isinstance(entry, dict):
+                conditioned[name] = entry
+                continue
+            selected = entry.get("geometry")
+            excluded = inactive or (selected is not None and selected != geometry)
+            children = entry.get("activates")
+            details = {key: value for key, value in entry.items() if key not in {"geometry", "activates"}}
+            fixed = excluded or set(details) == {"default"}
+            if fixed:
+                conditioned[name] = constant(name, entry)
+                if isinstance(children, dict):
+                    conditioned.update(
+                        visit(children, inactive=excluded or not bool(conditioned[name]["default"]))
+                    )
+            else:
+                if isinstance(children, dict):
+                    details["activates"] = visit(children)
+                conditioned[name] = details
+        return conditioned
+
+    return visit(expand_yaml_groups(schema))
+
+
+def conditional_yaml_tree(config: dict) -> tuple[dict[str, dict], set[str], dict[str, str]]:
+    """Return conditional parent/child metadata from ``activates`` blocks."""
+    parents_with_children: dict[str, dict] = {}
+    child_params: set[str] = set()
+    child_to_parent: dict[str, str] = {}
+
+    def _visit(entries: dict) -> None:
+        for param, details in entries.items():
+            if not isinstance(details, dict):
+                continue
+            children = details.get("activates")
+            if not isinstance(children, dict):
+                continue
+
+            parents_with_children[param] = children
+            for child_name in children:
+                if child_name in child_to_parent and child_to_parent[child_name] != param:
+                    LOGGER.warning(
+                        f"Conditional parameter '{child_name}' is activated by both "
+                        f"'{child_to_parent[child_name]}' and '{param}'. Using '{param}'."
+                    )
+                child_params.add(child_name)
+                child_to_parent[child_name] = param
+            _visit(children)
+
+    _visit(expand_yaml_groups(config))
+
+    return parents_with_children, child_params, child_to_parent
+
+
+# ---------------------------------------------------------------------------
+# Validation helpers
+# ---------------------------------------------------------------------------
+
+
+def is_valid_search_param(param: str, details: dict, *, warn: bool = True) -> bool:
+    """Validate a YAML search-space entry."""
+    if not isinstance(details, dict):
+        if warn:
+            LOGGER.warning(
+                f"Skipping malformed config entry '{param}': expected a mapping, got {type(details).__name__}"
+            )
+        return False
+
+    if set(details) == {"default"}:
+        return False
+
+    t = details.get("type")
+    rng = details.get("range")
+    opts = details.get("options") or details.get("values")
+
+    if t in ("uniform", "randint", "qrandint", "loguniform"):
+        if not rng or len(rng) < 2:
+            if warn:
+                LOGGER.warning(f"Skipping param '{param}': '{t}' requires a range with 2 values")
+            return False
+        if t == "loguniform" and (rng[0] <= 0 or rng[1] <= 0):
+            if warn:
+                LOGGER.warning(f"Skipping param '{param}': 'loguniform' requires positive bounds")
+            return False
+        return True
+
+    if t in ("choice", "grid_search"):
+        if not opts:
+            if warn:
+                LOGGER.warning(f"Skipping param '{param}': '{t}' requires a non-empty 'options' list")
+            return False
+        return True
+
+    if warn:
+        LOGGER.warning(f"Skipping param '{param}': unknown type '{t}'")
+    return False
+
+
+def validate_tuning_config(tracker_name: str, config: dict) -> None:
+    """Validate that search metadata is complete and targets runtime parameters."""
+    flat = flatten_yaml_config(config)
+    runtime_keys = set(load_tracker_defaults(tracker_name))
+    unknown = sorted(set(flat) - runtime_keys)
+    if unknown:
+        raise ValueError(
+            f"Tuning config for {tracker_name} contains parameters absent from its runtime defaults: "
+            f"{', '.join(unknown)}"
+        )
+
+    allowed_fields = {"type", "default", "range", "options", "values", "activates", "geometry"}
+    for param, details in flat.items():
+        if isinstance(details, dict) and "geometry" in details:
+            if not isinstance(details["geometry"], str) or details["geometry"] not in {"aabb", "obb"}:
+                raise ValueError(f"Tuning config for {tracker_name} has invalid geometry for {param!r}.")
+            details = {key: value for key, value in details.items() if key != "geometry"}
+        if isinstance(details, dict) and set(details) == {"default"}:
+            continue
+        if param in {"kalman.variable_dt", *KALMAN_TIMING_OPTIONS}:
+            raise ValueError(f"{param} is a fixed runtime setting and cannot have tuning metadata.")
+        if not is_valid_search_param(param, details, warn=False):
+            raise ValueError(f"Tuning config for {tracker_name} has invalid search metadata for {param!r}.")
+        unsupported = sorted(set(details) - allowed_fields)
+        if unsupported:
+            raise ValueError(
+                f"Tuning config for {tracker_name} has unsupported metadata for {param!r}: {', '.join(unsupported)}"
+            )
+
+
+# ---------------------------------------------------------------------------
+# Flat Ray Tune search space (used by HyperOpt and random backends)
+# ---------------------------------------------------------------------------
+
+
+def yaml_to_tune_space(config: dict, tune) -> dict:
+    """Convert a tracker YAML config into a flat Ray Tune search space dict.
+
+    The ``activates`` children are treated as regular top-level params.
+    """
+    flat = flatten_yaml_config(config)
+    space = {}
+    for param, details in flat.items():
+        if not isinstance(details, dict):
+            LOGGER.warning(
+                f"Skipping malformed config entry '{param}': expected a mapping, got {type(details).__name__}"
+            )
+            continue
+        if set(details) == {"default"}:
+            continue
+        t = details.get("type")
+        rng = details.get("range")
+        opts = details.get("options") or details.get("values")
+
+        if t == "uniform":
+            if not rng or len(rng) < 2:
+                LOGGER.warning(f"Skipping param '{param}': 'uniform' requires a range with 2 values")
+                continue
+            space[param] = tune.uniform(*rng[:2])
+        elif t == "randint":
+            if not rng or len(rng) < 2:
+                LOGGER.warning(f"Skipping param '{param}': 'randint' requires a range with 2 values")
+                continue
+            space[param] = tune.randint(*rng[:2])
+        elif t == "qrandint":
+            if not rng or len(rng) < 2:
+                LOGGER.warning(f"Skipping param '{param}': 'qrandint' requires a range with 2 values")
+                continue
+            space[param] = tune.qrandint(*rng[:3])
+        elif t in ("choice", "grid_search"):
+            if not opts:
+                LOGGER.warning(f"Skipping param '{param}': '{t}' requires a non-empty 'options' list")
+                continue
+            space[param] = tune.choice(list(opts))
+        elif t == "loguniform":
+            if not rng or len(rng) < 2:
+                LOGGER.warning(f"Skipping param '{param}': 'loguniform' requires a range with 2 values")
+                continue
+            space[param] = tune.loguniform(*rng[:2])
+        else:
+            LOGGER.warning(f"Skipping param '{param}': unknown type '{t}'")
+
+    if not space:
+        LOGGER.warning(
+            "No valid search space parameters found in tracker config. "
+            "Check that the YAML contains entries with valid 'type' and 'range'/'options' keys."
+        )
+    return space
+
+
+# ---------------------------------------------------------------------------
+# Default baseline config
+# ---------------------------------------------------------------------------
+
+
+def default_tune_config(
+    yaml_cfg: dict,
+    search_space: dict | None = None,
+    *,
+    defaults: Mapping[str, Any] | None = None,
+    unconditional: bool = False,
+) -> dict[str, Any]:
+    """Return a flat baseline point for the selected search parameters.
+
+    By default, children of inactive parents are excluded (Optuna mode).
+    Set ``unconditional=True`` to include all defaults regardless of parent
+    state (needed for flat search spaces like HyperOpt/random). Defaults are
+    read from the combined tracker YAML; ``defaults`` may override them for a
+    selected runtime preset or caller-provided baseline.
+    """
+    flat = flatten_yaml_config(yaml_cfg)
+    parents_with_children, child_params, child_to_parent = conditional_yaml_tree(yaml_cfg)
+    keys = list(search_space) if search_space is not None else list(flat)
+    runtime_defaults = dict(defaults or {})
+
+    def _default_value(param: str) -> tuple[bool, Any]:
+        if param in runtime_defaults:
+            return True, runtime_defaults[param]
+        details = flat.get(param)
+        if isinstance(details, dict) and "default" in details:
+            return True, details["default"]
+        return False, None
+
+    def _active_by_default(param: str) -> bool:
+        parent = child_to_parent.get(param)
+        while parent is not None:
+            _, parent_default = _default_value(parent)
+            if not bool(parent_default):
+                return False
+            parent = child_to_parent.get(parent)
+        return True
+
+    baseline: dict[str, Any] = {}
+    for param in keys:
+        if isinstance(flat.get(param), dict) and set(flat[param]) == {"default"}:
+            continue
+        has_default, value = _default_value(param)
+        if not has_default:
+            continue
+
+        if not unconditional and param in child_params and not _active_by_default(param):
+            continue
+
+        baseline[param] = value
+
+    # Ensure parent defaults are present even if the search-space key set came
+    # from a backend-specific representation.
+    for parent in parents_with_children:
+        has_default, value = _default_value(parent)
+        if has_default and parent not in baseline:
+            baseline[parent] = value
+
+    return baseline
+
+
+# ---------------------------------------------------------------------------
+# Normalization helpers
+# ---------------------------------------------------------------------------
+
+
+def to_builtin_value(value: Any) -> Any:
+    """Convert NumPy scalar values returned by search backends to Python scalars."""
+    if isinstance(value, np.generic):
+        return value.item()
+    return value
+
+
+def unpack_nested_dict(dct: dict[str, Any]) -> dict[str, Any]:
+    """Recursively flatten nested dicts produced by conditional HyperOpt branches."""
+    out: dict[str, Any] = {}
+    for key, value in dct.items():
+        if key in {"kalman", "calibration", "edgetam"} and isinstance(value, dict):
+            out.update(flatten_tracker_options({key: value}))
+        elif isinstance(value, dict):
+            out.update(unpack_nested_dict(value))
+        else:
+            out[key] = to_builtin_value(value)
+    return out
+
+
+def normalize_trial_config(config: dict | None) -> dict[str, Any]:
+    """Return the flat config shape expected by tracker evaluation and reporting."""
+    if config is None:
+        return {}
+    return unpack_nested_dict(dict(config))

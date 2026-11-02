@@ -1,0 +1,41 @@
+{
+  "scope": "Five whole recordings, five specified real people per recording; partial person coverage, not gold. IDs remain fixed after people exit. Assistant-selected box prompts at indicated frames; no later correction.",
+  "coordinate_size": [1280, 960],
+  "recordings": {
+    "162538": [
+      {"id":1,"frame":0,"box":[760,540,1020,960],"description":"开头前方浅绿细条纹长袖、短发、斜挎包的人"},
+      {"id":2,"frame":200,"box":[140,470,540,960],"description":"浅蓝细条纹短袖、长马尾和浅色发饰的人"},
+      {"id":3,"frame":600,"box":[230,515,630,960],"description":"橘棕短袖、黑背包、白色提袋、低马尾的人"},
+      {"id":4,"frame":900,"box":[212,555,340,910],"description":"购物架旁白色短袖、灰长裤、黑色小挎包的人"},
+      {"id":5,"frame":1100,"box":[727,560,817,779],"description":"白色图案T恤、深色长裤、推紫色平板车的人"}
+    ],
+    "164557": [
+      {"id":1,"frame":100,"box":[1087,579,1176,781],"description":"白色短袖、黑长裤、浅色斜挎包和浅色发饰的同行者"},
+      {"id":2,"frame":100,"box":[1180,565,1280,777],"description":"深蓝短袖、浅色短裤、拉粉色拉杆箱的同行者"},
+      {"id":3,"frame":600,"box":[693,718,834,960],"description":"坐在粉色拉杆箱上的浅色上衣儿童，作为非步行运动对照"},
+      {"id":4,"frame":900,"box":[585,586,675,840],"description":"室内前方黑短袖黑短裤、背小包的人"},
+      {"id":5,"frame":900,"box":[490,590,601,870],"description":"室内前方米白上衣、蓝短裤、长发提袋的人"}
+    ],
+    "151153": [
+      {"id":1,"frame":0,"box":[719,305,814,543],"description":"站台红色短袖、蓝牛仔裤、提花纹袋的人"},
+      {"id":2,"frame":300,"box":[802,456,1062,960],"description":"白色T恤、浅棕长裤、未背黑挎包的人"},
+      {"id":3,"frame":300,"box":[1007,478,1280,960],"description":"白色长袖衬衫、黑帽子黑挎包、蓝牛仔裤的人"},
+      {"id":4,"frame":400,"box":[493,465,686,960],"description":"灰蓝宽松上衣、牛仔裤、MotorSport字样黑背包的人"},
+      {"id":5,"frame":400,"box":[719,511,859,956],"description":"白短袖、格纹短裙、白袜、黑色大提包的人"}
+    ],
+    "193709": [
+      {"id":1,"frame":10,"box":[486,530,730,960],"description":"黑色宽松上衣、浅色长裤、黑背包、长发的同行者"},
+      {"id":2,"frame":100,"box":[527,461,932,960],"description":"浅色帽子、黑色背部蓝绿大图案T恤的人"},
+      {"id":3,"frame":100,"box":[342,570,508,960],"description":"浅色Polo衫、黑色双肩包、看手机的人"},
+      {"id":4,"frame":200,"box":[549,491,655,773],"description":"前方灰色短袖、黑长裤、白鞋的人"},
+      {"id":5,"frame":200,"box":[808,492,898,703],"description":"前方白上衣、黑长裤、长发的人"}
+    ],
+    "201129": [
+      {"id":1,"frame":100,"box":[464,510,676,960],"description":"灰色格纹长袖衬衫、黑长裤、右侧黑提包的人"},
+      {"id":2,"frame":100,"box":[326,589,401,803],"description":"前方黑色背部金色图案短袖、黑长裤的人"},
+      {"id":3,"frame":100,"box":[411,590,485,787],"description":"前方白色层叠短裙/连衣裙的人"},
+      {"id":4,"frame":400,"box":[914,450,1158,770],"description":"站厅柱旁橘红T恤、黑长裤、浅色鞋的人"},
+      {"id":5,"frame":600,"box":[639,576,735,802],"description":"便利店门旁粉色短袖、米色短裤、蓝行李箱旁的人"}
+    ]
+  }
+}

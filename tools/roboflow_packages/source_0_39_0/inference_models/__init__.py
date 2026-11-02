@@ -1,0 +1,87 @@
+"""
+This is a definition of public interface of the `inference-models` package.
+We want the clients code to only explicitly import from this module, to improve stability and
+make it clear what is the intended public API.
+
+Whenever using `inference-models` in your code, import only from this module, like this:
+```python
+from inference_models import AutoModel
+```
+
+We keep the list of exposed symbols small, to make it easier to reason about the API and to avoid
+polluting the namespace. If you see a symbol that you need but is not exposed here, please open an issue
+https://github.com/roboflow/inference/issues/new
+"""
+
+import importlib.metadata as importlib_metadata
+import os
+
+# The single process-wide OFFLINE_MODE owner. Must be the first import so
+# the dependency environment (Hugging Face, Ultralytics) is published
+# before any heavy library gets imported.
+from inference_models._offline import OFFLINE_MODE  # noqa: F401  isort: skip
+
+
+try:
+    # This will read version from pyproject.toml
+    __version__ = importlib_metadata.version(__package__ or __name__)
+except importlib_metadata.PackageNotFoundError:
+    __version__ = "development"
+
+if os.environ.get("PYTORCH_ENABLE_MPS_FALLBACK") is None:
+    os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
+if os.environ.get("TOKENIZERS_PARALLELISM") is None:
+    os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
+from inference_models.entities import ColorFormat, Confidence
+from inference_models.model_pipelines.auto_loaders.core import AutoModelPipeline
+from inference_models.models.auto_loaders.core import (
+    AutoModel,
+    find_cached_model_package_dir,
+)
+from inference_models.models.auto_loaders.entities import (
+    AnyModel,
+    BackendType,
+    PreProcessingOverrides,
+)
+from inference_models.models.base.action_recognition import (
+    ActionRecognitionModel,
+    ActionRecognitionPrediction,
+    VideoSampling,
+)
+from inference_models.models.base.classification import (
+    ClassificationModel,
+    ClassificationPrediction,
+    MultiLabelClassificationModel,
+    MultiLabelClassificationPrediction,
+)
+from inference_models.models.base.depth_estimation import DepthEstimationModel
+from inference_models.models.base.documents_parsing import (
+    StructuredOCRModel,
+    TextOnlyOCRModel,
+)
+from inference_models.models.base.embeddings import TextImageEmbeddingModel
+from inference_models.models.base.instance_segmentation import (
+    InstanceDetections,
+    InstanceSegmentationMaskFormat,
+    InstanceSegmentationModel,
+)
+from inference_models.models.base.keypoints_detection import (
+    KeyPoints,
+    KeyPointsDetectionModel,
+)
+from inference_models.models.base.object_detection import (
+    Detections,
+    ObjectDetectionModel,
+    OpenVocabularyObjectDetectionModel,
+)
+from inference_models.models.base.semantic_segmentation import SemanticSegmentationModel
+from inference_models.models.base.types import InstancesRLEMasks
+from inference_models.weights_providers.entities import Quantization
+from inference_models.weights_providers.offline_registry import (
+    OfflinePackagePresence,
+    OfflineArtefactStatus,
+    OfflinePackageStatus,
+    OfflineModelStatus,
+    OfflineArtefactVerification
+)

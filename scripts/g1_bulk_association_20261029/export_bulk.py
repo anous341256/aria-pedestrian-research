@@ -1,0 +1,19 @@
+from bulk_common import *
+import cv2
+
+def main():
+ assert read(OUT/'association_complete.json')['passed'];inv=read(OUT/'inventory.json');ww=read(OUT/'forecast_window_candidates.json')['windows'];clips={c['clip']:c for c in inv['clips']};lookup={t['target_key']:(e,t) for e in inv['entries'] for t in e['targets']};refcache={};posecache={};depthcache={};data=[];meta=[]
+ for w in ww:
+  c=clips[w['clip']];cid=c['clip']
+  if cid not in refcache:refcache[cid]=dict(np.load(ROOT/c['input']/'reference.npz'));posecache[cid]=dict(np.load(OUT/'poses'/f'{cid}.npz'))
+  ref=refcache[cid];p=posecache[cid];fs=np.array(w['source_frames']);lf=np.array(w['frames']);pairs=[lookup[u] for u in w['uids']];assert all(e['source_frame']==f and e['frame']==l and e['clip']==cid for (e,t),f,l in zip(pairs,fs,lf));boxes=np.array([t['box'] for e,t in pairs],float);xy=(boxes[:,:2]+boxes[:,2:])/2;R=ref['R'][fs];K=ref['K'];ts=ref['times_ns'][fs];rel=R[15].T@R;H=K@rel@np.linalg.inv(K);cam=np.stack([cv2.Rodrigues(a)[0][:,0] for a in rel]);tr=np.einsum('ji,tj->ti',R[15],p['c'][lf[:16]]-p['c'][lf[15]]).astype(np.float32);dep=[]
+  for e,t in pairs:
+   if e['key'] not in depthcache:depthcache[e['key']]={r['target_key']:r for r in read(OUT/'depth'/e['key']/'measurements.json')}
+   d=depthcache[e['key']][t['target_key']];dep.append([d['z_median_m'] if d['usable'] else 0.,float(d['usable']),d['lr_fraction'],d['z_iqr_m'] if d['usable'] else 0.])
+  data.append(dict(xy=xy,boxes=boxes,R=R,K=K,H=H,cam=cam,seconds=(ts-ts[15])/1e9,translation=tr,translation_mps_ns=p['selected_mps_ns'][lf[:16]],depth_reference=np.array(dep),quality_eligible=np.array(w['quality_eligible'])));meta.append(dict(w,timestamp_ns=int(ts[15]),timestamps_ns=ts.tolist(),input=c['input'],source=c['source'],source_clip=c['source_clip'],nonoverlap=True,annotation='Offline SAM2 source with new association; automatic reference, not dense human GT. Future pose/depth archive fields are targets/diagnostics only.'))
+ assert len(data)>0;arrays={k:np.stack([d[k] for d in data]) for k in data[0]};assert np.isfinite(arrays['xy']).all();assert np.array_equal(arrays['translation'][:,-1],np.zeros((len(data),3),np.float32));dest=OUT/'dataset';dest.mkdir(parents=True,exist_ok=True);np.savez_compressed(dest/'all_continuous.npz',**arrays);write(dest/'metadata.json',meta);q=np.flatnonzero(arrays['quality_eligible']);np.savez_compressed(dest/'quality_subset.npz',source_indices=q,**{k:v[q] for k,v in arrays.items()});write(dest/'quality_metadata.json',[meta[i] for i in q])
+ folds=[]
+ for f in read(ROOT/'outputs/translation_forecast_20261020/folds.json'):
+  usable=[i for i,m in enumerate(meta) if m['recording'] not in [f['test'],f['validation']]];folds.append(dict(fold=f['fold'],test_recording=f['test'],validation_recording=f['validation'],all_training_eligible_indices=usable,quality_training_eligible_indices=[i for i in usable if meta[i]['quality_eligible']],heldout_unused_indices=[i for i in range(len(meta)) if i not in usable]))
+ write(dest/'future_training_eligibility.json',folds);summary=dict(passed=True,all_continuous_windows=len(meta),quality_eligible_windows=len(q),window_recordings=len({m['recording'] for m in meta}),quality_recordings=len({meta[i]['recording'] for i in q}),source_id_consistent_windows=sum(m['source_identity_consistent_review_only'] for m in meta),quality_source_id_consistent_windows=sum(meta[i]['source_identity_consistent_review_only'] for i in q),per_recording={g:dict(all=sum(m['recording']==g for m in meta),quality=sum(m['recording']==g and m['quality_eligible'] for m in meta)) for g in sorted({c['recording'] for c in inv['clips']})},new_forecast_models_trained=0,notes='21frame chunks nonoverlap in time; people in same chunk share camera. Window count not unique real people. No mandatory edge trimming; quality tier flags do not delete annotations.');write(OUT/'dataset_complete.json',summary);print(summary)
+if __name__=='__main__':main()

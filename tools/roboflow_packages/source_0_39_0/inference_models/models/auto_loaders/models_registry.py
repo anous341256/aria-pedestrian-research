@@ -1,0 +1,712 @@
+from dataclasses import dataclass, field
+from typing import Dict, Optional, Set, Tuple, Union
+
+from inference_models.errors import ModelImplementationNotFoundError
+from inference_models.models.auto_loaders.entities import (
+    BackendType,
+    ModelArchitecture,
+    TaskType,
+)
+from inference_models.utils.imports import LazyClass
+
+OBJECT_DETECTION_TASK = "object-detection"
+INSTANCE_SEGMENTATION_TASK = "instance-segmentation"
+SEMANTIC_SEGMENTATION_TASK = "semantic-segmentation"
+KEYPOINT_DETECTION_TASK = "keypoint-detection"
+VLM_TASK = "vlm"
+EMBEDDING_TASK = "embedding"
+CLASSIFICATION_TASK = "classification"
+MULTI_LABEL_CLASSIFICATION_TASK = "multi-label-classification"
+DEPTH_ESTIMATION_TASK = "depth-estimation"
+STRUCTURED_OCR_TASK = "structured-ocr"
+TEXT_ONLY_OCR_TASK = "text-only-ocr"
+GAZE_DETECTION_TASK = "gaze-detection"
+OPEN_VOCABULARY_OBJECT_DETECTION_TASK = "open-vocabulary-object-detection"
+INTERACTIVE_INSTANCE_SEGMENTATION_TASK = "interactive-instance-segmentation"
+WORLD_MODEL_TASK = "world-model"
+ACTION_RECOGNITION_TASK = "action-recognition"
+
+
+@dataclass(frozen=True)
+class RegistryEntry:
+    model_class: LazyClass
+    supported_model_features: Optional[Set[str]] = field(default=None)
+    required_model_features: Optional[Set[str]] = field(default=None)
+
+
+REGISTERED_MODELS: Dict[
+    Tuple[ModelArchitecture, TaskType, BackendType], Union[LazyClass, RegistryEntry]
+] = {
+    ("yolonas", OBJECT_DETECTION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.yolonas.yolonas_object_detection_onnx",
+        class_name="YOLONasForObjectDetectionOnnx",
+    ),
+    ("yolonas", OBJECT_DETECTION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolonas.yolonas_object_detection_trt",
+        class_name="YOLONasForObjectDetectionTRT",
+    ),
+    ("yolov5", OBJECT_DETECTION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.yolov5.yolov5_object_detection_onnx",
+        class_name="YOLOv5ForObjectDetectionOnnx",
+    ),
+    ("yolov5", INSTANCE_SEGMENTATION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.yolov5.yolov5_instance_segmentation_onnx",
+        class_name="YOLOv5ForInstanceSegmentationOnnx",
+    ),
+    ("yolov7", INSTANCE_SEGMENTATION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.yolov7.yolov7_instance_segmentation_onnx",
+        class_name="YOLOv7ForInstanceSegmentationOnnx",
+    ),
+    ("yolov8", CLASSIFICATION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov8.yolov8_classification_onnx",
+            class_name="YOLOv8ForClassificationOnnx",
+        ),
+    ),
+    ("yolov8", OBJECT_DETECTION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov8.yolov8_object_detection_onnx",
+            class_name="YOLOv8ForObjectDetectionOnnx",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov8", OBJECT_DETECTION_TASK, BackendType.TORCH_SCRIPT): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov8.yolov8_object_detection_torch_script",
+            class_name="YOLOv8ForObjectDetectionTorchScript",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov8", OBJECT_DETECTION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolov8.yolov8_object_detection_trt",
+        class_name="YOLOv8ForObjectDetectionTRT",
+    ),
+    ("yolov8", KEYPOINT_DETECTION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov8.yolov8_key_points_detection_onnx",
+            class_name="YOLOv8ForKeyPointsDetectionOnnx",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov8", KEYPOINT_DETECTION_TASK, BackendType.TORCH_SCRIPT): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov8.yolov8_key_points_detection_torch_script",
+            class_name="YOLOv8ForKeyPointsDetectionTorchScript",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov8", KEYPOINT_DETECTION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolov8.yolov8_key_points_detection_trt",
+        class_name="YOLOv8ForKeyPointsDetectionTRT",
+    ),
+    ("yolov8", INSTANCE_SEGMENTATION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov8.yolov8_instance_segmentation_onnx",
+            class_name="YOLOv8ForInstanceSegmentationOnnx",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov8", INSTANCE_SEGMENTATION_TASK, BackendType.TORCH_SCRIPT): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov8.yolov8_instance_segmentation_torch_script",
+            class_name="YOLOv8ForInstanceSegmentationTorchScript",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov8", INSTANCE_SEGMENTATION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolov8.yolov8_instance_segmentation_trt",
+        class_name="YOLOv8ForInstanceSegmentationTRT",
+    ),
+    ("yolov9", OBJECT_DETECTION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov9.yolov9_onnx",
+            class_name="YOLOv9ForObjectDetectionOnnx",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov9", OBJECT_DETECTION_TASK, BackendType.TORCH_SCRIPT): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov9.yolov9_torch_script",
+            class_name="YOLOv9ForObjectDetectionTorchScript",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov9", OBJECT_DETECTION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolov9.yolov9_trt",
+        class_name="YOLOv9ForObjectDetectionTRT",
+    ),
+    ("yolov10", OBJECT_DETECTION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.yolov10.yolov10_object_detection_onnx",
+        class_name="YOLOv10ForObjectDetectionOnnx",
+    ),
+    ("yolov10", OBJECT_DETECTION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolov10.yolov10_object_detection_trt",
+        class_name="YOLOv10ForObjectDetectionTRT",
+    ),
+    ("yolov11", CLASSIFICATION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov11.yolov11_onnx",
+            class_name="YOLOv11ForClassificationOnnx",
+        ),
+    ),
+    ("yolov11", OBJECT_DETECTION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov11.yolov11_onnx",
+            class_name="YOLOv11ForObjectDetectionOnnx",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov11", OBJECT_DETECTION_TASK, BackendType.TORCH_SCRIPT): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov11.yolov11_torch_script",
+            class_name="YOLOv11ForObjectDetectionTorchScript",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov11", OBJECT_DETECTION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolov11.yolov11_trt",
+        class_name="YOLOv11ForObjectDetectionTRT",
+    ),
+    ("yolov11", KEYPOINT_DETECTION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov11.yolov11_onnx",
+            class_name="YOLOv11ForForKeyPointsDetectionOnnx",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov11", KEYPOINT_DETECTION_TASK, BackendType.TORCH_SCRIPT): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov11.yolov11_torch_script",
+            class_name="YOLOv11ForForKeyPointsDetectionTorchScript",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov11", KEYPOINT_DETECTION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolov11.yolov11_trt",
+        class_name="YOLOv11ForForKeyPointsDetectionTRT",
+    ),
+    ("yolov11", INSTANCE_SEGMENTATION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov11.yolov11_onnx",
+            class_name="YOLOv11ForInstanceSegmentationOnnx",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov11", INSTANCE_SEGMENTATION_TASK, BackendType.TORCH_SCRIPT): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov11.yolov11_torch_script",
+            class_name="YOLOv11ForInstanceSegmentationTorchScript",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov11", INSTANCE_SEGMENTATION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolov11.yolov11_trt",
+        class_name="YOLOv11ForInstanceSegmentationTRT",
+    ),
+    ("yolov12", OBJECT_DETECTION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov12.yolov12_onnx",
+            class_name="YOLOv12ForObjectDetectionOnnx",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov12", OBJECT_DETECTION_TASK, BackendType.TORCH_SCRIPT): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yolov12.yolov12_torch_script",
+            class_name="YOLOv12ForObjectDetectionTorchScript",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("yolov12", OBJECT_DETECTION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolov12.yolov12_trt",
+        class_name="YOLOv12ForObjectDetectionTRT",
+    ),
+    ("yolo26", OBJECT_DETECTION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_object_detection_onnx",
+        class_name="YOLO26ForObjectDetectionOnnx",
+    ),
+    ("yolo26", OBJECT_DETECTION_TASK, BackendType.TORCH_SCRIPT): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_object_detection_torch_script",
+        class_name="YOLO26ForObjectDetectionTorchScript",
+    ),
+    ("yolo26", OBJECT_DETECTION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_object_detection_trt",
+        class_name="YOLO26ForObjectDetectionTRT",
+    ),
+    ("yolo26", KEYPOINT_DETECTION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_key_points_detection_onnx",
+        class_name="YOLO26ForKeyPointsDetectionOnnx",
+    ),
+    ("yolo26", KEYPOINT_DETECTION_TASK, BackendType.TORCH_SCRIPT): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_key_points_detection_torch_script",
+        class_name="YOLO26ForKeyPointsDetectionTorchScript",
+    ),
+    ("yolo26", KEYPOINT_DETECTION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_key_points_detection_trt",
+        class_name="YOLO26ForKeyPointsDetectionTRT",
+    ),
+    ("yolo26", INSTANCE_SEGMENTATION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_instance_segmentation_onnx",
+        class_name="YOLO26ForInstanceSegmentationOnnx",
+    ),
+    ("yolo26", INSTANCE_SEGMENTATION_TASK, BackendType.TORCH_SCRIPT): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_instance_segmentation_torch_script",
+        class_name="YOLO26ForInstanceSegmentationTorchScript",
+    ),
+    ("yolo26", INSTANCE_SEGMENTATION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_instance_segmentation_trt",
+        class_name="YOLO26ForInstanceSegmentationTRT",
+    ),
+    ("yolo26", SEMANTIC_SEGMENTATION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_semantic_segmentation_onnx",
+        class_name="YOLO26ForSemanticSegmentationOnnx",
+    ),
+    ("yolo26", SEMANTIC_SEGMENTATION_TASK, BackendType.TORCH_SCRIPT): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_semantic_segmentation_torch_script",
+        class_name="YOLO26ForSemanticSegmentationTorchScript",
+    ),
+    ("yolo26", SEMANTIC_SEGMENTATION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_semantic_segmentation_trt",
+        class_name="YOLO26ForSemanticSegmentationTRT",
+    ),
+    ("yolo26", DEPTH_ESTIMATION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_depth_estimation_onnx",
+        class_name="YOLO26ForDepthEstimationOnnx",
+    ),
+    ("yolo26", DEPTH_ESTIMATION_TASK, BackendType.TORCH_SCRIPT): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_depth_estimation_torch_script",
+        class_name="YOLO26ForDepthEstimationTorchScript",
+    ),
+    ("yolo26", DEPTH_ESTIMATION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.yolo26.yolo26_depth_estimation_trt",
+        class_name="YOLO26ForDepthEstimationTRT",
+    ),
+    ("yololite", OBJECT_DETECTION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.yololite.yololite_object_detection_onnx",
+            class_name="YOLOLiteForObjectDetectionOnnx",
+        ),
+        supported_model_features={"nms_fused"},
+    ),
+    ("paligemma-2", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.paligemma.paligemma_hf",
+        class_name="PaliGemmaHF",
+    ),
+    ("paligemma", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.paligemma.paligemma_hf",
+        class_name="PaliGemmaHF",
+    ),
+    ("smolvlm-v2", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.smolvlm.smolvlm_hf",
+        class_name="SmolVLMHF",
+    ),
+    ("qwen25vl", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.qwen25vl.qwen25vl_hf",
+        class_name="Qwen25VLHF",
+    ),
+    ("qwen3vl", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.qwen3vl.qwen3vl_hf",
+        class_name="Qwen3VLHF",
+    ),
+    ("cosmos-3-edge", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.cosmos3.cosmos3_reasoner_hf",
+        class_name="Cosmos3EdgeReasoner",
+    ),
+    # Roboflow fine-tunes register the architecture under the platform's model
+    # type, "cosmos3-edge".
+    ("cosmos3-edge", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.cosmos3.cosmos3_reasoner_hf",
+        class_name="Cosmos3EdgeReasoner",
+    ),
+    # An action recognition fine-tune registered under its own task.
+    (
+        "cosmos3-edge",
+        ACTION_RECOGNITION_TASK,
+        BackendType.HF,
+    ): LazyClass(
+        module_name=("inference_models.models.cosmos3.cosmos3_action_recognition"),
+        class_name="Cosmos3EdgeActionRecognition",
+    ),
+    ("cosmos-3-edge-world", WORLD_MODEL_TASK, BackendType.CUSTOM): LazyClass(
+        module_name="inference_models.models.cosmos3.cosmos3_world",
+        class_name="Cosmos3EdgeWorldModel",
+    ),
+    ("mage-vl", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.mage_vl.mage_vl_hf",
+        class_name="MageVLHF",
+    ),
+    ("qwen3_5", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.qwen3_5.qwen3_5_hf",
+        class_name="Qwen35HF",
+    ),
+    ("qwen3_8", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.qwen3_8.qwen3_8_hf",
+        class_name="Qwen38HF",
+    ),
+    ("gemma-4", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.gemma4.gemma4_hf",
+        class_name="Gemma4HF",
+    ),
+    ("florence-2", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.florence2.florence2_hf",
+        class_name="Florence2HF",
+    ),
+    ("clip", EMBEDDING_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.clip.clip_pytorch",
+        class_name="ClipTorch",
+    ),
+    ("clip", EMBEDDING_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.clip.clip_onnx",
+        class_name="ClipOnnx",
+    ),
+    ("perception-encoder", EMBEDDING_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.perception_encoder.perception_encoder_pytorch",
+        class_name="PerceptionEncoderTorch",
+    ),
+    ("rfdetr", OBJECT_DETECTION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.rfdetr.rfdetr_object_detection_trt",
+        class_name="RFDetrForObjectDetectionTRT",
+    ),
+    ("rfdetr", OBJECT_DETECTION_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.rfdetr.rfdetr_object_detection_pytorch",
+        class_name="RFDetrForObjectDetectionTorch",
+    ),
+    ("rfdetr", OBJECT_DETECTION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.rfdetr.rfdetr_object_detection_onnx",
+            class_name="RFDetrForObjectDetectionONNX",
+        ),
+        supported_model_features={
+            "resolution",
+            "patch_size",
+            "num_windows",
+            "dec_layers",
+            "num_queries",
+            "num_select",
+        },
+    ),
+    ("rfdetr", INSTANCE_SEGMENTATION_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.rfdetr.rfdetr_instance_segmentation_pytorch",
+        class_name="RFDetrForInstanceSegmentationTorch",
+    ),
+    ("rfdetr", INSTANCE_SEGMENTATION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.rfdetr.rfdetr_instance_segmentation_onnx",
+            class_name="RFDetrForInstanceSegmentationOnnx",
+        ),
+        supported_model_features={
+            "resolution",
+            "patch_size",
+            "num_windows",
+            "dec_layers",
+            "num_queries",
+            "num_select",
+        },
+    ),
+    ("rfdetr", INSTANCE_SEGMENTATION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.rfdetr.rfdetr_instance_segmentation_trt",
+        class_name="RFDetrForInstanceSegmentationTRT",
+    ),
+    ("rfdetr", KEYPOINT_DETECTION_TASK, BackendType.ONNX): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.rfdetr.rfdetr_key_points_detection_onnx",
+            class_name="RFDetrForKeyPointsONNX",
+        ),
+        supported_model_features={
+            "resolution",
+            "patch_size",
+            "num_windows",
+            "dec_layers",
+            "num_queries",
+            "num_select",
+        },
+    ),
+    ("rfdetr", KEYPOINT_DETECTION_TASK, BackendType.TRT): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.rfdetr.rfdetr_key_points_detection_trt",
+            class_name="RFDetrForKeyPointsTRT",
+        ),
+        supported_model_features={
+            "resolution",
+            "patch_size",
+            "num_windows",
+            "dec_layers",
+            "num_queries",
+            "num_select",
+        },
+    ),
+    ("moondream2", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.moondream2.moondream2_hf",
+        class_name="MoonDream2HF",
+    ),
+    ("glm-ocr", VLM_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.glm_ocr.glm_ocr_hf",
+        class_name="GlmOcrHF",
+    ),
+    ("vit", CLASSIFICATION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.vit.vit_classification_onnx",
+        class_name="VITForClassificationOnnx",
+    ),
+    ("vit", MULTI_LABEL_CLASSIFICATION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.vit.vit_classification_onnx",
+        class_name="VITForMultiLabelClassificationOnnx",
+    ),
+    ("vit", CLASSIFICATION_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.vit.vit_classification_huggingface",
+        class_name="VITForClassificationHF",
+    ),
+    ("vit", MULTI_LABEL_CLASSIFICATION_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.vit.vit_classification_huggingface",
+        class_name="VITForMultiLabelClassificationHF",
+    ),
+    ("vit", CLASSIFICATION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.vit.vit_classification_trt",
+        class_name="VITForClassificationTRT",
+    ),
+    ("vit", MULTI_LABEL_CLASSIFICATION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.vit.vit_classification_trt",
+        class_name="VITForMultiLabelClassificationTRT",
+    ),
+    ("resnet", CLASSIFICATION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.resnet.resnet_classification_onnx",
+        class_name="ResNetForClassificationOnnx",
+    ),
+    ("resnet", MULTI_LABEL_CLASSIFICATION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.resnet.resnet_classification_onnx",
+        class_name="ResNetForMultiLabelClassificationOnnx",
+    ),
+    ("resnet", CLASSIFICATION_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.resnet.resnet_classification_torch",
+        class_name="ResNetForClassificationTorch",
+    ),
+    ("resnet", MULTI_LABEL_CLASSIFICATION_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.resnet.resnet_classification_torch",
+        class_name="ResNetForMultiLabelClassificationTorch",
+    ),
+    ("resnet", CLASSIFICATION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.resnet.resnet_classification_trt",
+        class_name="ResNetForClassificationTRT",
+    ),
+    ("resnet", MULTI_LABEL_CLASSIFICATION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.resnet.resnet_classification_trt",
+        class_name="ResNetForMultiLabelClassificationTRT",
+    ),
+    ("segment-anything-2-rt", INSTANCE_SEGMENTATION_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.sam2_rt.sam2_pytorch",
+        class_name="SAM2ForStream",
+    ),
+    ("sam2video", INSTANCE_SEGMENTATION_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.sam2_video.sam2_video_hf",
+        class_name="SAM2Video",
+    ),
+    ("sam3video", INSTANCE_SEGMENTATION_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.sam3_video.sam3_video_hf",
+        class_name="SAM3Video",
+    ),
+    ("sam3trackervideo", INSTANCE_SEGMENTATION_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.sam3_tracker_video.sam3_tracker_video_hf",
+        class_name="SAM3TrackerVideo",
+    ),
+    ("deep-lab-v3-plus", SEMANTIC_SEGMENTATION_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.deep_lab_v3_plus.deep_lab_v3_plus_segmentation_torch",
+        class_name="DeepLabV3PlusForSemanticSegmentationTorch",
+    ),
+    ("deep-lab-v3-plus", SEMANTIC_SEGMENTATION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.deep_lab_v3_plus.deep_lab_v3_plus_segmentation_onnx",
+        class_name="DeepLabV3PlusForSemanticSegmentationOnnx",
+    ),
+    ("deep-lab-v3-plus", SEMANTIC_SEGMENTATION_TASK, BackendType.TRT): LazyClass(
+        module_name="inference_models.models.deep_lab_v3_plus.deep_lab_v3_plus_segmentation_trt",
+        class_name="DeepLabV3PlusForSemanticSegmentationTRT",
+    ),
+    ("yolact", INSTANCE_SEGMENTATION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.yolact.yolact_instance_segmentation_onnx",
+        class_name="YOLOACTForInstanceSegmentationOnnx",
+    ),
+    ("depth-anything-v2", DEPTH_ESTIMATION_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.depth_anything_v2.depth_anything_v2_hf",
+        class_name="DepthAnythingV2HF",
+    ),
+    ("depth-anything-v3", DEPTH_ESTIMATION_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.depth_anything_v3.depth_anything_v3_torch",
+        class_name="DepthAnythingV3Torch",
+    ),
+    ("doctr", STRUCTURED_OCR_TASK, BackendType.TORCH): RegistryEntry(
+        model_class=LazyClass(
+            module_name="inference_models.models.doctr.doctr_torch", class_name="DocTR"
+        ),
+        supported_model_features={"doctr_vocab_127"},
+        required_model_features={"doctr_vocab_127"},
+    ),
+    ("easy-ocr", STRUCTURED_OCR_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.easy_ocr.easy_ocr_torch",
+        class_name="EasyOCRTorch",
+    ),
+    ("tr-ocr", TEXT_ONLY_OCR_TASK, BackendType.HF): LazyClass(
+        module_name="inference_models.models.trocr.trocr_hf",
+        class_name="TROcrHF",
+    ),
+    ("pp-ocrv6-rec", TEXT_ONLY_OCR_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.pp_ocrv6.pp_ocrv6_recognition_onnx",
+        class_name="PPOCRv6RecognitionOnnx",
+    ),
+    ("pp-ocrv6-det", OBJECT_DETECTION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.pp_ocrv6.pp_ocrv6_detection_onnx",
+        class_name="PPOCRv6DetectionOnnx",
+    ),
+    ("rfdetr-keypoint-stage2", KEYPOINT_DETECTION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.rfdetr_two_stage.rfdetr_key_points_stage2_onnx",
+        class_name="RFDetrKeyPointsStage2ONNX",
+    ),
+    ("rfdetr-keypoint-two-stage", KEYPOINT_DETECTION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.rfdetr_two_stage.rfdetr_two_stage_key_points_onnx",
+        class_name="RFDetrTwoStageKeyPointsONNX",
+    ),
+    ("l2cs-net", GAZE_DETECTION_TASK, BackendType.ONNX): LazyClass(
+        module_name="inference_models.models.l2cs.l2cs_onnx",
+        class_name="L2CSNetOnnx",
+    ),
+    (
+        "grounding-dino",
+        OPEN_VOCABULARY_OBJECT_DETECTION_TASK,
+        BackendType.TORCH,
+    ): LazyClass(
+        module_name="inference_models.models.grounding_dino.grounding_dino_torch",
+        class_name="GroundingDinoForObjectDetectionTorch",
+    ),
+    (
+        "dinov3_probe",
+        MULTI_LABEL_CLASSIFICATION_TASK,
+        BackendType.ONNX,
+    ): LazyClass(
+        module_name="inference_models.models.dinov3.dinov3_classification_onnx",
+        class_name="DinoV3ForMultiLabelClassificationOnnx",
+    ),
+    (
+        "dinov3_probe",
+        CLASSIFICATION_TASK,
+        BackendType.ONNX,
+    ): LazyClass(
+        module_name="inference_models.models.dinov3.dinov3_classification_onnx",
+        class_name="DinoV3ForClassificationOnnx",
+    ),
+    (
+        "dinov3_probe",
+        MULTI_LABEL_CLASSIFICATION_TASK,
+        BackendType.TORCH,
+    ): LazyClass(
+        module_name="inference_models.models.dinov3.dinov3_classification_torch",
+        class_name="DinoV3ForMultiLabelClassificationTorch",
+    ),
+    (
+        "dinov3_probe",
+        CLASSIFICATION_TASK,
+        BackendType.TORCH,
+    ): LazyClass(
+        module_name="inference_models.models.dinov3.dinov3_classification_torch",
+        class_name="DinoV3ForClassificationTorch",
+    ),
+    (
+        "patchcore",
+        CLASSIFICATION_TASK,
+        BackendType.TORCH,
+    ): LazyClass(
+        module_name="inference_models.models.patchcore.patchcore_anomaly_detection_torch",
+        class_name="PatchCoreForAnomalyDetectionTorch",
+    ),
+    (
+        "foundad",
+        CLASSIFICATION_TASK,
+        BackendType.TORCH,
+    ): LazyClass(
+        module_name="inference_models.models.foundad.foundad_anomaly_detection_torch",
+        class_name="FoundADForAnomalyDetectionTorch",
+    ),
+    (
+        "owlv2",
+        OPEN_VOCABULARY_OBJECT_DETECTION_TASK,
+        BackendType.HF,
+    ): LazyClass(
+        module_name="inference_models.models.owlv2.owlv2_hf",
+        class_name="OWLv2HF",
+    ),
+    (
+        "roboflow-instant",
+        OBJECT_DETECTION_TASK,
+        BackendType.HF,
+    ): LazyClass(
+        module_name="inference_models.models.roboflow_instant.roboflow_instant_hf",
+        class_name="RoboflowInstantHF",
+    ),
+    ("sam", INTERACTIVE_INSTANCE_SEGMENTATION_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.sam.sam_torch",
+        class_name="SAMTorch",
+    ),
+    ("sam2", INTERACTIVE_INSTANCE_SEGMENTATION_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.sam2.sam2_torch",
+        class_name="SAM2Torch",
+    ),
+    ("sam3", INTERACTIVE_INSTANCE_SEGMENTATION_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.sam3.sam3_torch",
+        class_name="SAM3Torch",
+    ),
+    ("sam3", INSTANCE_SEGMENTATION_TASK, BackendType.TORCH): LazyClass(
+        module_name="inference_models.models.sam3.sam3_torch",
+        class_name="SAM3Torch",
+    ),
+}
+
+
+def resolve_model_class(
+    model_architecture: ModelArchitecture,
+    task_type: TaskType,
+    backend: BackendType,
+    model_features: Optional[Set[str]] = None,
+) -> type:
+    if not model_implementation_exists(
+        model_architecture=model_architecture,
+        task_type=task_type,
+        backend=backend,
+        model_features=model_features,
+    ):
+        raise ModelImplementationNotFoundError(
+            message=f"Did not find implementation for model with architecture: {model_architecture}, "
+            f"task type: {task_type} backend: {backend} and model features: {model_features}",
+            help_url="https://inference-models.roboflow.com/errors/model-loading/#modelimplementationnotfounderror",
+        )
+    matched_model = REGISTERED_MODELS[(model_architecture, task_type, backend)]
+    if isinstance(matched_model, RegistryEntry):
+        return matched_model.model_class.resolve()
+    return matched_model.resolve()
+
+
+def model_implementation_exists(
+    model_architecture: ModelArchitecture,
+    task_type: TaskType,
+    backend: BackendType,
+    model_features: Optional[Set[str]] = None,
+) -> bool:
+    lookup_key = (model_architecture, task_type, backend)
+    if lookup_key not in REGISTERED_MODELS:
+        return False
+    matched_model = REGISTERED_MODELS[(model_architecture, task_type, backend)]
+    if isinstance(matched_model, RegistryEntry):
+        # Check if implementation requires features that package doesn't have
+        if matched_model.required_model_features:
+            package_features = model_features or set()
+            if not all(
+                f in package_features for f in matched_model.required_model_features
+            ):
+                return False
+        # Check if package has features that implementation doesn't support
+        if model_features:
+            if not matched_model.supported_model_features:
+                return False
+            if not all(
+                f in matched_model.supported_model_features for f in model_features
+            ):
+                return False
+    elif model_features:
+        # LazyClass (not RegistryEntry) - features requested but no supported features manifested
+        return False
+    return True

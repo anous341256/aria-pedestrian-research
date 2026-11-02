@@ -1,0 +1,272 @@
+{
+  "status": "preliminary investigation complete; proposed experiments not trained",
+  "base_commit": "7d42c06534833f202e5de5e1c836a004a6e7ade6",
+  "branches": {
+    "scene": {
+      "worktree": "C:\\Users\\nytha\\.codex\\worktrees\\scene-pedestrian\\New_research",
+      "branch": "research/scene-pedestrian",
+      "commit": "b2f60881f0442e1aa9fa572c11405753b661fdf2",
+      "report": "C:\\Users\\nytha\\.codex\\worktrees\\scene-pedestrian\\New_research\\reports\\scene_pedestrian_20261029\\FEASIBILITY.txt"
+    },
+    "gaze": {
+      "worktree": "C:\\Users\\nytha\\.codex\\worktrees\\gaze-motion\\New_research",
+      "branch": "research/gaze-motion",
+      "commit": "23b662b3356f1fede6505d3636ca49683d79eb98",
+      "report": "C:\\Users\\nytha\\.codex\\worktrees\\gaze-motion\\New_research\\reports\\gaze_motion_20261029\\FEASIBILITY.txt"
+    }
+  },
+  "artifacts": {
+    "outputs\\research_branches_20261029\\calibration_check.json": {
+      "bytes": 50,
+      "sha256": "0f3bf62ab07f1f35e4f1e7ad231baa40b50dcb3f60b998939b376dfe4fbcf49e"
+    },
+    "outputs\\research_branches_20261029\\gaze\\audit.json": {
+      "bytes": 144950,
+      "sha256": "d8e78b57f5aac49f8b1840d3b54bc7788015aff5264fe7c65e108837653b5e14"
+    },
+    "outputs\\research_branches_20261029\\gaze\\source_hashes.json": {
+      "bytes": 8780,
+      "sha256": "6925f5fdd4a200973fd0e9312b89cbc2973f0cc9d82bc062290e5ea0f1c386a3"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_150809.npz": {
+      "bytes": 62836,
+      "sha256": "b923e08b61c4022ecc6976bfa69bd3bc04b4a6e931b00b689441ef6de8e3a431"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_151153.npz": {
+      "bytes": 61198,
+      "sha256": "4659b51a62bcb9ea1a4121d33c84e4be6d350d990061a86935c5cdfec39cac5d"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_151841.npz": {
+      "bytes": 16839,
+      "sha256": "7ab15a98f1cd07f3678a17f777793ae779019b46d98b0f48586fe13707485b20"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_155313.npz": {
+      "bytes": 118211,
+      "sha256": "0f3c6d4eb2a1a8a7c3419854327a92270346d84440346585c4bd9d13683602bb"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_162338.npz": {
+      "bytes": 5007,
+      "sha256": "b4d9047aba3beb32f38d6c02005afd51c8ba61166575972d0347ff4b7ca3cf46"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_162538.npz": {
+      "bytes": 73452,
+      "sha256": "34f3c362721fab292151d0b4fb5005832252a903b974936f5a40e029d01bca78"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_163303.npz": {
+      "bytes": 48493,
+      "sha256": "70d1bf1fc55a0a2687ea4136dae3654776e71c6a6520b92528ce312603648e47"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_163506.npz": {
+      "bytes": 11104,
+      "sha256": "744678cea548fe1e8cd99c01531202b1d0b68b69e01100badcc651298e2a66dd"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_163528.npz": {
+      "bytes": 43773,
+      "sha256": "a26b54322ceccb74e4fd4980a80a7f7c824cd19d38adf66d057a379824e069e0"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_164535.npz": {
+      "bytes": 10455,
+      "sha256": "f7fec83d105214dd5f686d22b5a1d47d3326b62d6c3e9661453ab76be06d571b"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_164557.npz": {
+      "bytes": 88293,
+      "sha256": "289eb60c588091796c68944b39e53a291a3af1d2f59acca416ed8069ef030fe8"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_165112.npz": {
+      "bytes": 83405,
+      "sha256": "ba7d1b2fe52cf23741c5b02e61fc0bb0cb1afb6041888468658f24568c0c2386"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_170022.npz": {
+      "bytes": 69954,
+      "sha256": "7fe25cc39e8d3ce770c36a0a58c44ee81d5110975633a37bb61b5aff573ac7b0"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_180234.npz": {
+      "bytes": 25666,
+      "sha256": "b897db296183c14166fdb81a54a1b1021d5b30bb229d340897d291f031e0c267"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_180512.npz": {
+      "bytes": 55565,
+      "sha256": "916aaa38905e366914e0324fa42aded16c46676cba54691cc5473e7b565c091c"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_190127.npz": {
+      "bytes": 21923,
+      "sha256": "04099b07683ec2d005bbfcdf95382317d5da7f05f308ac23a72a91f4ec72b6bb"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_192702.npz": {
+      "bytes": 149045,
+      "sha256": "6e99f71ff4bd2a0b4ef232035a0e6e948b5469c5c43a9f9ab17248c8a0a341a4"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_193311.npz": {
+      "bytes": 39617,
+      "sha256": "dd901144711c10548a9e2045c481b87507707870cd42ea34a62ca0d3fe2bc98e"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_193524.npz": {
+      "bytes": 19899,
+      "sha256": "6477c8022af24044bf2c823c565cb6ff4965bf95cc66753382a6b17093582b6d"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_193709.npz": {
+      "bytes": 46817,
+      "sha256": "957f269553ccd8490613b1a5e70ff792773f33646462eba961e84dcae3108ec1"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_193956.npz": {
+      "bytes": 38970,
+      "sha256": "5585c15847a712fa1ee38d3e7967e7eb41385c20ea4874629693e974124497fc"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_194427.npz": {
+      "bytes": 10545,
+      "sha256": "ace118aba5557b991e4c51686c318a8942f28173a2c9d287b607f8f1fb9168be"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_194630.npz": {
+      "bytes": 6732,
+      "sha256": "5262963906d536a94ac542db02b2ba53bd7a2123e84897feae5fe3b1b172c87f"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_194648.npz": {
+      "bytes": 112516,
+      "sha256": "b3f5f3360d813fd035a643abe0cb3948d6135bc282d37768fb03a6f8ab167d0d"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_201129.npz": {
+      "bytes": 35336,
+      "sha256": "2ff420297128d96269864244a0c4a01a2e5076c766f86bfbbaf73f9abb0c93e2"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_201425.npz": {
+      "bytes": 12471,
+      "sha256": "e648f3881132775e77095caa1cc55c3d7eed0ef4c90dc6e847b1b7e868cf6d9c"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_201451.npz": {
+      "bytes": 53572,
+      "sha256": "d28f521c28977aa246a36d83d217c70bf4aa5c0336f759740b3f1364824a8b1c"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_201745.npz": {
+      "bytes": 24607,
+      "sha256": "580e01875092f0e2420587600dbd40930db9331e5bd4df3f783459342a520afe"
+    },
+    "outputs\\research_branches_20261029\\gaze\\unknown_20260803_205416.npz": {
+      "bytes": 42732,
+      "sha256": "448bc8f8822fb31a9e467d6c5ad31aa48a7fdd15fd56474a5a6a220478573241"
+    },
+    "outputs\\research_branches_20261029\\gaze_FEASIBILITY.txt": {
+      "bytes": 16146,
+      "sha256": "8ee537668242762cfcaa70a50658e67063855c4f5211afd1417c61437e2dd61c"
+    },
+    "outputs\\research_branches_20261029\\index.html": {
+      "bytes": 39164,
+      "sha256": "31a7ce2529f04c2a2952d9eb3a8a92b745062bd75972b182467b6491597d29e0"
+    },
+    "outputs\\research_branches_20261029\\inventory\\inventory.json": {
+      "bytes": 322365,
+      "sha256": "e71b14cff357425be513e0e0cf2784d281bec12e4de5cbd7504e0abd2c91e6b8"
+    },
+    "outputs\\research_branches_20261029\\inventory\\source_hashes.json": {
+      "bytes": 13328,
+      "sha256": "dfa17e2462f52bd50700f50257ce0f7f1266f7a16d8b7dff82fb118d7fd4eebe"
+    },
+    "outputs\\research_branches_20261029\\scene_FEASIBILITY.txt": {
+      "bytes": 12803,
+      "sha256": "23b847fe0cae5a6e0e9c8bffcd34e435b7092fa940e4ac3a9c72c72eb69c00fa"
+    },
+    "outputs\\research_branches_20261029\\scenes\\001_150809.jpg": {
+      "bytes": 305458,
+      "sha256": "7928d869ee20fb9107ed3a75ae061f66065abde0e34cdfdab5d5e438fe26a355"
+    },
+    "outputs\\research_branches_20261029\\scenes\\002_151153.jpg": {
+      "bytes": 300838,
+      "sha256": "9c1a107db132b110ca7b9d8794542fee2ad400e1a4e1db6b68e48b98f332b497"
+    },
+    "outputs\\research_branches_20261029\\scenes\\003_151841.jpg": {
+      "bytes": 278357,
+      "sha256": "bc8a0742c5ce42aaad50c48ce782cf6e444ed505e2f2707ac08cd6112d36b319"
+    },
+    "outputs\\research_branches_20261029\\scenes\\004_155313.jpg": {
+      "bytes": 247907,
+      "sha256": "43db541fa25f44a507a685e91d7990784f590ed1acafb807014094422f6730e3"
+    },
+    "outputs\\research_branches_20261029\\scenes\\005_162538.jpg": {
+      "bytes": 232381,
+      "sha256": "67c7af727ad97a4c4e446f1c75874bbb62ab43dd3da0318c64951d24db1a19ce"
+    },
+    "outputs\\research_branches_20261029\\scenes\\006_163303.jpg": {
+      "bytes": 219526,
+      "sha256": "e95e2f87383c855de39d34f61e1ab1455f285bcb09e793a96b3da145c52759c0"
+    },
+    "outputs\\research_branches_20261029\\scenes\\007_163528.jpg": {
+      "bytes": 266866,
+      "sha256": "63a71098e3a27e433b054b62e5dfb58a0c894126820dbac5486c437313894fae"
+    },
+    "outputs\\research_branches_20261029\\scenes\\008_164557.jpg": {
+      "bytes": 211315,
+      "sha256": "137f01f3e173d4aaca85566092927784ff7ef85d954e858226b1f9906f2764ba"
+    },
+    "outputs\\research_branches_20261029\\scenes\\009_165112.jpg": {
+      "bytes": 341101,
+      "sha256": "1379a08f235ba13ed78be2d72f5b56642ba7d8b3313e4fbce5c9b9434c0034e3"
+    },
+    "outputs\\research_branches_20261029\\scenes\\010_170022.jpg": {
+      "bytes": 287242,
+      "sha256": "8b7dd74660384edce08888497242dcb92fb20c3fa025ebf20d4f45364b5f771f"
+    },
+    "outputs\\research_branches_20261029\\scenes\\011_180512.jpg": {
+      "bytes": 377643,
+      "sha256": "7d1a59f4a6d05b6ea4fac286f3e71bfc2e0d405b8c8f92b11c060237e489cf90"
+    },
+    "outputs\\research_branches_20261029\\scenes\\012_192702.jpg": {
+      "bytes": 406500,
+      "sha256": "bb433d99d692469656a099481672b20b707dd847fb488ea0975064e99eef5c1a"
+    },
+    "outputs\\research_branches_20261029\\scenes\\013_193311.jpg": {
+      "bytes": 436739,
+      "sha256": "2da891e14ba816c33874094196a10c8d9eb82e95be70d2ee25723c2a17c12779"
+    },
+    "outputs\\research_branches_20261029\\scenes\\014_193524.jpg": {
+      "bytes": 438825,
+      "sha256": "070270597d95c5c52365bc9c92697f02d1364658a9dd8147b367a93f6bb61ca0"
+    },
+    "outputs\\research_branches_20261029\\scenes\\015_193709.jpg": {
+      "bytes": 429153,
+      "sha256": "8f52c2ba334f9dbcce3d075fa82457c712a318ad860671f27dd83e71e97175de"
+    },
+    "outputs\\research_branches_20261029\\scenes\\016_193956.jpg": {
+      "bytes": 431725,
+      "sha256": "20f592d1f01bed823ad57d5b2e16fcae7f37e856b0dfc3dbf6bbb677fedf2d7a"
+    },
+    "outputs\\research_branches_20261029\\scenes\\017_194648.jpg": {
+      "bytes": 291047,
+      "sha256": "46d05baeb865bf83223780cecccabe3b672d43faa920dd89e1f3b72f52cba6e9"
+    },
+    "outputs\\research_branches_20261029\\scenes\\018_201129.jpg": {
+      "bytes": 371856,
+      "sha256": "38602313a87761810663a3d25947849c911cb99f286ddddc0d8ea6134a476268"
+    },
+    "outputs\\research_branches_20261029\\scenes\\019_201425.jpg": {
+      "bytes": 355208,
+      "sha256": "6b311cf5ee1250c51275d71dd5859781b320be76ec484a43dd3fa17f342a4325"
+    },
+    "outputs\\research_branches_20261029\\scenes\\020_201451.jpg": {
+      "bytes": 217126,
+      "sha256": "e2ce3b8233ceeaff17865a5d50501482d3763643228c8a10291c287fb15c1231"
+    },
+    "outputs\\research_branches_20261029\\scenes\\021_205416.jpg": {
+      "bytes": 315168,
+      "sha256": "20325a10f3cc809860703710abb50ecaaa373fb86418f4205d525f30e3387a5f"
+    },
+    "outputs\\research_branches_20261029\\scenes\\review_manifest.json": {
+      "bytes": 7816,
+      "sha256": "726e4885776615c71b5663e7f0b0e8fa2cb4ae9b35643d10ae3bd61679834545"
+    },
+    "outputs\\research_branches_20261029\\scenes\\scenes_01.jpg": {
+      "bytes": 208283,
+      "sha256": "44d0eecebaccb960c820be3a97d26a4c682d612c959f2cd83e627e11267b1944"
+    },
+    "outputs\\research_branches_20261029\\scenes\\scenes_02.jpg": {
+      "bytes": 201971,
+      "sha256": "81de29ad5ba7bb521414b684beefdc4a55194fb3e5f2f9c25e8b9261a8e35510"
+    },
+    "outputs\\research_branches_20261029\\scenes\\scenes_03.jpg": {
+      "bytes": 90675,
+      "sha256": "891a3a1e88a30e194ea00600732c6c14bd3ae0d6de2ed5f27a98181d54b90ab4"
+    },
+    "outputs\\research_branches_20261029\\verification.json": {
+      "bytes": 493,
+      "sha256": "3a2819108727bf0ad8beb7d130414588f964d010c1225eebd59270a9f3136698"
+    }
+  }
+}

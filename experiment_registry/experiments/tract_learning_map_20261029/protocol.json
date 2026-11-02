@@ -1,0 +1,25 @@
+{
+  "source": "/mnt/e/New_research/outputs/horizon_15_15_g1_20261029",
+  "plan": "TrACT-inspired learning-process diagnosis (not a TrACT model reproduction)\nLocked before running: 2026-10-29.\nSource experiment: horizon_15_15_g1_20261029, unchanged 16 history / 15 future,\n65 old +142 new windows, five recording folds and seeds17/29/43, both arms.\nReuse saved shared camera; reproduce30 person trainings from scratch with original\ninitialization, sampler, loss, optimizer,240 updates and validation selection.\nNo new labels, data selection, reweighting, prototype loss or baseline replacement.\nInstrument every20 updates including0. Evaluate all eligible expanded TRAIN windows\nand original validation windows. In original-only arm new windows are untrained\ndiagnostic probes, NOT validation data. No held-out test learning curves or map.\nFixed original five inference draws; instrumentation must preserve Torch RNG.\nSave per-time errors, actual sampling counts, losses, all checkpoint states.\nVerify original selected weights, validation logs, sample-draw hashes and test\nreplay; preserve original files with hashes. New checkpoints diagnostic only.\nPrimary map: final step240 residualADE vs variance over steps20..240, per fit.\nStep0 excluded from primary variance; include0 and late120..240 sensitivity.\nFour relative groups use median final error and variance within expanded training\npool of each fold/seed; reuse thresholds for paired original old-training map.\nThresholds descriptive, not paper numerical cutoffs or intrinsic quality labels.\nTrack all curves, last-quarter slope and rebound; variance alone has no time order.\nAggregate within fit first, with seed/fold summaries; overlapping windows and\nrepeated folds are not independent samples. Unique-window and recording-level\nsummaries supplementary. Only trained windows get learning-difficulty labels.\nEDGC computed using16 historical frames (not original6): E OLS log box-height\nslope/s; D median box-height/1920; G OLS rotation-stabilized y velocity/1920/s;\nC RGB-camera path length / historical duration from saved translation features.\nUse continuous EDGC, no reuse of old0.5s thresholds. Future suffix not used.\nInspect learning maps, old/new paired learning curves, EDGC associations and\nrepresentative training-only curves. Correlations are descriptive, not causation.\nReference: https://arxiv.org/html/2404.12538v2 (TrACT,2024), sectionsIII-C/D.\n",
+  "runner_sha": "177e12070fbefe42f40f0f206edc44f0add39314bda6e5848b9eb5376b7b5db7",
+  "checkpoints": [
+    0,
+    20,
+    40,
+    60,
+    80,
+    100,
+    120,
+    140,
+    160,
+    180,
+    200,
+    220,
+    240
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ]
+}

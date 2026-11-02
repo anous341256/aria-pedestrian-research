@@ -1,0 +1,44 @@
+name: depth_from_stereo
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - matplotlib
+  - numpy
+  - ipykernel
+  - pip:
+    # PyTorch compatible with CUDA 12.8
+    - --extra-index-url https://download.pytorch.org/whl/cu128
+    - torch==2.10.0+cu128
+
+    # Foundation Stereo official dependencies
+    - scikit-image
+    - omegaconf
+    - opencv-contrib-python
+    - imgaug
+    - ninja
+    - timm
+    - albumentations
+    - scipy
+    - joblib
+    - scikit-learn
+    - ruamel.yaml
+    - trimesh
+    - pyyaml
+    - imageio
+    - open3d
+    - transformations
+    - einops
+    - gdown
+    - nodejs
+    - xformers
+    - huggingface-hub
+
+    # Tutorial-specific additions
+    - pillow
+    - rerun-sdk[notebook]
+    - projectaria-tools[all]==2.1.0
