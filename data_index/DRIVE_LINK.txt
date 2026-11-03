@@ -1,2 +1,11 @@
-﻿Google Drive共享链接：待上传后填写。
-共有292个Aria文件，包含29个原始VRS录像与263个配套文件。网盘中Aria/对应项目data/Aria/。
+﻿Aria原始录像与配套数据 / Aria原動画・付随データ
+
+https://drive.google.com/drive/folders/154H9GL3u4C6KgyaUqwFtC4RqdVDGORCd
+
+状态：2026-11-03已启动上传，尚未核验全部完成。请以Google Drive实际可用文件和上传完成提示为准。
+状態：2026-11-03アップロード開始。全件完了は未確認です。Driveの実ファイルと完了表示を確認してください。
+
+完整集合：292文件，共35,174,262,651字节；包括29个VRS录像和263个配套文件，另有87个子文件夹。
+目录映射：网盘Aria/对应项目data/Aria/。
+文件路径及大小见aria_files.csv，SHA256和MD5见aria_checksums.csv。
+这是文件夹入口，访问权限仍由网盘所有者管理；未改为公开链接。
